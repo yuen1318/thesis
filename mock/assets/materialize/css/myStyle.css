@@ -1,0 +1,22 @@
+ul.pagination li.active a.page {
+  background-color: #388e3c !important;
+  border-radius:2px;
+}
+
+canvas {
+ position: relative;
+ left: 0;
+ top: 0;
+ width: 100%;
+ height: 100%;
+ border-radius: 4px;
+ box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;
+ cursor: url(cur.png) ,default !important;
+ }
+
+ #toast-container {
+ top: auto !important;
+ right: auto !important;
+ bottom: 1%;
+ left:1%;
+}
