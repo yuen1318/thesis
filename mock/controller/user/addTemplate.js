@@ -8,7 +8,7 @@ $(document).ready(function(){
   });
 
   $('#btn_submit').on('click', function() {//validate on btn click
-    var content = tinyMCE.get('asd').getContent(), patt;
+    var content = tinyMCE.get('id_content').getContent(), patt;
     //Here goes the RegEx
     patt = /^<p>(&nbsp;\s)+(&nbsp;)+<\/p>$/g;
 

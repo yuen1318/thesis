@@ -20,7 +20,7 @@
       <div class="col s12 m12 l12" id="list_template" ><!--Table-->
         <div class="row">
           <div class="col s12 m6 l6">
-            <h5>Manage Templates</h5>
+            <h5>Create Efile</h5>
           </div>
           <div class="col s12 m6 l6">
             <label>Search </label>
@@ -32,10 +32,10 @@
         <table class="bordered centered responsive-table striped">
           <thead>
             <tr>
-                <th>ID</th>
+                <th class="hide">Num</th>
                 <th>Template ID</th>
                 <th>Name</th>
-                <th colspan="2">Action</th>
+                <th>Use Template</th>
 
             </tr>
           </thead><!--end of thead-->
@@ -74,7 +74,7 @@
 
     <div class="row">
       <div class="fixed-action-btn vertical">
-      <a href="addTemplate.php" class="btn-floating btn-large green darken-2 btn tooltipped waves-effect fa fa-plus fa-lg" data-position="left" data-delay="50" data-tooltip="Add template"></a>
+      <a href="useEfile.php" target="_blank" class="btn-floating btn-large green darken-2 btn tooltipped waves-effect fa fa-plus fa-lg" data-position="left" data-delay="50" data-tooltip="Create blank efile"></a>
       </div>
     </div>
 
@@ -89,7 +89,7 @@
       $('.button-collapse').sideNav({menuWidth: 255});
       $('.modal').modal();
 
-      select_template("../../model/tbl_template/select/manage_template.php", "#tbl_template");
+      select_template("../../model/tbl_template/select/select_template.php", "#tbl_template");
 
       $(document).on('click', '.delete_template', function() {
        //bind html5 data attributes to variables

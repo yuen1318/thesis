@@ -54,7 +54,7 @@
               <a class="collapsible-header">&emsp;<span class="fa fa-id-card-o fa-lg">&emsp;</span>Manage E-file</a>
               <div class="collapsible-body grey lighten-4">
                 <ul>
-                  <li><a href="#">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Create E-file</a></li>
+                  <li><a href="createEfile.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Create E-file</a></li>
                   <li><a href="#">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>My E-file</a></li>
                 </ul>
               </div><!--end of collapsable-body-->

@@ -36,7 +36,7 @@
         </div>
 
         <div class="col s12 m12 l12 bgcolor"><br>
-          <textarea class="tinymce" name="content" id="asd"></textarea>
+          <textarea class="tinymce" name="content" id="id_content"></textarea>
         </div>
 
       </form>

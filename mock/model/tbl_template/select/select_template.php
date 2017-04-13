@@ -17,15 +17,9 @@
             <td class='name'>  $row[name] </td>
 
             <td>
-              <a href='editTemplate.php?$row[tmp_id]' class='btn waves-effect green darken-2' target='_blank'>
-                <span class='fa fa-edit fa-lg'></span>
+              <a href='useEfile.php?$row[tmp_id]' class='btn waves-effect green darken-2' target='_blank'>
+                <span class='fa fa-hand-pointer-o fa-lg'></span>
               </a>
-            </td>
-
-            <td>
-            <button class='btn waves-effect fa fa-trash fa-lg green darken-2
-            delete_template' data-delete-template-id = '$row[tmp_id]'
-            </button>
             </td>
 
             </tr>";
