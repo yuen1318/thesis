@@ -65,7 +65,7 @@
           <div class="modal-content">
             <h5 class="center">Are you sure you want to permanently delete this user?</h5><br>
 
-            <div class="row ">
+            <div class="row hide">
               <div class="col s4">
                 <input type="text" name="delete_id" id="delete_id">
               </div>

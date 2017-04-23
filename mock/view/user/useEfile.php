@@ -48,48 +48,46 @@
    </head>
    <body class="grey lighten-3">
 
+
+
      <?php require 'nav.php'; ?>
 
-     <div class="row"><br>
-       <div class="col s12 m12 l12">
+     <form id="frm_use_efile">
 
-         <form id="frm_edit_template">
+     <div class="row" id="step1"><br>
+       <div class="col s12 m12 l12 step1" >
 
            <div class="col s12 m3 l3">
              <h4>Create Efile</h4>
-           </div>
+           </div><!--s12 m3 l3-->
 
            <div class="col s12 m7 l7">
              <div class="input-field active">
                <label for="">Efile Name</label>
                <input type="text" name="name" id="name">
              </div>
-           </div>
+           </div><!--col s12 m7 l7-->
 
            <div class="col s12 m2 l2"><br>
-             <button type="button" class="waves-effect btn right green darken-2" id="btn_submit">Submit</button>
-           </div>
+             <button type="button" class="waves-effect btn right green darken-2" id="btn_step1">Next</button>
+           </div><!--end of col s12 m2 l2-->
 
            <div class="col s12 m12 l12"><br>
              <textarea class="tinymce" name="content" id="id_content">
                <?php echo $content; ?>
              </textarea>
-           </div>
+           </div><!--end of col s12 m12 l12-->
 
-
-         </form>
+         </div><!--end of col s12 m12 l12-->
+     </div><!--end of row-->
 
 
          <div class="row">
 
-           <div class="col s12 m12 l12" id="list_user" ><!--Table-->
+           <div class="col s12 m12 l12 hide step2" id="list_user" ><!--Table-->
              <div class="row">
-               <div class="col s12 m2 l2">
+               <div class="col s12 m6 l6">
                  <h5>Send Efile</h5>
-               </div>
-
-               <div class=" col s12 m4 l4 input-field" >
-                 <input type="text" id="target">
                </div>
 
                <div class="col s12 m6 l6">
@@ -119,14 +117,32 @@
                  <td><ul class="pagination center"></ul></td>
                </tr>
              </tfoot><!--end of tfoot-->
-           </div><!--end of col s12-->
+
+
+               <div class="col s12 m9 l9">
+                 <label>List of Recepient</label>
+
+                 <textarea name="signatories" style="height:60px !important; resize:none;" id="target" readonly>
+                 </textarea>
+               </div>
+
+               <div class="col s12 m3 l3 right-align"><br><br>
+                 <button type="button" class="waves-effect btn green darken-2" id="btn_step2_back">Back</button>
+                 <button type="button" class="waves-effect btn green darken-2 " id="btn_submit">Submit</button>
+
+
+               </div>
+
+
+
+
+             </div><!--end of col s12-->
 
          </div><!--end of row-->
 
+    </form>
 
 
-       </div>
-     </div>
    </body>
 
    <script src="..\..\assets\jquery\jquery.min.js" charset="utf-8"></script>
@@ -141,34 +157,34 @@
 
    <script type="text/javascript">
    $(document).ready(function(){
-     $('.button-collapse').sideNav({menuWidth: 255});
 
-     $(document).on('change', '[type=checkbox]', function() {
-       var arr = [];
-         if (this.checked) {
-           arr.push(this.value);
+    //load content from server
+    select_user("../../model/tbl_user/select/select_user_choice.php", "#tbl_user");
 
-         }
-         else {
-          arr.splice(arr.indexOf(this.value), 1);
-         }
-         $('#target').val(arr + '');
-         alert(arr);
+
+    //choose user from checkbox
+    var arr = [];
+     $(document).on('change', 'input[type=checkbox]',function(){
+           if(this.checked){
+              arr.push(this.value)
+            }else {
+              arr.splice(arr.indexOf(this.value),1);
+            }
+        $('#target').val(arr+ '');
      });
 
 
 
-
-
+     //disable enter key
      $('.input-field').keypress(function(event) {
          if (event.keyCode == 13) {
              event.preventDefault();
          }
      });
 
-     select_user("../../model/tbl_user/select/select_user_choice.php", "#tbl_user")
 
-     $('#btn_submit').on('click', function() {//validate on btn click
+     //validate step 1
+     $('#btn_step1').on('click', function() {//validate on btn click
        var content = tinyMCE.get('id_content').getContent(), patt;
        //Here goes the RegEx
        patt = /^<p>(&nbsp;\s)+(&nbsp;)+<\/p>$/g;
@@ -198,19 +214,45 @@
 
        else {
          tinyMCE.triggerSave();//finalize the content of tinyMCE
-         edit_template("../../model/tbl_template/update/edit_template.php", "#frm_edit_template");
+         $('.step2').removeClass('hide');
+         $('.step1').addClass('hide');
+
        }//end of else
      });//end of btn click
 
+     $(document).on('click', '#btn_step2_back', function() {
+       $('.step1').removeClass('hide');
+       $('.step2').addClass('hide');
+
+      });//end of onclick
+
+      $(document).on('click', '#btn_submit', function() {
+        if ( !$.trim($("#target").val()) ){//check if textarea is empty or containes whitespaces
+          swal({
+          title: 'Error',
+          text: "note: cannot create e-file without recepients",
+          type: 'error',
+          confirmButtonText: 'Ok',
+          confirmButtonClass: 'btn waves-effect green darken-2',
+          buttonsStyling: false
+          });//end of swal
+        }
+
+        else{
+          create_efile("../../model/tbl_efile/insert/create_efile.php", "#frm_use_efile");
+        }//end of else
+       });//end of onclick
 
 
-     $("#frm_edit_template").validate({//form validation
+     $("#frm_use_efile").validate({//form validation
        rules:{
-         name: {required: true}
+         name: {required: true},
+         signatories: {required: true}
        },//end of rules
 
        messages: {
-         name: {required: "<small class='right val red-text'>This field is required</small>"}
+         name: {required: "<small class='right val red-text'>This field is required</small>"},
+         signatories: {required: "<small class='right val red-text'>This field is required</small>"}
          },//end of messages
 
        errorElement : 'div',
@@ -252,25 +294,6 @@
    });
 
    //////////////////////////////////Functions/////////////////////////////
-   function edit_template(model_url,form_name){
-     $.ajax({
-       url:  model_url,
-       method:"POST",
-       data: $(form_name).serialize(),
-       dataType:"text",
-       success:function(Result){
-         if(Result == "error"){
-           Materialize.toast("Sorry an error occured", 8000, 'red');
-         }
-         else if(Result == "success") {
-
-           Materialize.toast("Edited Template Saved", 8000, 'green darken-2');
-         }
-       }//end of success function
-
-     })//end of ajax
-   }//end of add_template
-
    function select_user(model_url, html_class_OR_id){
      $.ajax({
        url:  model_url,
@@ -281,15 +304,48 @@
        },//end of success function
        complete:function(){
          //initialize pagination after data loaded
-         var monkeyList = new List('list_user', {
-           valueNames: ['id','email','name','title','department'],
-           page: 8,
-           plugins: [ ListPagination({}) ]
-         });
+        load_init();
        }//end of complete function
 
-     })
+     });
    }//end of select_pending_user
+
+   function create_efile(model_url,form_name){
+     $.ajax({
+       url:  model_url,
+       method:"POST",
+       data: $(form_name).serialize(),
+       dataType:"text",
+
+       success:function(Result){
+         if(Result == "error"){
+             Materialize.toast("Sorry an error occured", 8000, 'red');
+         }
+         else if(Result == "success") {
+           swal({
+           title: 'Success',
+           text: "Efile successfully created",
+           type: 'success',
+           confirmButtonText: 'Ok',
+           confirmButtonClass: 'btn waves-effect green darken-2',
+           buttonsStyling: false
+           });//end of swal
+         }
+       },//end of success function
+     });//end of ajax
+   }//end of delete_template
+
+
+   function load_init(){
+     var monkeyList = new List('list_user', {
+       valueNames: ['id','email','name','title','department'],
+       page: 8,
+       plugins: [ ListPagination({}) ]
+     });
+
+     $('.materialboxed').materialbox();
+     $('.button-collapse').sideNav({menuWidth: 255});
+   }
 
    </script>
  </html>

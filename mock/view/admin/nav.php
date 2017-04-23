@@ -34,7 +34,7 @@
       </div><!--end of background-->
 
       <div>
-        <img class="circle" src="..\..\DB\profile\default.jpg">
+        <img class="circle" src="..\..\DB\profile\default.png">
       </div><!--end of div-->
 
       <a href="#"><span class="white-text name"><?php echo $_SESSION['admin_fn']." ".$_SESSION['admin_mn']." ".$_SESSION['admin_ln'];?></span></a>

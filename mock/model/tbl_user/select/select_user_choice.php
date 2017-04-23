@@ -1,13 +1,18 @@
 <?php
+  session_start();
   require '../../dbConfig.php';
   $path = "../../DB/profile";
-  $sql ="SELECT * FROM tbl_user WHERE access=? && status=? ORDER BY id DESC";
+  $email = $_SESSION['user_email'];
+  
+  $sql ="SELECT * FROM tbl_user WHERE access=? && status=? && email != ? ORDER BY id DESC";
   if (!empty($dbConn)) {
     $stmt =  $dbConn->prepare($sql);
     $stmt->bindValue(1, "user");
     $stmt->bindValue(2, "active");
-    $stmt ->  execute();
+    $stmt->bindValue(3, $email);
+    $stmt -> execute();
     $table  = $stmt;
+
 
     foreach ($table as $row) {
       echo "<tr>
@@ -21,7 +26,7 @@
             <td class='email'>  $row[email] </td>
 
 
-            <td><img src= '$path/$row[photo]' class='circle' width='40px' height='40px'>  </td>
+            <td><img src= '$path/$row[photo]' class='materialboxed circle' width='40px' height='40px'>  </td>
             <td class='name'>  $row[fn] $row[mn] $row[ln]  </td>
 
             <td class='title'>  $row[title] </td>

@@ -9,8 +9,8 @@
         <a href="#" class="brand-logo hide-on-med-and-down" style="font-size:23px !important;">Document Tracking System</a>
 
         <ul class="right ">
-          <li><a href="#"><span class="fa fa-home fa-lg"></span></a></li>
-          <li><a href="#"><span class="fa fa-bell fa-lg"></span> <span class="red">&nbsp;4&nbsp;</span></a></li>
+          <li><a href="index.php"><span class="fa fa-home fa-lg"></span></a></li>
+          <li><a href="notif.php"><span class="fa fa-bell fa-lg"></span> <span class="red">&nbsp;4&nbsp;</span></a></li>
           <li><a href="#" class="dropdown-button"  data-beloworigin="true" data-activates='dropdown1'><span class="fa fa-user fa-lg"></span></a></li>
         </ul><!--end of ul-->
       </div><!--end of nav-wrapper-->
@@ -36,7 +36,7 @@
           </div><!--end of background-->
 
           <div>
-            <img class="circle" src="..\..\DB\profile\default.jpg">
+            <img class="circle" src="..\..\DB\profile\default.png">
           </div><!--end of div-->
 
           <a href="#"><span class="white-text name"><?php echo $_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln'];?></span></a>
@@ -77,7 +77,6 @@
               <a class="collapsible-header">&emsp;<span class="fa fa-files-o fa-lg">&emsp;</span>Other Files</a>
               <div class="collapsible-body grey lighten-4">
                 <ul>
-                  <li><a href="#">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>PDF</a></li>
                   <li><a href="#">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Word</a></li>
                   <li><a href="#">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Excel</a></li>
                   <li><a href="#">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Powerpoint</a></li>
