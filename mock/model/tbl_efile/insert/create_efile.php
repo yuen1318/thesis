@@ -13,15 +13,16 @@
 
 
 if (isset($_POST['content'])) {
-  $sql = "INSERT INTO tbl_efile(doc_id,content,signatories, pending_signatories,created_by,created_on,status) VALUES(?,?,?,?,?,?,?)";
+  $sql = "INSERT INTO tbl_efile(doc_id,name,content,signatories, pending_signatories,created_by,created_on,status) VALUES(?,?,?,?,?,?,?,?)";
   $stmt = $dbConn->prepare($sql);
   $stmt->bindValue(1, $doc_id);
-  $stmt->bindValue(2, $content);
-  $stmt->bindValue(3, $signatories);
+  $stmt->bindValue(2, $name);
+  $stmt->bindValue(3, $content);
   $stmt->bindValue(4, $signatories);
-  $stmt->bindValue(5, $created_by);
-  $stmt->bindValue(6, $created_on);
-  $stmt->bindValue(7, "pending");
+  $stmt->bindValue(5, $signatories);
+  $stmt->bindValue(6, $created_by);
+  $stmt->bindValue(7, $created_on);
+  $stmt->bindValue(8, "pending");
   $stmt->execute();
 
   if ($stmt) {

@@ -5,6 +5,11 @@
 
   $doc_id = $_POST['approve_id'];
   $email = $_SESSION['user_email'] ;
+  $user_signature = "<span style='display:inline-block !important; text-align:center !important'>
+                    <img src='../../DB/signature/$email.png' width='200' heigth='200'><br>
+                    $_SESSION[user_fn] $_SESSION[user_mn] $_SESSION[user_ln] <br>
+                    $_SESSION[user_title]<br>
+                    </span>";
 
   #step 1 select the efile
   $sql = "SELECT * FROM tbl_efile WHERE doc_id=?";
@@ -33,8 +38,11 @@
       $approved_signatories = implode("," , $approved_signatories);
       //get the first character
       $first_letter = substr($approved_signatories,0,1);
+      //updated signatures
+      $updated_signatures = $signatures.$user_signature;
 
       if ($first_letter == ',') {
+        //remove the ,
         $updated_approved_signatories = substr($approved_signatories,1);
       }//end of if
       else {
@@ -44,7 +52,7 @@
       $stmt = $dbConn->prepare($sql2);
       $stmt->bindValue(1, implode("," , $updated_pending_signatories) );
       $stmt->bindValue(2, $updated_approved_signatories );
-      $stmt->bindValue(3, "alapa w8 kamu ne!?");
+      $stmt->bindValue(3, $updated_signatures);
       $stmt->bindValue(4, $doc_id);
       $stmt->execute();
 

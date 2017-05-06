@@ -18,6 +18,7 @@
         echo "<tr>
 
               <td class='efile'>  $row[doc_id]  </td>
+              <td class='name'>  $row[name]  </td>
               <td class='sender'>  $row[created_by] </td>
               <td class='signatories'>  $row[signatories] </td>
 

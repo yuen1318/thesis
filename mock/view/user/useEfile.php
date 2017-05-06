@@ -101,7 +101,8 @@
                <thead>
                  <tr>
                      <th class="hide">ID</th>
-                     <th colspan="2">Email</th>
+                     <th>Recipient</th>
+                     <th >Email</th>
                      <th colspan="2">Name</th>
                      <th>Title</th>
                      <th>Department</th>
@@ -120,7 +121,7 @@
 
 
                <div class="col s12 m9 l9">
-                 <label>List of Recepient</label>
+                 <label>List of Recepients</label>
 
                  <textarea name="signatories" style="height:60px !important; resize:none;" id="target" readonly>
                  </textarea>
@@ -172,7 +173,6 @@
             }
         $('#target').val(arr+ '');
      });
-
 
 
      //disable enter key
@@ -333,7 +333,7 @@
          }
        },//end of success function
      });//end of ajax
-   }//end of delete_template
+   }//end of create efile
 
 
    function load_init(){
@@ -342,7 +342,7 @@
        page: 8,
        plugins: [ ListPagination({}) ]
      });
-
+    // $(":checkbox").on("click", false);
      $('.materialboxed').materialbox();
      $('.button-collapse').sideNav({menuWidth: 255});
    }

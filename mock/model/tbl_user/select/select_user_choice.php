@@ -3,7 +3,7 @@
   require '../../dbConfig.php';
   $path = "../../DB/profile";
   $email = $_SESSION['user_email'];
-  
+
   $sql ="SELECT * FROM tbl_user WHERE access=? && status=? && email != ? ORDER BY id DESC";
   if (!empty($dbConn)) {
     $stmt =  $dbConn->prepare($sql);
@@ -22,6 +22,7 @@
             <input type='checkbox' class='filled-in checkbox-green' id='$row[email]' value='$row[email]'/>
             <label for='$row[email]'></label>
             </td>
+
 
             <td class='email'>  $row[email] </td>
 
