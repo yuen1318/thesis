@@ -10,7 +10,7 @@
 
     <ul class="right ">
       <li><a href="index.php"><span class="fa fa-home fa-lg"></span></a></li>
-      <li><a href="#" class="dropdown-button"  data-beloworigin="true" data-activates='dropdown1'><span class="dropdown-button fa fa-user fa-lg" ></span></a></li>
+      <li><a href="#"   data-beloworigin="true" data-activates='dropdown1'  class="dropdown-button fa fa-user fa-lg"></a></li>
     </ul><!--end of ul-->
   </div><!--end of nav-wrapper-->
 </nav><!--end of nav-->

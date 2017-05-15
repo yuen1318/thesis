@@ -85,7 +85,7 @@
    <script src="..\..\assets\materialize\js\materialize.min.js" charset="utf-8"></script>
    <script src="..\..\assets\tinymce\jquery.tinymce.min.js" charset="utf-8"></script>
    <script src="..\..\assets\tinymce\tinymce.min.js" charset="utf-8"></script>
-
+   <script src="..\..\controller\user\fetch_notif.js" charset="utf-8"></script>
    <script type="text/javascript">
    $(document).ready(function(){
 

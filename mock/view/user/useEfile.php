@@ -44,6 +44,91 @@
      <link rel="stylesheet" href="..\..\assets\materialize\css\myStyle.css">
      <link rel="stylesheet" href="..\..\assets\sweetalert2\sweetalert2.min.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style media="screen">
+/* Image captions using the HTML5 figure element */
+figure.align-left {
+  float: left;
+}
+
+figure.align-right {
+  float: right;
+}
+
+figure.image {
+  display: inline-block;
+  border: 1px solid gray;
+  margin: 0 2px 0 1px;
+  background: #f5f2f0;
+}
+
+figure.image img {
+  margin: 8px 8px 0 8px;
+}
+
+figure.image figcaption {
+  margin: 6px 8px 6px 8px;
+  text-align: center;
+}
+
+/*
+Alignment using classes rather than inline styles
+check out the "formats" option
+*/
+img.align-left {
+  float: left;
+}
+
+img.align-right {
+  float: right;
+}
+
+/* Basic styles for Table of Contents plugin (toc) */
+.mce-toc {
+  border: 1px solid gray;
+}
+
+.mce-toc h2 {
+  margin: 4px;
+}
+
+.mce-toc li {
+  list-style-type: none;
+}
+
+table.center {
+ align: center !important;
+}
+
+/*
+Removes margins on paragraphs,
+might be useful for mail clients
+*/
+/*p { margin: 0 }*/
+
+
+/* Override CSS styles when within the editor only */
+/*.mce-content-body figure {...}*/
+
+/*modal css*/
+.mce-window-body {
+  width: inherit !important;
+}
+.mce input{
+    border: 2px solid red;
+    border-radius: 4px;
+}
+.mce-window-body > .mce-container {
+   width: 100% !important;
+}
+
+.mce-window{
+   width: 50% !important;
+   left: 50% !important;
+   top: 50% !important;
+   margin-left: -25% !important;
+   margin-top: -150px !important;
+}
+</style>
      <title></title>
    </head>
    <body class="grey lighten-3">
@@ -146,16 +231,19 @@
 
    </body>
 
+<script src="..\..\assets\tinymce\tinymce.min.js" charset="utf-8"></script>
    <script src="..\..\assets\jquery\jquery.min.js" charset="utf-8"></script>
    <script src="..\..\assets\jquery\jquery.validate.min.js" charset="utf-8"></script>
    <script src="..\..\assets\jquery\jquery.additionalMethod.min.js" charset="utf-8"></script>
    <script src="..\..\assets\materialize\js\materialize.min.js" charset="utf-8"></script>
-   <script src="..\..\assets\tinymce\jquery.tinymce.min.js" charset="utf-8"></script>
-   <script src="..\..\assets\tinymce\tinymce.min.js" charset="utf-8"></script>
+
+
+
+
    <script src="..\..\assets\sweetalert2\sweetalert2.min.js" charset="utf-8"></script>
    <script src="..\..\assets\listjs\list.min.js" charset="utf-8"></script>
    <script src="..\..\assets\listjs\list.pagination.min.js" charset="utf-8"></script>
-
+   <script src="..\..\controller\user\fetch_notif.js" charset="utf-8"></script>
    <script type="text/javascript">
    $(document).ready(function(){
 
@@ -271,17 +359,22 @@
    //tinymce initialization
    tinymce.init({
      selector:"textarea.tinymce",
-       height: 550,
+        height: 550,
        theme: 'modern',
        save_enablewhendirty: true,
+       browser_spellcheck: true,
+
+
+
+  fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt',
 
        plugins: [
-         'advlist autolink lists link image charmap  preview hr anchor pagebreak',
+         'code print advlist autolink lists link image charmap  preview hr anchor pagebreak',
          'searchreplace wordcount visualblocks visualchars fullscreen',
          'insertdatetime  nonbreaking save table contextmenu directionality',
          'emoticons template paste textcolor colorpicker textpattern imagetools codesample   save'
        ],
-       toolbar1: 'undo redo | insert  | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image preview media | forecolor backcolor',
+       toolbar1: ' fontsizeselect print undo redo | insert  | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image preview media | forecolor backcolor',
        image_advtab: true,
        templates: [
          { title: 'Test template 1', content: 'Test 1' },

@@ -10,7 +10,7 @@
 
         <ul class="right ">
           <li><a href="index.php"><span class="fa fa-home fa-lg"></span></a></li>
-          <li><a href="notif.php"><span class="fa fa-bell fa-lg"></span> <span class="red">&nbsp;4&nbsp;</span></a></li>
+          <li><a href="notif.php"><span class="fa fa-bell fa-lg"></span> <span class="red" id="notif"></span></a></li>
           <li><a href="#" class="dropdown-button"  data-beloworigin="true" data-activates='dropdown1'><span class="fa fa-user fa-lg"></span></a></li>
         </ul><!--end of ul-->
       </div><!--end of nav-wrapper-->
@@ -18,8 +18,8 @@
 
 
         <!-- Dropdown Structure -->
-    <ul id='dropdown1' class='dropdown-content'>
-      <li><a href="#!"><small class="center green-text">My Account</small></a></li>
+    <ul id='dropdown1'   class='dropdown-content'>
+      <li><a href="myAccount.php"><small class="center green-text">My Account</small></a></li>
       <li><a href="#!"><small class="center green-text">My Photos</small></a></li>
       <li><a href="#!"><small class="center green-text">Logout</small></a></li>
     </ul>
@@ -55,7 +55,7 @@
               <div class="collapsible-body grey lighten-4">
                 <ul>
                   <li><a href="createEfile.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Create E-file</a></li>
-                  <li><a href="#">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>My E-file</a></li>
+                  <li><a href="myEfile.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>My E-file</a></li>
                 </ul>
               </div><!--end of collapsable-body-->
             </li><!--end of li-->

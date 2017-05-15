@@ -6,7 +6,7 @@
   $doc_id = $_POST['approve_id'];
   $email = $_SESSION['user_email'] ;
   $user_signature = "<span style='display:inline-block !important; text-align:center !important'>
-                    <img src='../../DB/signature/$email.png' width='200' heigth='200'><br>
+                    <img src='../../DB/signature/$email.png' width='150'><br>
                     $_SESSION[user_fn] $_SESSION[user_mn] $_SESSION[user_ln] <br>
                     $_SESSION[user_title]<br>
                     </span>";

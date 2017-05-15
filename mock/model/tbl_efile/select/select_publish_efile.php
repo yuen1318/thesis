@@ -15,7 +15,7 @@ $email = $_SESSION['user_email'];
 
 
     foreach ($table as $row) {
-      if ($row['pending_signatories']=="" && $row['disapproved']=="" && $row['comment']=="" ) {
+      if ($row['pending_signatories']=="" && $row['disapproved']=="" && $row['comment']==""  && $row['published_on']=="") {
         echo "<tr>
         <td class='hide'>  $row[num]  </td>
         <td class='doc_id'>  $row[doc_id]  </td>

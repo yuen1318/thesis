@@ -45,13 +45,15 @@
     </div>
 
   </body>
+
   <script src="..\..\assets\jquery\jquery.min.js" charset="utf-8"></script>
   <script src="..\..\assets\jquery\jquery.validate.min.js" charset="utf-8"></script>
   <script src="..\..\assets\jquery\jquery.additionalMethod.min.js" charset="utf-8"></script>
   <script src="..\..\assets\materialize\js\materialize.min.js" charset="utf-8"></script>
-  <script src="..\..\assets\tinymce\jquery.tinymce.min.js" charset="utf-8"></script>
-  <script src="..\..\assets\tinymce\tinymce.min.js" charset="utf-8"></script>
+
+<script src="..\..\assets\tinymce\tinymce.min.js" charset="utf-8"></script>
   <script src="..\..\assets\sweetalert2\sweetalert2.min.js" charset="utf-8"></script>
+  <script src="..\..\controller\user\fetch_notif.js" charset="utf-8"></script>
   <script src="..\..\controller\user\addTemplate.js" charset="utf-8"></script>
 
 </html>

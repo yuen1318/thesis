@@ -75,12 +75,12 @@ tinymce.init({
     save_enablewhendirty: true,
 
     plugins: [
-      'advlist autolink lists link image charmap  preview hr anchor pagebreak',
+      'print advlist autolink lists link image charmap  preview hr anchor pagebreak',
       'searchreplace wordcount visualblocks visualchars fullscreen',
       'insertdatetime  nonbreaking save table contextmenu directionality',
       'emoticons template paste textcolor colorpicker textpattern imagetools codesample   save'
     ],
-    toolbar1: 'undo redo | insert  | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image preview media | forecolor backcolor',
+    toolbar1: ' print undo redo | insert  | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image preview media | forecolor backcolor',
     image_advtab: true,
     templates: [
       { title: 'Test template 1', content: 'Test 1' },
