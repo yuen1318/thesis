@@ -21,7 +21,7 @@
     <ul id='dropdown1'   class='dropdown-content'>
       <li><a href="myAccount.php"><small class="center green-text">My Account</small></a></li>
       <li><a href="#!"><small class="center green-text">My Photos</small></a></li>
-      <li><a href="#!"><small class="center green-text">Logout</small></a></li>
+      <li><a href="logout.php"><small class="center green-text">Logout</small></a></li>
     </ul>
 
 
@@ -36,7 +36,7 @@
           </div><!--end of background-->
 
           <div>
-            <img class="circle" src="..\..\DB\profile\default.png">
+            <img class="circle" src="..\..\DB\profile\<?php echo $_SESSION['user_photo'];?>">
           </div><!--end of div-->
 
           <a href="#"><span class="white-text name"><?php echo $_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln'];?></span></a>

@@ -1,3 +1,16 @@
+<?php
+  session_start();
+  #if session exist
+  if (isset($_SESSION["user_email"]) &&  isset($_SESSION["user_password"]) ) {
+    header("Location:view\user\index.php");
+  }
+
+  #if session doesnt exist
+  else {
+
+  }
+?>
+
 <!DOCTYPE html>
 <html>
   <head>

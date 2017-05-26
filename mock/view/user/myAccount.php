@@ -24,7 +24,16 @@ require 'session.php';
   <body class="grey lighten-3">
     <?php require 'nav.php'; ?>
 
-    <div class="container"><br><br>
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m6 l6">
+          <h5>Account Settings</h5>
+        </div>
+
+        <div class="col s12 m6 l6">
+          <h5 class="right"><?php echo $_SESSION["user_email"]?></h5>
+        </div>
+      </div>
 
       <div class="row">
 
@@ -160,7 +169,7 @@ require 'session.php';
       </div><!--end of modal-->
     </form>
 
-
+    <form id="frm_update_profile_picture" enctype="multipart/form-data" method="post" action="../../model/tbl_user/update/update_user_profile_picture.php">
       <div class="modal" id="upload_img_modal">
         <div class="modal-content">
           <h5 class="center">Change Profile Picture</h5><br>
@@ -168,18 +177,20 @@ require 'session.php';
             <div class="file-field input-field">
               <div class="btn green darken-2">
                 <span class="fa fa-upload fa-lg"></span>
-                <input type="file">
+                <input type="file" name="uploaded_img">
               </div>
               <div class="file-path-wrapper">
-                <input class="file-path validate" type="text">
+                <input class="file-path" type="text" readonly placeholder=".jpg only">
               </div>
             </div>
 
         </div><!--end of modal-content-->
         <div class="modal-footer">
-          <button type="button" class="btn waves-effect   green darken-2 fa fa-send fa-lg" id="btn_frm_change_password"></button>
+          <button type="submit" class="btn waves-effect   green darken-2 fa fa-send fa-lg" id="btn_frm_update_profile_picture"></button>
         </div>
       </div><!--end of modal-->
+    </form>
+
 
 
 
@@ -214,6 +225,33 @@ require 'session.php';
           $('.val').removeClass('animated');
          });
        }//end of else
+      });//end of btn click
+
+      $('#frm_update_profile_picture').on('submit', function(e) {//validate on btn click
+        e.preventDefault();
+            $.ajax({
+              url:  "../../model/tbl_user/update/update_user_profile_picture.php",
+              method:"POST",
+              data: new FormData(this),
+              contentType: false,
+              processData: false,
+              success:function(Result){
+                if(Result == "error"){
+                  swal({
+                    title: 'Error',
+                    text: "Only jpg files are allowed",
+                    type: 'error',
+                    confirmButtonText: 'Ok',
+                    confirmButtonClass: 'btn waves-effect green darken-2',
+                    buttonsStyling: false
+                  })
+                }
+                else if(Result == "success") {
+                  location.reload(true);
+                }
+              }//end of success function
+
+            })//end of ajax
       });//end of btn click
 
       $('#btn_frm_signature').on('click', function() {//validate on btn click
@@ -417,7 +455,7 @@ require 'session.php';
         alert("error");
       }
       else if(Result == "success") {
-        location.reload();
+        location.reload(true);
       }
     }//end of success function
 
@@ -441,7 +479,11 @@ $.ajax({
   }//end of success function
 
 })//end of ajax
-}//end of update_user_signature
+}//end of update_user_password
+
+
+
+
 
 
   </script>

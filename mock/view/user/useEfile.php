@@ -1,5 +1,6 @@
 <?php
   session_start();
+  require 'session.php';
   require '..\..\model\dbConfig.php';
   #get the template id from url
   $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
@@ -146,7 +147,18 @@ might be useful for mail clients
              <h4>Create Efile</h4>
            </div><!--s12 m3 l3-->
 
-           <div class="col s12 m7 l7">
+
+           <div class="input-field col s12 m3 l3">
+             <label class="active">Document Type</label>
+             <select  id="doc_type" name="doc_type" class="browser-default grey lighten-3">
+               <option disabled selected>Select Document Type</option>
+               <option value="private">Private</option>
+               <option value="public">Public</option>
+             </select>
+           </div><!--end of gender-->
+
+
+           <div class="col s12 m4 l4">
              <div class="input-field active">
                <label for="">Efile Name</label>
                <input type="text" name="name" id="name">
@@ -231,12 +243,13 @@ might be useful for mail clients
 
    </body>
 
-<script src="..\..\assets\tinymce\tinymce.min.js" charset="utf-8"></script>
+
    <script src="..\..\assets\jquery\jquery.min.js" charset="utf-8"></script>
    <script src="..\..\assets\jquery\jquery.validate.min.js" charset="utf-8"></script>
    <script src="..\..\assets\jquery\jquery.additionalMethod.min.js" charset="utf-8"></script>
    <script src="..\..\assets\materialize\js\materialize.min.js" charset="utf-8"></script>
-
+   <script src="..\..\assets\tinymce\jquery.tinymce.min.js" charset="utf-8"></script>
+   <script src="..\..\assets\tinymce\tinymce.min.js" charset="utf-8"></script>
 
 
 
@@ -289,16 +302,18 @@ might be useful for mail clients
          return false;
        }//end of if
 
-       else if ($("#name").valid() == false) {//validate form
+       else if ($("#name").valid() == false || $("#doc_type").valid() == false) {//validate form
          swal({
          title: 'Error',
-         text: "note: Template-Name and Template-Content is required",
+         text: "note: Document Type,Template Name,Template Content is required",
          type: 'error',
          confirmButtonText: 'Ok',
          confirmButtonClass: 'btn waves-effect green darken-2',
          buttonsStyling: false
          });//end of swal
        }//end of else if
+
+
 
        else {
          tinyMCE.triggerSave();//finalize the content of tinyMCE
@@ -335,12 +350,14 @@ might be useful for mail clients
      $("#frm_use_efile").validate({//form validation
        rules:{
          name: {required: true},
-         signatories: {required: true}
+         signatories: {required: true},
+         doc_type: {required: true}
        },//end of rules
 
        messages: {
          name: {required: "<small class='right val red-text'>This field is required</small>"},
-         signatories: {required: "<small class='right val red-text'>This field is required</small>"}
+         signatories: {required: "<small class='right val red-text'>This field is required</small>"},
+         doc_type: {required: "<small class='right val red-text'>This field is required</small>"}
          },//end of messages
 
        errorElement : 'div',
