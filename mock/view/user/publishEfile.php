@@ -73,7 +73,7 @@
 
            <div class="col s12 m12 l12">
              <input class="hide" type="text" name="doc_id" value="<?php echo $doc_id?>">
-             <textarea class="tinymce" name="content" >
+             <textarea class="ckeditor" name="content" id="content" readonly="true">
                 <?php echo $content; ?>
               </textarea>
           </div><!--end of col s12 m12 l12-->
@@ -87,7 +87,7 @@
        <div class="row hide" id="tab2">
 
         <div class="col s12 m12 l12">
-           <textarea class="signatures" name="signatures">
+           <textarea class="ckeditor" name="signatures" id="signatures">
               <?php echo $signatures; ?>
             </textarea>
         </div><!--end of col s12 m12 l12-->
@@ -111,8 +111,7 @@
 
    <script src="..\..\assets\jquery\jquery.min.js" charset="utf-8"></script>
    <script src="..\..\assets\materialize\js\materialize.min.js" charset="utf-8"></script>
-   <script src="..\..\assets\tinymce\jquery.tinymce.min.js" charset="utf-8"></script>
-   <script src="..\..\assets\tinymce\tinymce.min.js" charset="utf-8"></script>
+   <script src="..\..\assets\ckeditor\ckeditor.js" charset="utf-8"></script>
    <script src="..\..\assets\sweetalert2\sweetalert2.min.js" charset="utf-8"></script>
    <script src="..\..\controller\user\fetch_notif.js" charset="utf-8"></script>
    <script type="text/javascript">
@@ -122,76 +121,31 @@
 
 
     $('#btn_signatures').on('click', function(event) {
-      tinymce.triggerSave();
+      var content = CKEDITOR.instances.content.getData();
+      $("#content").val(content);
+
+
+
       $("#tab2").removeClass("hide");
       $("#tab1").addClass("hide");
      });//end of onclick
 
     $('#btn_back').on('click', function(event) {
-      tinymce.triggerSave();
       $("#tab1").removeClass("hide");
       $("#tab2").addClass("hide");
     });//end of onclick
 
 
     $('#btn_publish').on('click', function(event) {
-      tinymce.triggerSave();
+      var signatures = CKEDITOR.instances.signatures.getData();
+      $("#signatures").val(signatures);
+
       publish_efile("../../model/tbl_efile/update/publish_efile.php","#frm_publish");
     });//end of onclick
 
    });//end of document.ready
 
 
-   //tinymce initialization
-   tinymce.init({
-       selector:"textarea.tinymce",
-       readonly : 1,
-       height: 630,
-       theme: 'modern',
-       save_enablewhendirty: true,
-       menubar: false,
-
-       plugins: [
-         ' preview ',
-       ],
-
-       toolbar: 'preview',
-       image_advtab: true,
-       templates: [
-         { title: 'Test template 1', content: 'Test 1' },
-         { title: 'Test template 2', content: 'Test 2' }
-       ],
-       content_css: [
-         'http://fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-         'http://www.tinymce.com/css/codepen.min.css'
-       ]
-   });
-
-   tinymce.init({
-       selector:"textarea.signatures",
-       height: 630,
-       theme: 'modern',
-       save_enablewhendirty: true,
-       menubar: "format",
-
-       plugins: [
-         'print advlist autolink lists link image charmap  preview hr anchor pagebreak',
-         'searchreplace wordcount visualblocks visualchars fullscreen',
-         'insertdatetime  nonbreaking save table contextmenu directionality',
-         'emoticons template paste textcolor colorpicker textpattern imagetools codesample   save'
-       ],
-
-       toolbar: 'print',
-       image_advtab: true,
-       templates: [
-         { title: 'Test template 1', content: 'Test 1' },
-         { title: 'Test template 2', content: 'Test 2' }
-       ],
-       content_css: [
-         'http://fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-         'http://www.tinymce.com/css/codepen.min.css'
-       ]
-   });
 
 
 ////////////////Functions//////////////////////
@@ -204,20 +158,23 @@
         dataType:"text",
 
         success:function(Result){
-          if(Result == "error"){
-              Materialize.toast("Sorry an error occured", 8000, 'red');
-          }
-          else if(Result == "success") {
             swal({
             title: 'Success',
-            text: "Efile edit and resend",
+            text: "Efile successfully published",
             type: 'success',
             confirmButtonText: 'Ok',
             confirmButtonClass: 'btn waves-effect green darken-2',
             buttonsStyling: false
             });//end of swal
-          }
+
         },//end of success function
+
+        error:function(Result){
+          alert("Error");
+
+        },//end of success function
+
+
       });//end of ajax
     }//end of delete_template
 

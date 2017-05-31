@@ -19,6 +19,8 @@
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
       $content = $row['content'];
       $name =  $row['name'];
+      $created_by =  $row['created_by'];
+      $signatories =  $row['signatories'];
       $created_on = $row['created_on'];
     }
       if ($stmt) {
@@ -55,7 +57,7 @@
           $qrCode->save('../../../DB/qrcode/'.$doc_id.'.png');
 
 
-          $final_content = $content.$signatures."<img width='150' height='150' src='../../DB/qrcode/$doc_id.png'>";
+          $final_content = $content.$signatures."<img width='150' height='150' style='float:right !important; 'src='../../DB/qrcode/$doc_id.png'>";
           $sql2 = "UPDATE tbl_efile SET published_on=?, status=?, final_content=? WHERE doc_id=?";
           $stmt =  $dbConn->prepare($sql2);
           $stmt->bindValue(1, $published_on);
@@ -67,6 +69,32 @@
 
       }
 
+      if ($stmt) {
+
+        $date = date("Y, F j");
+        $time = date("g:i a");
+
+        $sql3 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        $stmt = $dbConn->prepare($sql3);
+        $stmt->bindValue(1, $doc_id);
+        $stmt->bindValue(2, $name);
+        $stmt->bindValue(3, $email);
+        $stmt->bindValue(4, $date);
+        $stmt->bindValue(5, $time);
+        $stmt->bindValue(6, $signatories);
+        $stmt->bindValue(7, "");
+        $stmt->bindValue(8, $signatories );
+        $stmt->bindValue(9, "has published an efile");
+        $stmt->bindValue(10, $email.".jpg");
+        $stmt->bindValue(11, $created_by);
+        $stmt->execute();
+
+        echo "success";
+      }
+
+      else {
+        echo "error";
+      }
 
 
 

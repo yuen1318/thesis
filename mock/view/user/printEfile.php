@@ -70,7 +70,7 @@
      <div class="row" >
 
        <div class="col s12 m12 l12">
-         <textarea class="tinymce" id="asd">
+         <textarea class="ckeditor" id="asd">
             <?php echo $final_content; ?>
           </textarea>
       </div><!--end of col s12 m12 l12-->
@@ -84,41 +84,17 @@
 
    <script src="..\..\assets\jquery\jquery.min.js" charset="utf-8"></script>
    <script src="..\..\assets\materialize\js\materialize.min.js" charset="utf-8"></script>
-   <script src="..\..\assets\tinymce\jquery.tinymce.min.js" charset="utf-8"></script>
-   <script src="..\..\assets\tinymce\tinymce.min.js" charset="utf-8"></script>
+   <script src="..\..\assets\ckeditor\ckeditor.js" charset="utf-8"></script>
    <script src="..\..\controller\user\fetch_notif.js" charset="utf-8"></script>
    <script type="text/javascript">
    $(document).ready(function(){
 
     $('.button-collapse').sideNav({menuWidth: 255});
 
-    //make tinymce editor readonly mode
-    tinymce.activeEditor.setMode('readonly');
+
    });//end of document.readyt
 
-   //tinymce initialization
-   tinymce.init({
-     selector:"textarea.tinymce",
-       height: 670,
-       theme: 'modern',
-       save_enablewhendirty: true,
-       menubar: false,
 
-       plugins: [
-         ' print',
-       ],
-
-       toolbar: 'print',
-       image_advtab: true,
-       templates: [
-         { title: 'Test template 1', content: 'Test 1' },
-         { title: 'Test template 2', content: 'Test 2' }
-       ],
-       content_css: [
-         'http://fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-         'http://www.tinymce.com/css/codepen.min.css'
-       ]
-   });
 
 
 

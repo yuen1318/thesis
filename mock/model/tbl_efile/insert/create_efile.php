@@ -35,7 +35,7 @@ if (isset($_POST['content'])) {
   $stmt->execute();
 
   if ($stmt) {
-    $sql2 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo) VALUES(?,?,?,?,?,?,?,?,?,?)";
+    $sql2 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
     $stmt = $dbConn->prepare($sql2);
     $stmt->bindValue(1, $doc_id);
     $stmt->bindValue(2, $name);
@@ -47,6 +47,7 @@ if (isset($_POST['content'])) {
     $stmt->bindValue(8, "");
     $stmt->bindValue(9, "has created an efile");
     $stmt->bindValue(10, $email.".jpg");
+    $stmt->bindValue(11, $email);
     $stmt->execute();
     echo "success";
   }

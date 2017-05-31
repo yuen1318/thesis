@@ -15,13 +15,47 @@ $comment = $_POST['comment'];
  $stmt->bindValue(3, $doc_id);
  $stmt->execute();
 
-  if ($stmt) {
-    echo "success";
-  }
+ $sql2 = "SELECT * FROM tbl_efile WHERE doc_id=?";
+ $stmt = $dbConn->prepare($sql2);
+ $stmt->bindValue(1, $doc_id);
+ $stmt->execute();
 
-  else {
-    echo "error";
-  }
+ if ($stmt) {
+   #step 2 save the values in variable
+   $row = $stmt->fetch(PDO::FETCH_ASSOC);
+   $signatories = $row['signatories'];
+   $efile_name = $row['name'];
+   $created_by = $row['created_by'];
+   $pending_signatories = $row['pending_signatories'];
+   $approved_signatories = $row['approved_signatories'];
+ }
+
+    if ($stmt) {   
+      $date = date("Y, F j");
+      $time = date("g:i a");
+
+      $sql2 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+      $stmt = $dbConn->prepare($sql2);
+      $stmt->bindValue(1, $doc_id);
+      $stmt->bindValue(2, $efile_name);
+      $stmt->bindValue(3, $email);
+      $stmt->bindValue(4, $date);
+      $stmt->bindValue(5, $time);
+      $stmt->bindValue(6, $signatories);
+      $stmt->bindValue(7, $pending_signatories);
+      $stmt->bindValue(8, $approved_signatories );
+      $stmt->bindValue(9, "has rejected an efile");
+      $stmt->bindValue(10, $email.".jpg");
+      $stmt->bindValue(11, $created_by);
+      $stmt->execute();
+
+      echo "success";
+
+    }
+
+    else {
+      echo "error";
+    }
 
 
  ?>

@@ -40,96 +40,13 @@
  <html>
    <head>
      <meta charset="utf-8">
+
      <link rel="stylesheet" href="..\..\assets\fa\css\font-awesome.min.css">
      <link rel="stylesheet" href="..\..\assets\materialize\css\materialize.min.css">
      <link rel="stylesheet" href="..\..\assets\materialize\css\myStyle.css">
      <link rel="stylesheet" href="..\..\assets\sweetalert2\sweetalert2.min.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<style media="screen">
-/* Image captions using the HTML5 figure element */
-figure.align-left {
-  float: left;
-}
 
-figure.align-right {
-  float: right;
-}
-
-figure.image {
-  display: inline-block;
-  border: 1px solid gray;
-  margin: 0 2px 0 1px;
-  background: #f5f2f0;
-}
-
-figure.image img {
-  margin: 8px 8px 0 8px;
-}
-
-figure.image figcaption {
-  margin: 6px 8px 6px 8px;
-  text-align: center;
-}
-
-/*
-Alignment using classes rather than inline styles
-check out the "formats" option
-*/
-img.align-left {
-  float: left;
-}
-
-img.align-right {
-  float: right;
-}
-
-/* Basic styles for Table of Contents plugin (toc) */
-.mce-toc {
-  border: 1px solid gray;
-}
-
-.mce-toc h2 {
-  margin: 4px;
-}
-
-.mce-toc li {
-  list-style-type: none;
-}
-
-table.center {
- align: center !important;
-}
-
-/*
-Removes margins on paragraphs,
-might be useful for mail clients
-*/
-/*p { margin: 0 }*/
-
-
-/* Override CSS styles when within the editor only */
-/*.mce-content-body figure {...}*/
-
-/*modal css*/
-.mce-window-body {
-  width: inherit !important;
-}
-.mce input{
-    border: 2px solid red;
-    border-radius: 4px;
-}
-.mce-window-body > .mce-container {
-   width: 100% !important;
-}
-
-.mce-window{
-   width: 50% !important;
-   left: 50% !important;
-   top: 50% !important;
-   margin-left: -25% !important;
-   margin-top: -150px !important;
-}
-</style>
      <title></title>
    </head>
    <body class="grey lighten-3">
@@ -170,9 +87,10 @@ might be useful for mail clients
            </div><!--end of col s12 m2 l2-->
 
            <div class="col s12 m12 l12"><br>
-             <textarea class="tinymce" name="content" id="id_content">
+             <textarea class="ckeditor" name="content" id="id_content">
                <?php echo $content; ?>
              </textarea>
+
            </div><!--end of col s12 m12 l12-->
 
          </div><!--end of col s12 m12 l12-->
@@ -248,9 +166,7 @@ might be useful for mail clients
    <script src="..\..\assets\jquery\jquery.validate.min.js" charset="utf-8"></script>
    <script src="..\..\assets\jquery\jquery.additionalMethod.min.js" charset="utf-8"></script>
    <script src="..\..\assets\materialize\js\materialize.min.js" charset="utf-8"></script>
-   <script src="..\..\assets\tinymce\jquery.tinymce.min.js" charset="utf-8"></script>
-   <script src="..\..\assets\tinymce\tinymce.min.js" charset="utf-8"></script>
-
+   <script src="..\..\assets\ckeditor\ckeditor.js" charset="utf-8"></script>
 
 
    <script src="..\..\assets\sweetalert2\sweetalert2.min.js" charset="utf-8"></script>
@@ -286,11 +202,12 @@ might be useful for mail clients
 
      //validate step 1
      $('#btn_step1').on('click', function() {//validate on btn click
-       var content = tinyMCE.get('id_content').getContent(), patt;
-       //Here goes the RegEx
-       patt = /^<p>(&nbsp;\s)+(&nbsp;)+<\/p>$/g;
 
-       if (content == '' || patt.test(content)) {//validate textarea
+       var ckeditor_content = CKEDITOR.instances.id_content.getData();
+       $("#id_content").val(ckeditor_content);
+       var ckeditor_content_length = ckeditor_content.length;
+
+       if (  ckeditor_content_length < 1 ) {//validate textarea
          swal({//alert
          title: 'Error',
          text: "note: Template-Name and Template-Content is required",
@@ -316,7 +233,6 @@ might be useful for mail clients
 
 
        else {
-         tinyMCE.triggerSave();//finalize the content of tinyMCE
          $('.step2').removeClass('hide');
          $('.step1').addClass('hide');
 
@@ -371,38 +287,7 @@ might be useful for mail clients
        }//end of errorElement
      });//end of validate
 
-
-   });
-   //tinymce initialization
-   tinymce.init({
-     selector:"textarea.tinymce",
-        height: 550,
-       theme: 'modern',
-       save_enablewhendirty: true,
-       browser_spellcheck: true,
-
-
-
-  fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt',
-
-       plugins: [
-         'code print advlist autolink lists link image charmap  preview hr anchor pagebreak',
-         'searchreplace wordcount visualblocks visualchars fullscreen',
-         'insertdatetime  nonbreaking save table contextmenu directionality',
-         'emoticons template paste textcolor colorpicker textpattern imagetools codesample   save'
-       ],
-       toolbar1: ' fontsizeselect print undo redo | insert  | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image preview media | forecolor backcolor',
-       image_advtab: true,
-       templates: [
-         { title: 'Test template 1', content: 'Test 1' },
-         { title: 'Test template 2', content: 'Test 2' }
-       ],
-       content_css: [
-         'http://fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-         'http://www.tinymce.com/css/codepen.min.css'
-       ]
-   });
-
+   });//end of document.ready
    //////////////////////////////////Functions/////////////////////////////
    function select_user(model_url, html_class_OR_id){
      $.ajax({

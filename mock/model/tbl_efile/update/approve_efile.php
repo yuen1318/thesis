@@ -5,11 +5,11 @@
 
   $doc_id = $_POST['approve_id'];
   $email = $_SESSION['user_email'] ;
-  $user_signature = "<span style='display:inline-block !important; text-align:center !important'>
+  $user_signature = "<br><div style='display:inline-block !important; text-align:center !important'>
                     <img src='../../DB/signature/$email.png' width='150'><br>
                     $_SESSION[user_fn] $_SESSION[user_mn] $_SESSION[user_ln] <br>
-                    $_SESSION[user_title]<br>
-                    </span>";
+                    $_SESSION[user_title]
+                    </div>";
 
   #step 1 select the efile
   $sql = "SELECT * FROM tbl_efile WHERE doc_id=?";
@@ -20,6 +20,9 @@
   if ($stmt) {
     #step 2 save the values in variable
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $efile_name = $row['name'];
+    $signatories = $row['signatories'];
+    $created_by = $row['created_by'];
     $pending_signatories = explode("," , $row['pending_signatories']);
     $approved_signatories = $row['approved_signatories'];
     $signatures = $row['signatures'];
@@ -59,6 +62,25 @@
     }//end of if
 
       if ($stmt) {
+
+        $date = date("Y, F j");
+        $time = date("g:i a");
+
+        $sql3 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        $stmt = $dbConn->prepare($sql3);
+        $stmt->bindValue(1, $doc_id);
+        $stmt->bindValue(2, $efile_name);
+        $stmt->bindValue(3, $email);
+        $stmt->bindValue(4, $date);
+        $stmt->bindValue(5, $time);
+        $stmt->bindValue(6, $signatories);
+        $stmt->bindValue(7, implode("," , $updated_pending_signatories));
+        $stmt->bindValue(8, $updated_approved_signatories );
+        $stmt->bindValue(9, "has approved an efile");
+        $stmt->bindValue(10, $email.".jpg");
+        $stmt->bindValue(11, $created_by);
+        $stmt->execute();
+
         echo "success";
       }
       else {

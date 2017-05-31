@@ -70,11 +70,12 @@
         success:function(Result){
         //push the result on id or class
           $(html_class_OR_id).html(Result);
+          $('.materialboxed').materialbox();
         },//end of success function
         complete:function(){
           //initialize pagination after data loaded
           var monkeyList = new List('list_template', {
-            valueNames: ['doc_id','name'],
+            valueNames: ['doc_id','name','email'],
             page: 8,
             plugins: [ ListPagination({}) ]
           });
