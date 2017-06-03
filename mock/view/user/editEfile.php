@@ -71,7 +71,7 @@
        <form id="frm_edit_efile">
          <div class="col s12 m12 l12">
            <input class="hide" type="text" name="doc_id" value="<?php echo $doc_id?>">
-           <textarea class="tinymce" name="content" id="target">
+           <textarea class="ckeditor" name="content" id="id_content">
               <?php echo $content; ?>
             </textarea>
         </div><!--end of col s12 m12 l12-->
@@ -92,8 +92,7 @@
 
    <script src="..\..\assets\jquery\jquery.min.js" charset="utf-8"></script>
    <script src="..\..\assets\materialize\js\materialize.min.js" charset="utf-8"></script>
-   <script src="..\..\assets\tinymce\jquery.tinymce.min.js" charset="utf-8"></script>
-   <script src="..\..\assets\tinymce\tinymce.min.js" charset="utf-8"></script>
+   <script src="..\..\assets\ckeditor\ckeditor.js" charset="utf-8"></script>
    <script src="..\..\assets\sweetalert2\sweetalert2.min.js" charset="utf-8"></script>
    <script src="..\..\controller\user\fetch_notif.js" charset="utf-8"></script>
    <script type="text/javascript">
@@ -102,7 +101,12 @@
     $('.button-collapse').sideNav({menuWidth: 255});
 
     $(document).on('click', '#btn_resend', function() {
-      if ( !$.trim($("#target").val()) ){//check if textarea is empty or containes whitespaces
+
+      var ckeditor_content = CKEDITOR.instances.id_content.getData();
+      $("#id_content").val(ckeditor_content);
+      var ckeditor_content_length = ckeditor_content.length;
+
+      if (  ckeditor_content_length < 1 ) {//validate textarea//check if textarea is empty or containes whitespaces
         swal({
         title: 'Error',
         text: "note: efile cannot be empty",
@@ -114,38 +118,14 @@
       }
 
       else{
-        tinymce.triggerSave();
+        var ckeditor_content = CKEDITOR.instances.id_content.getData();
+        $("#id_content").val(ckeditor_content);
        edit_efile("../../model/tbl_efile/update/edit_efile.php","#frm_edit_efile");
       }//end of else
      });//end of onclick
 
    });//end of document.ready
 
-
-   //tinymce initialization
-   tinymce.init({
-     selector:"textarea.tinymce",
-       height: 550,
-       theme: 'modern',
-       save_enablewhendirty: true,
-
-       plugins: [
-         'advlist autolink lists link image charmap  preview hr anchor pagebreak',
-         'searchreplace wordcount visualblocks visualchars fullscreen',
-         'insertdatetime  nonbreaking save table contextmenu directionality',
-         'emoticons template paste textcolor colorpicker textpattern imagetools codesample   save'
-       ],
-       toolbar1: 'undo redo | insert  | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image preview media | forecolor backcolor',
-       image_advtab: true,
-       templates: [
-         { title: 'Test template 1', content: 'Test 1' },
-         { title: 'Test template 2', content: 'Test 2' }
-       ],
-       content_css: [
-         'http://fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-         'http://www.tinymce.com/css/codepen.min.css'
-       ]
-   });
 
 
 ////////////////Functions//////////////////////

@@ -37,7 +37,7 @@
         </div>
 
         <div class="col s12 m12 l12 bgcolor"><br>
-          <textarea class="tinymce" name="content" id="id_content"></textarea>
+          <textarea class="ckeditor" name="content" id="id_content"></textarea>
         </div>
 
       </form>
@@ -52,7 +52,7 @@
   <script src="..\..\assets\jquery\jquery.additionalMethod.min.js" charset="utf-8"></script>
   <script src="..\..\assets\materialize\js\materialize.min.js" charset="utf-8"></script>
 
-<script src="..\..\assets\tinymce\tinymce.min.js" charset="utf-8"></script>
+  <script src="..\..\assets\ckeditor\ckeditor.js" charset="utf-8"></script>
   <script src="..\..\assets\sweetalert2\sweetalert2.min.js" charset="utf-8"></script>
   <script src="..\..\controller\user\fetch_notif.js" charset="utf-8"></script>
   <script src="..\..\controller\user\addTemplate.js" charset="utf-8"></script>

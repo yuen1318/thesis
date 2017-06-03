@@ -33,7 +33,7 @@
         <table class="bordered centered responsive-table striped">
           <thead>
             <tr>
-                <th>ID</th>
+                <th class="hide">ID</th>
                 <th>Template ID</th>
                 <th>Name</th>
                 <th colspan="2">Action</th>

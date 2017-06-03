@@ -70,7 +70,7 @@
      <div class="row" >
 
        <div class="col s12 m12 l12">
-         <textarea class="ckeditor" id="asd">
+         <textarea class="ckeditor" id="asd" readonly="true">
             <?php echo $final_content; ?>
           </textarea>
       </div><!--end of col s12 m12 l12-->

@@ -14,6 +14,7 @@ $(document).ready(function(){
 
 
   $("#notif").load("../../model/tbl_efile/select/fetch_notif.php");
+
   setInterval(function(){
     $("#notif").load("../../model/tbl_efile/select/fetch_notif.php");
   },3000);
