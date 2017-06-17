@@ -17,6 +17,7 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
       $content = $row['content'];
       $name = $row['name'];
+      $department = $row['department'];
     }#end of if
 
     else {
@@ -53,7 +54,15 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
             <h4>Edit Template</h4>
           </div>
 
-          <div class="col s12 m7 l7">
+          <div class="input-field col s12 m3 l3 ">
+            <label for="select_department" class="active">Department</label>
+            <select  name="department"  class="browser-default grey lighten-3" id="select_department">
+              <!--content from database-->
+            </select>
+          </div>
+
+
+          <div class="col s12 m4 l4">
             <div class="input-field active">
               <label for="">Template Name</label>
               <input type="text" name="name" id="name" value='<?php echo $name;?>' >
@@ -88,6 +97,7 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
   <script type="text/javascript">
   $(document).ready(function(){
     $('.button-collapse').sideNav({menuWidth: 255});
+    select_department("../../model/tbl_department/select/select_department.php", "#select_department");
 
 
     $('.input-field').keypress(function(event) {
@@ -114,10 +124,10 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
         return false;
       }//end of if
 
-      else if ($("#name").valid() == false) {//validate form
+      else if ($("#frm_edit_template").valid() == false) {//validate form
         swal({
         title: 'Error',
-        text: "note: Template-Name and Template-Content is required",
+        text: "note: Department, Template-Name and Template-Content is required",
         type: 'error',
         confirmButtonText: 'Ok',
         confirmButtonClass: 'btn waves-effect green darken-2',
@@ -137,11 +147,13 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
 
     $("#frm_edit_template").validate({//form validation
       rules:{
-        name: {required: true}
+        name: {required: true},
+        department: {required: true}
       },//end of rules
 
       messages: {
-        name: {required: "<small class='right val red-text'>This field is required</small>"}
+        name: {required: "<small class='right val red-text'>This field is required</small>"},
+        department: {required: "<small class='right val red-text'>This field is required</small>"}
         },//end of messages
 
       errorElement : 'div',
@@ -161,6 +173,17 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
 
 
   //////////////////////////////////Functions/////////////////////////////
+  function select_department(model_url, html_class_OR_id){
+  $.ajax({
+      url:  model_url,
+      method: "GET",
+      success:function(Result){
+      //push the result on id or class
+        $(html_class_OR_id).html(Result);
+      }
+    });
+  }//end of select_department
+
   function edit_template(model_url,form_name){
     $.ajax({
       url:  model_url,

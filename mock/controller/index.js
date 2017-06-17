@@ -47,10 +47,8 @@ $.ajax({
   data: $(form_name).serialize(),
   dataType:"text",
   success:function(Result){
-    if(Result == "admin") {
-      location.href = "view/admin/index.php"
-    }
-    else if(Result == "user") {
+    
+    if(Result == "user") {
       location.href = "view/user/index.php"
     }
     else{

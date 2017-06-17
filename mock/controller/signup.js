@@ -1,6 +1,6 @@
 $(document).ready(function(){
   //load content from db
-  select_department("model/tbl_department/select/select_department.php", "#select_department")
+  select_department("model/tbl_department/select/select_department.php", "#select_department");
   ///////////////////////////Signature Pad//////////////////////////////////
     var wrapper = document.getElementById("signature-pad"),
         clearButton = wrapper.querySelector("[data-action=clear]"),
@@ -126,7 +126,7 @@ $(document).ready(function(){
       //push the result on id or class
         $(html_class_OR_id).html(Result);
       }
-    })
+    });
   }//end of select_department
 
   function insert_user(model_url,form_name){

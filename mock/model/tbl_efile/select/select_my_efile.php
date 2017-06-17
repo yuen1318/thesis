@@ -14,7 +14,7 @@
     foreach ($table as $row) {
       //convert to array
       $signatories = explode("," , $row['signatories']);
-      if (in_array($email, $signatories)  && $row['status'] == "published" || $row['created_by'] == $email && $row['status'] == "published") {
+      if (in_array($email, $signatories)  && $row['status'] == "published" || $row['created_by'] == $email && $row['status'] == "published" || $row['doc_type'] == "public" && $row['status'] == "published") {
         echo "<tr>
         <td class='hide'>  $row[num]  </td>
         <td class='doc_id'>  $row[doc_id]  </td>

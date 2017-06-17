@@ -12,23 +12,14 @@
     <link rel="stylesheet" href="..\..\assets\sweetalert2\sweetalert2.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <style media="screen">
-    .tabs .tab a{
-          color:#2e7d32 ;
-        } /*Black color to the text*/
-
-        .tabs .tab a:hover {
-
-          color:#2e7d32 ;
-        } /*Text color on hover*/
-
-        .tabs .tab a.active {
-
-          color:#2e7d32 ;
-        } /*Background and text color when a tab is active*/
-
-        .tabs .indicator {
-          background-color:#2e7d32   ;
-        } /*Color of underline*/
+        /*Black color to the text*/
+      .tabs .tab a{color:#2e7d32 ;}
+        /*Text color on hover*/
+      .tabs .tab a:hover {color:#2e7d32 ;}
+        /*Background and text color when a tab is active*/
+      .tabs .tab a.active {color:#2e7d32 ;}
+        /*Color of underline*/
+      .tabs .indicator {background-color:#2e7d32;}
     </style>
     <title></title>
   </head>
@@ -250,7 +241,7 @@
   <script src="..\..\assets\listjs\list.min.js" charset="utf-8"></script>
   <script src="..\..\assets\listjs\list.pagination.min.js" charset="utf-8"></script>
   <script src="..\..\assets\sweetalert2\sweetalert2.min.js" charset="utf-8"></script>
-  <script src="..\..\controller\user\fetch_notif.js" charset="utf-8"></script>
+  <script src="..\..\controller\user\fetch_user_notif.js" charset="utf-8"></script>
   <script type="text/javascript">
     $(document).ready(function(){
       $('.button-collapse').sideNav({menuWidth: 255});

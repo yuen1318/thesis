@@ -13,10 +13,10 @@ $(document).ready(function(){
   );
 
 
-  $("#notif").load("../../model/tbl_efile/select/fetch_notif.php");
+  $("#notif").load("../../model/tbl_efile/select/fetch_user_notif.php");
 
   setInterval(function(){
-    $("#notif").load("../../model/tbl_efile/select/fetch_notif.php");
+    $("#notif").load("../../model/tbl_efile/select/fetch_user_notif.php");
   },3000);
 
 });//end of document.ready

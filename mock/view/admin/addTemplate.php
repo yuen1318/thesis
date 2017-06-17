@@ -1,33 +1,6 @@
 <?php
-session_start();
-require 'session.php';
-require '..\..\model\dbConfig.php';
-#get the template id from url
-$url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-$validURL = str_replace("&","&amp;",$url);
-$tmp_id = parse_url($validURL, PHP_URL_QUERY);
-
-$sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
-  if (!empty($dbConn)) {
-    $stmt =  $dbConn->prepare($sql);
-    $stmt->bindValue(1, $tmp_id);
-    $stmt ->  execute();
-
-    if ($stmt) {
-      $row = $stmt->fetch(PDO::FETCH_ASSOC);
-      $content = $row['content'];
-      $name = $row['name'];
-    }#end of if
-
-    else {
-      echo "error";
-    }#end of else
-
-  }#end of if
-
-  else {
-    echo "error";
-  }#end of else
+  session_start();
+  require 'session.php';
  ?>
 <!DOCTYPE html>
 <html>
@@ -44,51 +17,58 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
 
     <?php require 'nav.php'; ?>
 
-    <div class="row"><br>
-      <div class="col s12 m12 l12">
+    <div class="row">
 
-        <form id="frm_edit_template">
+      <form id="frm_add_template">
 
-          <div class="col s12 m3 l3">
-            <h4>Edit Template</h4>
+        <div class="col s12 m3 l3">
+          <h4>Create Template</h4>
+        </div>
+
+        <div class="input-field col s12 m3 l3 ">
+          <label for="select_department" class="active">Department</label>
+          <select  name="department"  class="browser-default grey lighten-3" id="select_department">
+            <!--content from database-->
+          </select>
+        </div>
+
+
+        <div class="col s12 m4 l4">
+          <div class="input-field">
+            <label for="">Template Name</label>
+            <input type="text" name="name" id="name">
           </div>
+        </div>
 
-          <div class="col s12 m7 l7">
-            <div class="input-field active">
-              <label for="">Template Name</label>
-              <input type="text" name="name" id="name" value='<?php echo $name;?>' >
-            </div>
-          </div>
+        <div class="col s12 m2 l2"><br>
+          <button type="button" class="waves-effect btn right green darken-2" id="btn_submit">Submit</button>
+        </div>
 
-          <div class="col s12 m2 l2"><br>
-            <button type="button" class="waves-effect btn right green darken-2" id="btn_submit">Submit</button>
-          </div>
+        <div class="col s12 m12 l12 bgcolor"><br>
+          <textarea class="ckeditor" name="content" id="id_content"></textarea>
+        </div>
 
-          <div class="col s12 m12 l12"><br>
-            <textarea class="ckeditor" name="content" id="id_content">
-              <?php echo $content; ?>
-            </textarea>
-          </div>
-
-          <input type="text" name="tmp_id" id="tmp_id" class="hide" value='<?php echo $tmp_id;?>' >
-        </form>
+      </form>
 
 
-      </div>
     </div>
+
   </body>
 
   <script src="..\..\assets\jquery\jquery.min.js" charset="utf-8"></script>
   <script src="..\..\assets\jquery\jquery.validate.min.js" charset="utf-8"></script>
   <script src="..\..\assets\jquery\jquery.additionalMethod.min.js" charset="utf-8"></script>
   <script src="..\..\assets\materialize\js\materialize.min.js" charset="utf-8"></script>
+
   <script src="..\..\assets\ckeditor\ckeditor.js" charset="utf-8"></script>
   <script src="..\..\assets\sweetalert2\sweetalert2.min.js" charset="utf-8"></script>
   <script src="..\..\controller\user\fetch_user_notif.js" charset="utf-8"></script>
   <script type="text/javascript">
   $(document).ready(function(){
-    $('.button-collapse').sideNav({menuWidth: 255});
 
+    select_department("../../model/tbl_department/select/select_department.php", "#select_department");
+
+    $('.button-collapse').sideNav({menuWidth: 255});
 
     $('.input-field').keypress(function(event) {
         if (event.keyCode == 13) {
@@ -114,10 +94,10 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
         return false;
       }//end of if
 
-      else if ($("#name").valid() == false) {//validate form
+      else if ($("#frm_add_template").valid() == false) {//validate form
         swal({
         title: 'Error',
-        text: "note: Template-Name and Template-Content is required",
+        text: "note: Department, Template-Name and Template-Content is required",
         type: 'error',
         confirmButtonText: 'Ok',
         confirmButtonClass: 'btn waves-effect green darken-2',
@@ -126,22 +106,24 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
       }//end of else if
 
       else {
+        //finalize the content
         var ckeditor_content = CKEDITOR.instances.id_content.getData();
         $("#id_content").val(ckeditor_content);
-
-        edit_template("../../model/tbl_template/update/edit_template.php", "#frm_edit_template");
+        add_global_template("../../model/tbl_template/insert/add_global_template.php", "#frm_add_template");
       }//end of else
     });//end of btn click
 
 
 
-    $("#frm_edit_template").validate({//form validation
+    $("#frm_add_template").validate({//form validation
       rules:{
-        name: {required: true}
+        name: {required: true},
+        department: {required: true}
       },//end of rules
 
       messages: {
-        name: {required: "<small class='right val red-text'>This field is required</small>"}
+        name: {required: "<small class='right val red-text'>This field is required</small>"},
+        department: {required: "<small class='right val red-text'>This field is required</small>"}
         },//end of messages
 
       errorElement : 'div',
@@ -161,7 +143,18 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
 
 
   //////////////////////////////////Functions/////////////////////////////
-  function edit_template(model_url,form_name){
+  function select_department(model_url, html_class_OR_id){
+  $.ajax({
+      url:  model_url,
+      method: "GET",
+      success:function(Result){
+      //push the result on id or class
+        $(html_class_OR_id).html(Result);
+      }
+    });
+  }//end of select_department
+
+  function add_global_template(model_url,form_name){
     $.ajax({
       url:  model_url,
       method:"POST",
@@ -172,8 +165,9 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
           Materialize.toast("Sorry an error occured", 8000, 'red');
         }
         else if(Result == "success") {
+          $(form_name)[0].reset();
 
-          Materialize.toast("Edited Template Saved", 8000, 'green darken-2');
+          Materialize.toast("Template saved", 8000, 'green darken-2');
         }
       }//end of success function
 

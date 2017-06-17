@@ -15,9 +15,7 @@ require 'session.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <style media="screen">
       @media only screen and (max-device-width: 480px) {
-        img{
-          width: 100% !important;
-        }
+        img{width: 100% !important;}
       }
     </style>
   </head>
@@ -206,7 +204,7 @@ require 'session.php';
   <script src="..\..\assets\materialize\js\materialize.min.js" charset="utf-8"></script>
   <script src="..\..\assets\signaturePad\signature_pad.js" charset="utf-8"></script>
   <script src="..\..\assets\sweetalert2\sweetalert2.min.js" charset="utf-8"></script>
-  <script src="..\..\controller\user\fetch_notif.js" charset="utf-8"></script>
+  <script src="..\..\controller\user\fetch_user_notif.js" charset="utf-8"></script>
 
   <script type="text/javascript">
     $(document).ready(function(){
@@ -229,29 +227,59 @@ require 'session.php';
 
       $('#frm_update_profile_picture').on('submit', function(e) {//validate on btn click
         e.preventDefault();
-            $.ajax({
-              url:  "../../model/tbl_user/update/update_user_profile_picture.php",
-              method:"POST",
-              data: new FormData(this),
-              contentType: false,
-              processData: false,
-              success:function(Result){
-                if(Result == "error"){
-                  swal({
-                    title: 'Error',
-                    text: "Only jpg files are allowed",
-                    type: 'error',
-                    confirmButtonText: 'Ok',
-                    confirmButtonClass: 'btn waves-effect green darken-2',
-                    buttonsStyling: false
-                  })
-                }
-                else if(Result == "success") {
-                  location.reload(true);
-                }
-              }//end of success function
 
-            })//end of ajax
+        var file_name = $('.file-path').val();
+        var file_extension  = file_name.split('.')[1];
+
+
+         if (file_extension.toLowerCase() == 'jpg') {
+           $.ajax({
+             url:  "../../model/tbl_user/update/update_user_profile_picture.php",
+             method:"POST",
+             data: new FormData(this),
+             contentType: false,
+             processData: false,
+             success:function(Result){
+               if(Result == "big"){
+                 swal({
+                   title: 'Error',
+                   text: "File size to big, 2mb is the allowed size",
+                   type: 'error',
+                   confirmButtonText: 'Ok',
+                   confirmButtonClass: 'btn waves-effect green darken-2',
+                   buttonsStyling: false
+                 })
+               }//end of if
+
+               else if(Result == "success") {
+                 location.reload(true);
+               }//end of else if
+
+               else{
+                 swal({
+                   title: 'Error',
+                   text: "An error has occured",
+                   type: 'error',
+                   confirmButtonText: 'Ok',
+                   confirmButtonClass: 'btn waves-effect green darken-2',
+                   buttonsStyling: false
+                 })
+               }//end of else
+             }//end of success function
+           })//end of ajax
+         }//end of if
+
+         else {
+           swal({
+             title: 'Error',
+             text: "Only jpg files are allowed",
+             type: 'error',
+             confirmButtonText: 'Ok',
+             confirmButtonClass: 'btn waves-effect green darken-2',
+             buttonsStyling: false
+           })
+         }
+
       });//end of btn click
 
       $('#btn_frm_signature').on('click', function() {//validate on btn click

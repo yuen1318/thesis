@@ -37,8 +37,9 @@
   <body>
     <?php require 'nav.php'; ?>
 
+    <!--this form refresh every 3 sec to fetch data of chatpick-->
     <form id="frm_chat_pick" class="hide">
-      <input type="text" name="chat_pick" value="<?php echo $chat_pick?>">
+      <input type="text" id="chat_pick" name="chat_pick" value="<?php echo $chat_pick?>">
     </form>
 
     <div class="row">
@@ -72,15 +73,22 @@
   <script src="..\..\assets\jquery\jquery.additionalMethod.min.js" charset="utf-8"></script>
   <script src="..\..\assets\materialize\js\materialize.min.js" charset="utf-8"></script>
   <script src="..\..\assets\sweetalert2\sweetalert2.min.js" charset="utf-8"></script>
-  <script src="..\..\controller\user\fetch_notif.js" charset="utf-8"></script>
+  <script src="..\..\controller\user\fetch_user_notif.js" charset="utf-8"></script>
 
   <script type="text/javascript">
   $(document).ready(function(){
     $('.button-collapse').sideNav({menuWidth: 255});
     $('.modal').modal();
 
+    //if chatpick is null disable txtarea and submit button
+    if ( $('#chat_pick').val() == '') {
+      $("#chat_msg").prop('disabled', true);
+      $("#btn_frm_chat").prop('disabled', true);
+    }
+
     select_chat_list("../../model/tbl_user/select/select_chat_list.php", "#chat_list");
     send_chat_pick("../../model/tbl_chat/select/select_chat_history.php","#frm_chat_pick","#chat_history");
+
     setInterval(function(){
       send_chat_pick("../../model/tbl_chat/select/select_chat_history.php","#frm_chat_pick","#chat_history");
     },3000);
@@ -149,7 +157,7 @@
         if(Result == "error"){
             Materialize.toast("Sorry an error occured", 8000, 'red');
         }
-        else if(Result == "success") {    
+        else if(Result == "success") {
           send_chat_pick("../../model/tbl_chat/select/select_chat_history.php","#frm_chat_pick","#chat_history");
           $(form_name)[0].reset();
         }

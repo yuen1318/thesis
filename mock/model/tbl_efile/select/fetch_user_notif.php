@@ -2,7 +2,16 @@
   session_start();
   $notif = NULL;
   require '../../dbConfig.php';
-  $email = $_SESSION['user_email'];
+
+  if (isset($_SESSION['user_email']) ) {
+      $email = $_SESSION['user_email'];
+  }
+  else if ( isset($_SESSION['admin_email']) ) {
+    $email = $_SESSION['admin_email'];
+  }
+
+
+
   $disapproved = "";
 
   #select_pending_efile

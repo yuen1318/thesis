@@ -30,28 +30,27 @@
 
     #check if the given password match
      if (password_verify($password, $stored_password) && $stored_status == "active") {
+       if ($stored_access == "admin") {#check the accessability of the user
+         session_start();
+         $_SESSION['admin_id'] = $stored_id;
+         $_SESSION['admin_fn'] = $stored_fn;
+         $_SESSION['admin_ln'] = $stored_ln;
+         $_SESSION['admin_mn'] = $stored_mn;
+         $_SESSION['admin_email'] = $stored_email;
+         $_SESSION['admin_password'] = $stored_password;
+         $_SESSION['admin_gender'] = $stored_gender;
+         $_SESSION['admin_mobile'] = $stored_mobile;
+         $_SESSION['admin_department'] = $stored_department;
+         $_SESSION['admin_title'] = $stored_title;
+         $_SESSION['admin_photo'] = $stored_photo;
+         $_SESSION['admin_access'] = $stored_access;
+         $_SESSION['admin_status'] = $stored_status;
+         #not working because of ajax :
+         #header("Location:../../view/user/Admin/index.php");
+         #use location.href instead in the controller
+         echo "admin";
+       }#end of if
 
-       if($stored_access == "user"){
-        session_start();
-        $_SESSION['user_id'] = $stored_id;
-        $_SESSION['user_fn'] = $stored_fn;
-        $_SESSION['user_ln'] = $stored_ln;
-        $_SESSION['user_mn'] = $stored_mn;
-        $_SESSION['user_email'] = $stored_email;
-        $_SESSION['user_password'] = $stored_password;
-        $_SESSION['user_gender'] = $stored_gender;
-        $_SESSION['user_mobile'] = $stored_mobile;
-        $_SESSION['user_department'] = $stored_department;
-        $_SESSION['user_title'] = $stored_title;
-        $_SESSION['user_photo'] = $stored_photo;
-        $_SESSION['user_access'] = $stored_access;
-        $_SESSION['user_status'] = $stored_status;
-        #not working because of ajax :
-        #header("Location:../../view/user/Admin/index.php");
-        #use location.href instead in the controller
-        echo "user";
-      }#end of else if
-      
       else{
         echo "mali";
       }#end of else

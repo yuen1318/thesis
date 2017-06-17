@@ -12,11 +12,12 @@
   else {
     $owner = $_SESSION['sudo_email'];
   }
-  
+
 
   $tmp_id = uniqid("tmplt_" , TRUE);
   $name = sanitize($_POST['name']);
   $content = $_POST['content'];
+  $department = $_POST['department'];
 
 
 
@@ -27,7 +28,7 @@ if (isset($_POST['content'])) {
   $stmt->bindValue(2, $name);
   $stmt->bindValue(3, $content);
   $stmt->bindValue(4, $owner);
-  $stmt->bindValue(5, "private");
+  $stmt->bindValue(5, $department);
   $stmt->execute();
 
   if ($stmt) {

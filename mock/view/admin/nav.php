@@ -9,9 +9,12 @@
     <a href="#" class="brand-logo hide-on-med-and-down" style="font-size:23px !important;">Document Tracking System</a>
 
     <ul class="right ">
-      <li><a href="index.php"><span class="fa fa-home fa-lg"></span></a></li>
-      <li><a href="#"   data-beloworigin="true" data-activates='dropdown1'  class="dropdown-button fa fa-user fa-lg"></a></li>
+      <li><a href="home.php"><span class="fa fa-home fa-lg"></span></a></li>
+      <li><a href="notif.php"><span class="fa fa-bell fa-lg"></span> <span class="red" id="notif"></span></a></li>
+      <li><a href="#" class="dropdown-button"  data-beloworigin="true" data-activates='dropdown1'><span class="fa fa-user fa-lg"></span></a></li>
     </ul><!--end of ul-->
+
+
   </div><!--end of nav-wrapper-->
 </nav><!--end of nav-->
 
@@ -74,6 +77,10 @@
         </li><!--end of li-->
     </ul><!--end of ul-->
   </li><!--end of collapsible-->
+
+  <li>
+    <a href="manageTemplate.php"><span class="fa fa-file fa-lg">&emsp;</span>Manage Template</a>
+  </li>
 
 
   <li>

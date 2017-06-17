@@ -85,7 +85,7 @@
    <script src="..\..\assets\jquery\jquery.min.js" charset="utf-8"></script>
    <script src="..\..\assets\materialize\js\materialize.min.js" charset="utf-8"></script>
    <script src="..\..\assets\ckeditor\ckeditor.js" charset="utf-8"></script>
-   <script src="..\..\controller\user\fetch_notif.js" charset="utf-8"></script>
+   <script src="..\..\controller\user\fetch_user_notif.js" charset="utf-8"></script>
    <script type="text/javascript">
    $(document).ready(function(){
 
