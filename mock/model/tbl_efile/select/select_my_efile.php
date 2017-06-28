@@ -19,8 +19,12 @@
         <td class='hide'>  $row[num]  </td>
         <td class='doc_id'>  $row[doc_id]  </td>
         <td class='name'>  $row[name]  </td>
+        <td class='doc_type'>  $row[doc_type]  </td>
         <td class='signatories'>  $row[signatories]  </td>
-        <td class='name'>  $row[created_by]  </td>
+        <td class='cb'>  $row[created_by]  </td>
+        <td class='co'>  $row[created_on]  </td>
+        <td class='po'>  $row[published_on]  </td>
+
 
 
         <td>

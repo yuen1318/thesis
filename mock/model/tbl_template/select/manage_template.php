@@ -58,9 +58,6 @@
                 Protected
               </td>
 
-
-
-
               </tr>";
       }
 

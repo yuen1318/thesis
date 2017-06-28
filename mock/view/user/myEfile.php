@@ -36,8 +36,11 @@
                 <th class="hide">Num</th>
                 <th>Document ID</th>
                 <th>Document Name</th>
+                <th>Document Type</th>
                 <th>Signatories</th>
                 <th>Created By</th>
+                <th>Created on</th>
+                <th>Published on</th>
                 <th>Action</th>
 
             </tr>
@@ -84,7 +87,7 @@
         complete:function(){
           //initialize pagination after data loaded
           var monkeyList = new List('list_my_efile', {
-            valueNames: ['doc_id','name'],
+            valueNames: ['doc_id','name','signatories','name','cb','co','po'],
             page: 8,
             plugins: [ ListPagination({}) ]
           });

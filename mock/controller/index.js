@@ -47,9 +47,9 @@ $.ajax({
   data: $(form_name).serialize(),
   dataType:"text",
   success:function(Result){
-    
+
     if(Result == "user") {
-      location.href = "view/user/index.php"
+      location.href = "view/user/index.php";
     }
     else{
       $("#error_login small").removeClass("hide");

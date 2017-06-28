@@ -12,13 +12,12 @@
   $department = sanitize($_POST['department']);
   $title = ucwords(sanitize($_POST['title']));
 
-  $photo = "default.png";
+  $photo = "default.jpg";
   $pass_encrypt = password_hash($password, PASSWORD_DEFAULT);
-  $access = "none";
   $status = "pending";
 
   $sql1 = "SELECT * FROM tbl_user WHERE email=?";
-  $sql2 = "INSERT INTO tbl_user(fn,ln,mn,email,pw,gender,mobile,department,title,photo,access,status) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+  $sql2 = "INSERT INTO tbl_user(fn,ln,mn,email,pw,gender,mobile,department,title,photo,status) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 
 
   if(isset($email)
@@ -45,8 +44,7 @@
         $stmt->bindValue(8, $department);
         $stmt->bindValue(9, $title);
         $stmt->bindValue(10, $photo);
-        $stmt->bindValue(11, $access);
-        $stmt->bindValue(12, $status);
+        $stmt->bindValue(11, $status);
         $stmt->execute();
           if ($stmt) {
             #put signature to directory folder

@@ -6,7 +6,7 @@
   $password = sanitize($_POST["password"]);
 
   #check if email exist in the database
-  $sql = "SELECT * FROM tbl_user WHERE email=?";
+  $sql = "SELECT * FROM tbl_admin WHERE email=?";
   $stmt = $dbConn->prepare($sql);
   $stmt->bindValue(1, $email);
   $stmt->execute();
@@ -25,12 +25,11 @@
     $stored_department = $row['department'];
     $stored_title = $row['title'];
     $stored_photo = $row['photo'];
-    $stored_access = $row['access'];
     $stored_status = $row['status'];
 
     #check if the given password match
      if (password_verify($password, $stored_password) && $stored_status == "active") {
-       if ($stored_access == "admin") {#check the accessability of the user
+
          session_start();
          $_SESSION['admin_id'] = $stored_id;
          $_SESSION['admin_fn'] = $stored_fn;
@@ -43,17 +42,12 @@
          $_SESSION['admin_department'] = $stored_department;
          $_SESSION['admin_title'] = $stored_title;
          $_SESSION['admin_photo'] = $stored_photo;
-         $_SESSION['admin_access'] = $stored_access;
          $_SESSION['admin_status'] = $stored_status;
          #not working because of ajax :
          #header("Location:../../view/user/Admin/index.php");
          #use location.href instead in the controller
          echo "admin";
-       }#end of if
 
-      else{
-        echo "mali";
-      }#end of else
     }#end of if
 
      else {

@@ -1,10 +1,9 @@
 <?php
   require '../../dbConfig.php';
-  $sql ="SELECT * FROM tbl_user WHERE access=? && status=? ORDER BY id DESC";
+  $sql ="SELECT * FROM tbl_user WHERE status=? ORDER BY id DESC";
   if (!empty($dbConn)) {
     $stmt =  $dbConn->prepare($sql);
-    $stmt->bindValue(1, "user");
-    $stmt->bindValue(2, "active");
+    $stmt->bindValue(1, "active");
     $stmt ->  execute();
     $table  = $stmt;
 
@@ -19,7 +18,6 @@
             <td class='mobile'>  $row[mobile] </td>
             <td class='department'>  $row[department] </td>
             <td class='title'>  $row[title] </td>
-            <td class='access'>  $row[access] </td>
             <td class='status'>  $row[status] </td>
 
             <td>

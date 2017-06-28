@@ -67,6 +67,7 @@
 
                       </div>
                       <div class="card-action">
+                        <a href="signup.php"  class="btn waves-effect left green darken-2">Sign Up</a>
                         <button type="button" class="btn waves-effect right green darken-2" id="btn_login">Log In</button>
                         <br><br>
                       </div>

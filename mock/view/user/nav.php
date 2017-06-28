@@ -19,14 +19,14 @@
             </ul>
         </ul><!--end of ul-->
 
-        <ul class="right">
-          <li><a href="#" class="dropdown-button"  data-beloworigin="true" data-activates='notification'><span class="fa fa-bell fa-lg"></span> <span class="red" id="notif"></span></a></li>
+        <ul class="right" >
+          <li><a href='#' class='dropdown-button'  data-beloworigin='true' data-activates='notification'><span class='fa fa-bell fa-lg'></span> <span class='red' id="notif"></span></a></li>
           <!-- Dropdown Structure -->
           <ul id='notification'   class='dropdown-content'>
-            <li><a href="notif.php"><small class="center green-text">Efile <span class="red-text"></span> </small></a></li>
-            <li><a href="notif.php"><small class="center green-text">Excel <span class="red"></span></small></a></li>
-            <li><a href="notif.php"><small class="center green-text">Powerpoint <span class="red"></span></small></a></li>
-            <li><a href="notif.php"><small class="center green-text">Video <span class="red"></span></small></a></li>
+            <li><a href='notifEfile.php'><small class='center green-text'>Efile <span class='red white-text' id="notif_efile"></span> </small></a></li>
+            <li><a href='notifExcel.php'><small class='center green-text'>Excel <span class='red white-text' id="notif_excel"></span></small></a></li>
+            <li><a href='notifPowerpoint.php'><small class='center green-text'>Powerpoint <span class='red white-text' id="notif_powerpoint"></span></small></a></li>
+            <li><a href='notifVideo.php'><small class='center green-text'>Video <span class='red white-text' id="notif_video"></span></small></a></li>
           </ul>
         </ul><!--end of ul-->
 
@@ -94,9 +94,9 @@
               <a class="collapsible-header">&emsp;<span class="fa fa-files-o fa-lg">&emsp;</span>Other Files</a>
               <div class="collapsible-body grey lighten-4">
                 <ul>
-                  <li><a href="uploadExcel.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Excel</a></li>
-                  <li><a href="#">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Powerpoint</a></li>
-                  <li><a href="#">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Video</a></li>
+                  <li><a href="myExcel.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Excel</a></li>
+                  <li><a href="myPowerpoint.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Powerpoint</a></li>
+                  <li><a href="myVideo.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Video</a></li>
                 </ul>
               </div><!--end of collapsable-body-->
             </li><!--end of li-->

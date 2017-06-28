@@ -25,13 +25,10 @@
     $stored_department = $row['department'];
     $stored_title = $row['title'];
     $stored_photo = $row['photo'];
-    $stored_access = $row['access'];
     $stored_status = $row['status'];
 
     #check if the given password match
      if (password_verify($password, $stored_password) && $stored_status == "active") {
-
-       if($stored_access == "user"){
         session_start();
         $_SESSION['user_id'] = $stored_id;
         $_SESSION['user_fn'] = $stored_fn;
@@ -44,17 +41,11 @@
         $_SESSION['user_department'] = $stored_department;
         $_SESSION['user_title'] = $stored_title;
         $_SESSION['user_photo'] = $stored_photo;
-        $_SESSION['user_access'] = $stored_access;
         $_SESSION['user_status'] = $stored_status;
         #not working because of ajax :
         #header("Location:../../view/user/Admin/index.php");
         #use location.href instead in the controller
         echo "user";
-      }#end of else if
-      
-      else{
-        echo "mali";
-      }#end of else
     }#end of if
 
      else {

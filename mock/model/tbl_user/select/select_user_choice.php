@@ -4,12 +4,11 @@
   $path = "../../DB/profile";
   $email = $_SESSION['user_email'];
 
-  $sql ="SELECT * FROM tbl_user WHERE access=? && status=? && email != ? ORDER BY id DESC";
+  $sql ="SELECT * FROM tbl_user WHERE status=? && email != ? ORDER BY id DESC";
   if (!empty($dbConn)) {
     $stmt =  $dbConn->prepare($sql);
-    $stmt->bindValue(1, "user");
-    $stmt->bindValue(2, "active");
-    $stmt->bindValue(3, $email);
+    $stmt->bindValue(1, "active");
+    $stmt->bindValue(2, $email);
     $stmt -> execute();
     $table  = $stmt;
 
