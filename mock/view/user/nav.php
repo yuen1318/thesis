@@ -14,7 +14,7 @@
             <!-- Dropdown Structure -->
             <ul id='dropdown1'   class='dropdown-content'>
               <li><a href="myAccount.php"><small class="center green-text">My Account</small></a></li>
-              <li><a href="#!"><small class="center green-text">My Photos</small></a></li>
+              <li><a href="myPhoto.php"><small class="center green-text">My Photos</small></a></li>
               <li><a href="logout.php"><small class="center green-text">Logout</small></a></li>
             </ul>
         </ul><!--end of ul-->
