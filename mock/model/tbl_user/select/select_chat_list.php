@@ -16,7 +16,7 @@
     foreach ($table as $row) {
       echo "<li class='collection-item avatar'>
               <img src='../../DB/profile/$row[photo]' class='circle'>
-              <span class='title'>$row[email]</span>
+              <span class='title email'>$row[email]</span>
               <p>$row[fn] $row[mn] $row[ln]</p>
               <a href='chatRoom.php?$row[email]' class='secondary-content'><i class='fa fa-comment-o fa-lg'></i></a>
             </li>";

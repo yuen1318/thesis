@@ -7,10 +7,10 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="..\..\assets\fa\css\font-awesome.min.css">
-    <link rel="stylesheet" href="..\..\assets\materialize\css\materialize.min.css">
-    <link rel="stylesheet" href="..\..\assets\materialize\css\myStyle.css">
-    <link rel="stylesheet" href="..\..\assets\fa\css\font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/myStyle.css">
+    <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   </head>
@@ -94,10 +94,10 @@
 
   </body>
 
-  <script src="..\..\assets\jquery\jquery.min.js" charset="utf-8"></script>
-  <script src="..\..\assets\materialize\js\materialize.min.js" charset="utf-8"></script>
-  <script src="..\..\assets\listjs\list.min.js" charset="utf-8"></script>
-  <script src="..\..\assets\listjs\list.pagination.min.js" charset="utf-8"></script>
+  <script src="../../assets/jquery/jquery.min.js" charset="utf-8"></script>
+  <script src="../../assets/materialize/js/materialize.min.js" charset="utf-8"></script>
+  <script src="../../assets/listjs/list.min.js" charset="utf-8"></script>
+  <script src="../../assets/listjs/list.pagination.min.js" charset="utf-8"></script>
   <script type="text/javascript">
   $(document).ready(function(){
     $('.button-collapse').sideNav({menuWidth: 255});

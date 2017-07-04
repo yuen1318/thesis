@@ -8,18 +8,15 @@
   require '../../dbConfig.php';
 
 
-    if (isset($_SESSION['user_email']) ) {
-        $email = $_SESSION['user_email'];
+    if (!isset($_SESSION['user_email']) ) {
+       echo "<script> location.reload(); </script>"; 
+        
     }
-    else if ( isset($_SESSION['admin_email']) ) {
-      $email = $_SESSION['admin_email'];
-    }
-    else {
-      echo "<script> location.reload(); </script>"; ;
-    }
+  
+   else if (isset($_SESSION['user_email']) ) {
+        $email = $_SESSION['user_email'];  
 
-
-    $disapproved = "";
+            $disapproved = "";
 
 
     if (!empty($dbConn)) {
@@ -238,6 +235,14 @@
     }
 
     $dbConn = NULL;
+
+      
+    }
+  
+    else {
+       echo "<script> location.reload(); </script>"; 
+    }
+
 
 
  ?>

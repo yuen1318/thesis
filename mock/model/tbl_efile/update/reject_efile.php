@@ -29,6 +29,9 @@ $comment = $_POST['comment'];
    $pending_signatories = $row['pending_signatories'];
    $approved_signatories = $row['approved_signatories'];
  }
+ else{
+   echo "gago";
+ }
 
     if ($stmt) {   
       $date = date("Y, F j");

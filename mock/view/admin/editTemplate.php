@@ -1,7 +1,7 @@
 <?php
 session_start();
 require 'session.php';
-require '..\..\model\dbConfig.php';
+require '../../model/dbConfig.php';
 #get the template id from url
 $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 $validURL = str_replace("&","&amp;",$url);
@@ -34,10 +34,10 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="..\..\assets\fa\css\font-awesome.min.css">
-    <link rel="stylesheet" href="..\..\assets\materialize\css\materialize.min.css">
-    <link rel="stylesheet" href="..\..\assets\materialize\css\myStyle.css">
-    <link rel="stylesheet" href="..\..\assets\sweetalert2\sweetalert2.min.css">
+    <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/myStyle.css">
+    <link rel="stylesheet" href="../../assets/sweetalert2/sweetalert2.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title></title>
   </head>
@@ -87,13 +87,13 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
     </div>
   </body>
 
-  <script src="..\..\assets\jquery\jquery.min.js" charset="utf-8"></script>
-  <script src="..\..\assets\jquery\jquery.validate.min.js" charset="utf-8"></script>
-  <script src="..\..\assets\jquery\jquery.additionalMethod.min.js" charset="utf-8"></script>
-  <script src="..\..\assets\materialize\js\materialize.min.js" charset="utf-8"></script>
-  <script src="..\..\assets\ckeditor\ckeditor.js" charset="utf-8"></script>
-  <script src="..\..\assets\sweetalert2\sweetalert2.min.js" charset="utf-8"></script>
-  <script src="..\..\controller\user\fetch_user_notif.js" charset="utf-8"></script>
+  <script src="../../assets/jquery/jquery.min.js" charset="utf-8"></script>
+  <script src="../../assets/jquery/jquery.validate.min.js" charset="utf-8"></script>
+  <script src="../../assets/jquery/jquery.additionalMethod.min.js" charset="utf-8"></script>
+  <script src="../../assets/materialize/js/materialize.min.js" charset="utf-8"></script>
+  <script src="../../assets/ckeditor/ckeditor.js" charset="utf-8"></script>
+  <script src="../../assets/sweetalert2/sweetalert2.min.js" charset="utf-8"></script>
+  <script src="../../controller/user/fetch_user_notif.js" charset="utf-8"></script>
   <script type="text/javascript">
   $(document).ready(function(){
     $('.button-collapse').sideNav({menuWidth: 255});

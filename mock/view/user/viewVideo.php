@@ -1,7 +1,7 @@
 <?php
   session_start();
   require 'session.php';
-  require '..\..\model\dbConfig.php';
+  require '../../model/dbConfig.php';
   #get the template id from url
   $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
   $validURL = str_replace("&","&amp;",$url);

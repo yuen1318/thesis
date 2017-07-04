@@ -2,7 +2,7 @@
   session_start();
   #if session exist
   if (isset($_SESSION["admin_email"]) &&  isset($_SESSION["admin_password"]) ) {
-    header("Location:view\user\index.php");
+    header("Location:view/user/index.php");
   }
 
   #if session doesnt exist
@@ -15,11 +15,12 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="..\..\assets\fa\css\font-awesome.min.css">
-    <link rel="stylesheet" href="..\..\assets\materialize\css\materialize.min.css">
-    <link rel="stylesheet" href="..\..\assets\materialize\css\myStyle.css">
-    <link rel="stylesheet" href="..\..\assets\materialize\css\animate.css">
-    <link rel="stylesheet" href="..\..\assets\sweetalert2\sweetalert2.min.css">
+    
+    <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/myStyle.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/animate.css">
+    <link rel="stylesheet" href="../../assets/sweetalert2/sweetalert2.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
   <body class="green lighten-1">
@@ -141,13 +142,13 @@
 
   </body>
 
-  <script src="..\..\assets\jquery\jquery.min.js" charset="utf-8"></script>
-  <script src="..\..\assets\jquery\jquery.validate.min.js" charset="utf-8"></script>
-  <script src="..\..\assets\jquery\jquery.additionalMethod.min.js" charset="utf-8"></script>
-  <script src="..\..\assets\materialize\js\materialize.min.js" charset="utf-8"></script>
-  <script src="..\..\assets\signaturePad\signature_pad.js" charset="utf-8"></script>
-  <script src="..\..\assets\sweetalert2\sweetalert2.min.js" charset="utf-8"></script>
-  <script src="..\..\controller\admin\signup.js" charset="utf-8"></script>
+  <script src="../../assets/jquery/jquery.min.js" charset="utf-8"></script>
+  <script src="../../assets/jquery/jquery.validate.min.js" charset="utf-8"></script>
+  <script src="../../assets/jquery/jquery.additionalMethod.min.js" charset="utf-8"></script>
+  <script src="../../assets/materialize/js/materialize.min.js" charset="utf-8"></script>
+  <script src="../../assets/signaturePad/signature_pad.js" charset="utf-8"></script>
+  <script src="../../assets/sweetalert2/sweetalert2.min.js" charset="utf-8"></script>
+  <script src="../../controller/admin/signup.js" charset="utf-8"></script>
 
 
 
