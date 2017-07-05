@@ -1,6 +1,7 @@
 	
 
 <?php
+session_start();
 require '../../dbConfig.php';
 
 require '../../a_functions/sanitize.php';
@@ -34,7 +35,7 @@ if ($count == 1)
 	// check if the given password match
 	if (password_verify($password, $stored_password) && $stored_status == "active")
 		{
-		session_start();
+		echo "success";
 		$_SESSION['admin_id'] = $stored_id;
 		$_SESSION['admin_fn'] = $stored_fn;
 		$_SESSION['admin_ln'] = $stored_ln;
@@ -51,7 +52,7 @@ if ($count == 1)
 		// header("Location:../../view/user/Admin/index.php");
 		// use location.href instead in the controller
 
-		echo "admin";
+		
 		} //end of if
 	  else
 		{

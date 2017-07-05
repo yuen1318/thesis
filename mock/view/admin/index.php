@@ -1,7 +1,7 @@
 <?php
   session_start();
   #if session exist
-  if (isset($_SESSION["admin_email"]) &&  isset($_SESSION["admin_password"]) ) {
+  if (isset($_SESSION["admin_password"]) ) {
     header("Location:home.php");
   }
 
@@ -88,64 +88,97 @@
   <script src="../../assets/jquery/jquery.additionalMethod.min.js" charset="utf-8"></script>
   <script src="../../assets/materialize/js/materialize.min.js" charset="utf-8"></script>
   <script type="text/javascript">
-  $(document).ready(function(){
+  $(document).ready(function () {
 
-    $('#btn_login').on('click', function() {//validate on btn click
-       if ($("#frm_login").valid()){//check if all field is valid
-         auth_admin("../../model/tbl_admin/select/auth_admin.php","#frm_login");
-       }
-       else{
-          $('.val').addClass('animated bounceIn');
-          $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+
+
+    $('#btn_login').on('click', function () { //validate on btn click
+      if ($("#frm_login").valid()) { //check if all field is valid
+
+
+        $.ajax({
+          url: "../../model/tbl_admin/select/auth_admin.php",
+          method: "POST",
+          data: $("#frm_login").serialize(),
+          dataType: "text",
+          success: function (Result) {
+            if (Result == "success") {
+              location.href = "home.php";
+            } else if (Result == "mali") {
+              $("#error_login small").removeClass("hide");
+            } //end of else
+            else {
+              alert("puta");
+            }
+          } //end of success function
+        }) //end of ajax
+
+
+      } else {
+        $('.val').addClass('animated bounceIn');
+        $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
           $('.val').removeClass('animated');
-         });
-       }//end of else
-    });//end of btn click
+        });
+      } //end of else
+    }); //end of btn click
 
 
-    $("#frm_login").validate({//form validation
-        rules:{
-          email: {required: true, email:  true},
-          password: {required: true, nowhitespace:  true}
-        },//end of rules
+    $("#frm_login").validate({ //form validation
+      rules: {
+        email: {
+          required: true,
+          email: true
+        },
+        password: {
+          required: true,
+          nowhitespace: true
+        }
+      }, //end of rules
 
-        messages: {
-          email: {required: "<small class='right val red-text'>This field is required</small>",
-                  email:  "<small class='right val red-text'>Must be a valid Email Address</small>"},
-          password: {required: "<small class='right val red-text'>This field is required</small>",
-                    nowhitespace:  "<small class='right val red-text'>White spaces are invalid</small>"}
-        },//end of messages
+      messages: {
+        email: {
+          required: "<small class='right val red-text'>This field is required</small>",
+          email: "<small class='right val red-text'>Must be a valid Email Address</small>"
+        },
+        password: {
+          required: "<small class='right val red-text'>This field is required</small>",
+          nowhitespace: "<small class='right val red-text'>White spaces are invalid</small>"
+        }
+      }, //end of messages
 
-        errorElement : 'div',
-        errorPlacement: function(error, element) {
-          var placement = $(element).data('error');
-          if (placement) {
-            $(placement).append(error)
-          } else {
-            error.insertAfter(element);
-          }
-        }//end of errorElement
-      });//end of validate
+      errorElement: 'div',
+      errorPlacement: function (error, element) {
+        var placement = $(element).data('error');
+        if (placement) {
+          $(placement).append(error)
+        } else {
+          error.insertAfter(element);
+        }
+      } //end of errorElement
+    }); //end of validate
 
-  });//end of document.ready
+  }); //end of document.ready
 
   ///////////////////////////////Functions/////////////////////////////////
-  function auth_admin(model_url,form_name){
-  $.ajax({
-    url:  model_url,
-    method:"POST",
-    data: $(form_name).serialize(),
-    dataType:"text",
-    success:function(Result){
-      if(Result == "admin") {
-        location.href = "home.php"
-      }
-      else{
-        $("#error_login small").removeClass("hide");
-      }//end of else
-    }//end of success function
-  })//end of ajax
-  }//end of auth_tbl_user
+  function auth_admin(model_url, form_name) {
+    $.ajax({
+      url: model_url,
+      method: "POST",
+      data: $(form_name).serialize(),
+      dataType: "text",
+      success: function (Result) {
+        if (Result == "success") {
+          location.href = "home.php";
+        } else if (Result == "mali") {
+          $("#error_login small").removeClass("hide");
+        } //end of else
+ else{
+   alert("ASD");
+ }
+      } //end of success function
+    }) //end of ajax
+  } //end of auth_tbl_user
+
 
   </script>
 
