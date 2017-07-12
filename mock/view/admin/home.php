@@ -13,8 +13,7 @@
   </head>
   <body class="grey lighten-3">
 
- 
-
+  <?php require "nav.php";?>
     <div class="container">
       <div class="row">
 

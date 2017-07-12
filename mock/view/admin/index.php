@@ -90,30 +90,22 @@
   <script type="text/javascript">
   $(document).ready(function () {
 
+    //dropdown init
+    $('.dropdown-button').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        constrainWidth: false, // Does not change width of dropdown to that of the activator
+        hover: true, // Activate on hover
+        gutter: 0, // Spacing from edge
+        belowOrigin: false, // Displays dropdown below the button
+        alignment: 'left', // Displays dropdown with edge aligned to the left of button
+        stopPropagation: false // Stops event propagation
+    });
 
 
     $('#btn_login').on('click', function () { //validate on btn click
       if ($("#frm_login").valid()) { //check if all field is valid
-
-
-        $.ajax({
-          url: "../../model/tbl_admin/select/auth_admin.php",
-          method: "POST",
-          data: $("#frm_login").serialize(),
-          dataType: "text",
-          success: function (Result) {
-            if (Result == "success") {
-              location.href = "home.php";
-            } else if (Result == "mali") {
-              $("#error_login small").removeClass("hide");
-            } //end of else
-            else {
-              alert("puta");
-            }
-          } //end of success function
-        }) //end of ajax
-
-
+        auth_admin("../../model/tbl_admin/select/auth_admin.php", "#frm_login");
       } else {
         $('.val').addClass('animated bounceIn');
         $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
@@ -157,26 +149,29 @@
       } //end of errorElement
     }); //end of validate
 
+
+
+
+
+
   }); //end of document.ready
 
   ///////////////////////////////Functions/////////////////////////////////
   function auth_admin(model_url, form_name) {
     $.ajax({
+      type: "POST",
       url: model_url,
-      method: "POST",
       data: $(form_name).serialize(),
       dataType: "text",
-      success: function (Result) {
-        if (Result == "success") {
+      success: function (Result ) {
+        if (Result === "admin") {
           location.href = "home.php";
-        } else if (Result == "mali") {
+        } else if (Result === "mali") {
           $("#error_login small").removeClass("hide");
         } //end of else
- else{
-   alert("ASD");
- }
-      } //end of success function
-    }) //end of ajax
+      }//end of success
+    });
+
   } //end of auth_tbl_user
 
 

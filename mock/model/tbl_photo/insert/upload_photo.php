@@ -1,13 +1,18 @@
 <?php
+ 
   session_start();
   require '../../dbConfig.php';
   require '../../a_functions/sanitize.php';
 
-  $email = $_SESSION['user_email'];
+  if (isset($_SESSION["user_email"]) ) {
+      $email = $_SESSION['user_email'];
+  }
+  elseif (isset($_SESSION["admin_email"]) ) {
+    $email = $_SESSION['admin_email'];
+  }
 
 
-
-  $created_by = $_SESSION['user_email'];
+  $created_by = $email;
   $created_on = date("Y, F j g:i a");
 
 

@@ -2,7 +2,7 @@
     $host = 'localhost';
     $dbname= 'mock';
     $un = 'root';
-    $pw = 'admin';
+    $pw = '';
 
     try {
       $dbConn = new PDO("mysql:host=" .$host. ";dbname=" .$dbname. ";charset=utf8", $un, $pw);

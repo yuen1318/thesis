@@ -1,7 +1,5 @@
-	
-
 <?php
-session_start();
+
 require '../../dbConfig.php';
 
 require '../../a_functions/sanitize.php';
@@ -17,8 +15,7 @@ $stmt->bindValue(1, $email);
 $stmt->execute();
 $count = $stmt->rowCount();
 
-if ($count == 1)
-	{ //if email exist extract info and store it in variable
+if ($count == 1){ //if email exist extract info and store it in variable
 	$row = $stmt->fetch(PDO::FETCH_ASSOC);
 	$stored_id = $row['id'];
 	$stored_fn = $row['fn'];
@@ -35,7 +32,7 @@ if ($count == 1)
 	// check if the given password match
 	if (password_verify($password, $stored_password) && $stored_status == "active")
 		{
-		echo "success";
+		session_start();
 		$_SESSION['admin_id'] = $stored_id;
 		$_SESSION['admin_fn'] = $stored_fn;
 		$_SESSION['admin_ln'] = $stored_ln;
@@ -52,12 +49,16 @@ if ($count == 1)
 		// header("Location:../../view/user/Admin/index.php");
 		// use location.href instead in the controller
 
-		
+		echo "admin";
 		} //end of if
 	  else
 		{
 		echo "mali";
 		} //end of else
 	} //end of if
+
+	else{
+		echo "mali";
+	}
 
 ?>

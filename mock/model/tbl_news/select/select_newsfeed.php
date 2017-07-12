@@ -31,11 +31,11 @@
             <p class='name'> Name: $row[name]</p>
             <p class='doc_id'>Document ID: $row[doc_id]</p>
 
-            <p class='sgn'>List of Signatories:<br>$row[signatories]</p>
-            <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[pending_signatories]</p>
+            <p class='sgn'>List of Signatories:<br>$row[signatories]</p><br>
+            <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[pending_signatories]</p><br>
             <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[approved_signatories]</p>
 
-            <a href='viewEfile.php?$row[doc_id]' class='secondary-content'><i class='fa fa-send fa-lg'></i></a>
+            <a href='viewEfile.php?$row[doc_id]' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>
           </li><br>
 
            ";
@@ -58,11 +58,11 @@
               <p class='name'> Name: $row[name]</p>
               <p class='doc_id'>Document ID: $row[doc_id]</p>
 
-              <p class='sgn'>List of Signatories:<br>$row[signatories]</p>
-              <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[pending_signatories]</p>
+              <p class='sgn'>List of Signatories:<br>$row[signatories]</p><br>
+              <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[pending_signatories]</p><br>
               <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[approved_signatories]</p>
 
-              <a href='../../DB/excel/$row[doc_id]' target='_blank' class='secondary-content'><i class='fa fa-send fa-lg'></i></a>
+              <a href='../../DB/excel/$row[doc_id]' target='_blank' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>
             </li><br>
 
              ";
@@ -81,11 +81,11 @@
              <p class='name'> Name: $row[name]</p>
              <p class='doc_id'>Document ID: $row[doc_id]</p>
 
-             <p class='sgn'>List of Signatories:<br>$row[signatories]</p>
-             <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[pending_signatories]</p>
+             <p class='sgn'>List of Signatories:<br>$row[signatories]</p><br>
+             <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[pending_signatories]</p><br>
              <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[approved_signatories]</p>
 
-             <a href='../../DB/powerpoint/$row[doc_id]' target='_blank' class='secondary-content'><i class='fa fa-send fa-lg'></i></a>
+             <a href='../../DB/powerpoint/$row[doc_id]' target='_blank' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>
            </li><br>
 
             ";
@@ -105,11 +105,11 @@
             <p class='name'> Name: $row[name]</p>
             <p class='doc_id'>Document ID: $row[doc_id]</p>
 
-            <p class='sgn'>List of Signatories:<br>$row[signatories]</p>
-            <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[pending_signatories]</p>
+            <p class='sgn'>List of Signatories:<br>$row[signatories]</p><br>
+            <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[pending_signatories]</p><br>
             <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[approved_signatories]</p>
 
-            <a href='viewVideo.php?$row[doc_id]' target='_blank' class='secondary-content'><i class='fa fa-send fa-lg'></i></a>
+            <a href='viewVideo.php?$row[doc_id]' target='_blank' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>
           </li><br>
 
            ";

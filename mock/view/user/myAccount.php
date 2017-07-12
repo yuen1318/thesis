@@ -83,12 +83,7 @@ require 'session.php';
                     <label class="active" for="mobile">Contact No.</label>
                   </div>
 
-                  <div class="col s12 m4 l4 input-field">
-                    <label for="department" class="active">Department</label>
-                    <select name="department" class="browser-default" id="select_department">
-                        <!--content from database-->
-                      </select>
-                  </div>
+ 
 
                   <div class="col s12 m4 l4 input-field">
                     <input type="text" name="title" value="<?php echo $_SESSION['user_title']?>" id="title">
@@ -114,7 +109,7 @@ require 'session.php';
 
 
 
-      <div class="row">
+      <div class="row hide">
 
         <div class="col s12 m12 l12 ">
 

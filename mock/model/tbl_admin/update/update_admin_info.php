@@ -3,16 +3,17 @@
   require '../../dbConfig.php';
   require '../../a_functions/sanitize.php';
 
-  $email = $_SESSION["user_email"];
+  $email = $_SESSION["admin_email"];
   $fn = ucwords(sanitize($_POST['fn']));
   $mn = ucwords(sanitize($_POST['mn']));
   $ln = ucwords(sanitize($_POST['ln']));
   $mobile = sanitize($_POST['mobile']);
+
   $title = ucwords(sanitize($_POST['title']));
 
 
 
-  $sql = "UPDATE tbl_user SET fn=?,mn=?,ln=?,mobile=?,title=? WHERE email=?";
+  $sql = "UPDATE tbl_admin SET fn=?,mn=?,ln=?,mobile=?,title=? WHERE email=?";
 
   $stmt = $dbConn->prepare($sql);
   $stmt->bindValue(1, $fn);
@@ -24,11 +25,11 @@
   $stmt->execute();
 
   if ($stmt) {
-    $_SESSION["user_fn"] = $fn;
-    $_SESSION["user_mn"] = $mn;
-    $_SESSION["user_ln"] = $ln;
-    $_SESSION["user_mobile"] = $mobile;
-    $_SESSION["user_title"] = $title;
+    $_SESSION["admin_fn"] = $fn;
+    $_SESSION["admin_mn"] = $mn;
+    $_SESSION["admin_ln"] = $ln;
+    $_SESSION["admin_mobile"] = $mobile;
+    $_SESSION["admin_title"] = $title;
     echo "success";
   }
 

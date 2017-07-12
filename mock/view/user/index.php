@@ -33,7 +33,7 @@
           </div>
 
           <div class="row">
-            <div class="col s12 m8 l8">
+            <div class="col s12 m12 l12">
               <ul class="list collection" id="newsfeed"></ul>
 
               <ul class="pagination center"></ul>

@@ -2,8 +2,13 @@
   session_start();
   require '../../dbConfig.php';
 
-
-  $email = $_SESSION['user_email'];
+  if (isset($_SESSION["user_email"]) ) {
+      $email = $_SESSION['user_email'];
+  }
+  elseif (isset($_SESSION["admin_email"]) ) {
+    $email = $_SESSION['admin_email'];
+  }
+  
   $path = "../../DB/myPhoto";
   $sql ="SELECT * FROM tbl_photo ORDER BY num DESC";
   if (!empty($dbConn)) {
@@ -31,7 +36,7 @@
               </td>
 
               <td>
-                <button class='btn waves-effect green darken-2 btn_copy_img'>
+                <button class='btn waves-effect green darken-2 btn_copy_img' data-photo-path='$path/$row[photo_id]'>
                   Copy
                 </button>
               </td>

@@ -9,13 +9,33 @@
 
     <a href="#" class="brand-logo hide-on-med-and-down" style="font-size:23px !important;">Document Tracking System</a>
 
+
     <ul class="right ">
-      <li><a href="home.php"><span class="fa fa-home fa-lg"></span></a></li>
-      <li><a href="notif.php"><span class="fa fa-bell fa-lg"></span> <span class="red" id="notif"></span></a></li>
       <li><a href="#" class="dropdown-button" data-beloworigin="true" data-activates='dropdown1'><span class="fa fa-user fa-lg"></span></a></li>
+      <!-- Dropdown Structure -->
+      <ul id='dropdown1' class='dropdown-content'>
+        <li><a href="myAccount.php"><small class="center green-text">My Account</small></a></li>
+        <li><a href="myPhoto.php"><small class="center green-text">My Photos</small></a></li>
+        <li><a href="logout.php"><small class="center green-text">Logout</small></a></li>
+      </ul>
     </ul>
     <!--end of ul-->
 
+    <ul class="right">
+      <li><a href='#' class='dropdown-button' data-beloworigin='true' data-activates='notification'><span class='fa fa-bell fa-lg'></span> <span class='red'id ="notifadmin"></span></a></li>
+      <!-- Dropdown Structure -->
+      <ul id='notification' class='dropdown-content'>
+        <li><a href='notifEfile.php'><small class='center green-text'>Efile <span class='red white-text' id="notif_efile"></span> </small></a></li>
+        <li><a href='notifExcel.php'><small class='center green-text'>Excel <span class='red white-text' id="notif_excel"></span></small></a></li>
+        <li><a href='notifPowerpoint.php'><small class='center green-text'>Powerpoint <span class='red white-text' id="notif_powerpoint"></span></small></a></li>
+        <li><a href='notifVideo.php'><small class='center green-text'>Video <span class='red white-text' id="notif_video"></span></small></a></li>
+      </ul>
+    </ul>
+    <!--end of ul-->
+
+    <ul class="right ">
+      <li><a href="index.php"><span class="fa fa-home fa-lg"></span></a></li>
+    </ul>
 
   </div>
   <!--end of nav-wrapper-->
@@ -23,17 +43,7 @@
 <!--end of nav-->
 
 
-<!-- Dropdown Structure -->
-<ul id='dropdown1' class='dropdown-content'>
-  <li><a href="#" class="dropdown-button" data-beloworigin="true" data-activates='dropdown1'><span class="fa fa-user fa-lg"></span></a></li>
-  <!-- Dropdown Structure -->
-  <ul id='dropdown1' class='dropdown-content'>
-    <li><a href="myAccount.php"><small class="center green-text">My Account</small></a></li>
-    <li><a href="myPhoto.php"><small class="center green-text">My Photos</small></a></li>
-    <li><a href="logout.php"><small class="center green-text">Logout</small></a></li>
-  </ul>
 
-</ul>
 
 
 
@@ -48,7 +58,7 @@
       <!--end of background-->
 
       <div>
-        <img class="circle" src="../../DB/profile/default.png">
+        <img class="circle" src="../../DB/profile/<?php echo $_SESSION['admin_photo'];?>">
       </div>
       <!--end of div-->
 
@@ -107,19 +117,16 @@
   </li>
 
 
-  <li>
-    <a href="#"><span class="fa fa-search fa-lg">&emsp;</span>Search</a>
-  </li>
+
 
   <li>
     <!--collapsible-->
     <ul class="collapsible" data-collapsible="accordion">
       <li>
-        <a class="collapsible-header">&emsp;<span class="fa fa-files-o fa-lg">&emsp;</span>Other Files Tracks</a>
+        <a class="collapsible-header">&emsp;<span class="fa fa-files-o fa-lg">&emsp;</span>File Tracks</a>
         <div class="collapsible-body grey lighten-4">
           <ul>
-            <li><a href="#">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>PDF</a></li>
-            <li><a href="#">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Word</a></li>
+            <li><a href="track_efile.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Efile</a></li>
             <li><a href="#">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Excel</a></li>
             <li><a href="#">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Powerpoint</a></li>
             <li><a href="#">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Video</a></li>

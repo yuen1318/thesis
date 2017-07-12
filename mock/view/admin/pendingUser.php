@@ -42,7 +42,6 @@
                     <th>Mobile</th>
                     <th>Department</th>
                     <th>Title</th>
-                    <th>Access</th>
                     <th>Status</th>
                     <th colspan="2">Action</th>
                 </tr>

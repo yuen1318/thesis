@@ -1,15 +1,24 @@
  $(document).ready(function() {
      //get photos
      select_my_photo("../../model/tbl_photo/select/select_my_photo.php", "#tbl_my_photo");
+ 
 
-     //copy img url
-     $(document).on('click', '.btn_copy_img', function() {
-         var path = $(".copy_img_url").attr('src');
-         var ret = path.replace('../../', '');
-         var a = window.location.host + "/";
-         alert(a + ret);
-     }); //end of onclick
-
+               //copy img url
+          $(document).on('click', '.btn_copy_img', function () {
+            var pathdb = $(this).attr('data-photo-path');
+            var path = pathdb.replace('../../', '');
+            var host = window.location.host + "/";
+            final = host + path;  
+               swal({
+              title: 'Image url',
+              input: 'text',
+              inputValue: final,
+              type: 'success',
+              confirmButtonText: 'Ok',
+              confirmButtonClass: 'btn waves-effect green darken-2',
+              buttonsStyling: false
+            })
+          }); //end of onclick
 
      $(document).on('click', '.delete_photo', function() {
          //bind html5 data attributes to variables
@@ -33,7 +42,7 @@
          var file_name = $('.file-path').val();
          var file_extension = file_name.split('.')[1];
 
-         if (file_extension.toLowerCase() == 'jpg' || file_extension.toLowerCase() == 'jpeg') {
+         if (file_extension.toLowerCase() == 'jpg' || file_extension.toLowerCase() == 'jpeg' || file_extension.toLowerCase() == 'png') {
              $.ajax({
                      url: "../../model/tbl_photo/insert/upload_photo.php",
                      method: "POST",

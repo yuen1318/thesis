@@ -18,8 +18,7 @@
   <body class="grey lighten-3">
 
     <?php require 'nav.php'; ?>
-
-    <div class="row">
+      <div class="row">
 
       <div class="col s12 m12 l12" id="list_my_photo">
         <!--Table-->

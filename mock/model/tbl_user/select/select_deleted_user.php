@@ -16,13 +16,11 @@
             <td class='mobile'>  $row[mobile] </td>
             <td class='department'>  $row[department] </td>
             <td class='title'>  $row[title] </td>
-            <td class='access'>  $row[access] </td>
             <td class='status'>  $row[status] </td>
 
             <td>
             <button class='btn waves-effect fa fa-trash fa-lg green darken-2 delete_deleted_user'
             data-delete-deleted-id = '$row[id]'
-            data-delete-deleted-access = '$row[access]'
             data-delete-deleted-status = '$row[status]'>
             </button>
             </td>
@@ -30,7 +28,6 @@
             <td>
             <button class='btn waves-effect fa fa-recycle fa-lg green darken-2 restore_deleted_user'
             data-restore-deleted-id = '$row[id]'
-            data-restore-deleted-access = '$row[access]'
             data-restore-deleted-status = '$row[status]'>
             </button>
             </td>

@@ -3,13 +3,13 @@
   require '../../dbConfig.php';
   require '../../a_functions/sanitize.php';
 
-  $id = $_POST['approve_id'];
-  $status = "active";
+  $id = $_POST['edit_id'];
+  $department = $_POST['department'];
 
-  $sql = "UPDATE tbl_user SET status=? WHERE id=?";
+  $sql = "UPDATE tbl_user SET department=? WHERE id=?";
 
   $stmt = $dbConn->prepare($sql);
-  $stmt->bindValue(1, $status);
+  $stmt->bindValue(1, $department);
   $stmt->bindValue(2, $id);
   $stmt->execute();
 

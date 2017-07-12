@@ -23,10 +23,15 @@
             <td>
             <button class='btn waves-effect fa fa-trash fa-lg green darken-2 delete_active_user'
             data-delete-active-id = '$row[id]'
-            data-delete-active-access = '$row[access]'
             data-delete-active-status = '$row[status]'>
             </button>
             </td>
+
+            <td>
+            <button class='btn waves-effect fa fa-pencil fa-lg green darken-2 edit_active_user'
+            data-edit-active-id = '$row[id]'
+            </button>
+            </td
 
             </tr>";
     }//end of foreach
