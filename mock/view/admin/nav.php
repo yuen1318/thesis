@@ -22,14 +22,9 @@
     <!--end of ul-->
 
     <ul class="right">
-      <li><a href='#' class='dropdown-button' data-beloworigin='true' data-activates='notification'><span class='fa fa-bell fa-lg'></span> <span class='red'id ="notifadmin"></span></a></li>
+      <li><a href='pendingUser.php' class='dropdown-button' data-beloworigin='true' data-activates='notification'><span class='fa fa-bell fa-lg'></span> <span class='red'id ="notifadmin"></span></a></li>
       <!-- Dropdown Structure -->
-      <ul id='notification' class='dropdown-content'>
-        <li><a href='notifEfile.php'><small class='center green-text'>Efile <span class='red white-text' id="notif_efile"></span> </small></a></li>
-        <li><a href='notifExcel.php'><small class='center green-text'>Excel <span class='red white-text' id="notif_excel"></span></small></a></li>
-        <li><a href='notifPowerpoint.php'><small class='center green-text'>Powerpoint <span class='red white-text' id="notif_powerpoint"></span></small></a></li>
-        <li><a href='notifVideo.php'><small class='center green-text'>Video <span class='red white-text' id="notif_video"></span></small></a></li>
-      </ul>
+      
     </ul>
     <!--end of ul-->
 
@@ -80,7 +75,8 @@
         <a class="collapsible-header">&emsp;<span class="fa fa-users fa-lg">&emsp;</span>Manage Users</a>
         <div class="collapsible-body grey lighten-4">
           <ul>
-            <li><a href="pendingUser.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Pending Users</a></li>
+          <!-- <li><a href="pendingUser.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Pending Users</a></li>
+             -->
             <li><a href="activeUser.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Active Users</a></li>
             <li><a href="deletedUser.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Deleted Users</a></li>
           </ul>
@@ -127,9 +123,30 @@
         <div class="collapsible-body grey lighten-4">
           <ul>
             <li><a href="track_efile.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Efile</a></li>
-            <li><a href="#">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Excel</a></li>
-            <li><a href="#">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Powerpoint</a></li>
-            <li><a href="#">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Video</a></li>
+            <li><a href="track_excel.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Excel</a></li>
+            <li><a href="track_powerpoint.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Powerpoint</a></li>
+            <li><a href="track_video.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Video</a></li>
+          </ul>
+        </div>
+        <!--end of collapsable-body-->
+      </li>
+      <!--end of li-->
+    </ul>
+    <!--end of ul-->
+  </li>
+  <!--end of collapsible-->
+
+    <li>
+    <!--collapsible-->
+    <ul class="collapsible" data-collapsible="accordion">
+      <li>
+        <a class="collapsible-header">&emsp;<span class="fa fa-book fa-lg">&emsp;</span>File Records</a>
+        <div class="collapsible-body grey lighten-4">
+          <ul>
+            <li><a href="output_efile.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Efile</a></li>
+            <li><a href="output_excel.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Excel</a></li>
+            <li><a href="output_powerpoint.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Powerpoint</a></li>
+            <li><a href="output_video.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Video</a></li>
           </ul>
         </div>
         <!--end of collapsable-body-->

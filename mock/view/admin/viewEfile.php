@@ -20,7 +20,7 @@
 
         if ($stmt) {
           $row = $stmt->fetch(PDO::FETCH_ASSOC);
-          $final_content = $row['final_content'];
+          $content = $row['content'];
           $name =  $row['name'];
         }#end of if
 
@@ -59,7 +59,7 @@
 
     <div class="row">
       <div class="col s12 m6 l6">
-        <h5>Print Efile :
+        <h5>View Efile :
           <?php echo $name;?> </h5>
       </div>
       <!--end of col s12 m12 l12-->
@@ -78,8 +78,8 @@
 
       <div class="col s12 m12 l12">
         <textarea class="ckeditor" id="asd" readonly="true">
-            <?php echo $final_content; ?>
-        </textarea>
+            <?php echo $content; ?>
+          </textarea>
       </div>
       <!--end of col s12 m12 l12-->
 
@@ -94,6 +94,6 @@
   <script src="../../assets/jquery/jquery.min.js" charset="utf-8"></script>
   <script src="../../assets/materialize/js/materialize.min.js" charset="utf-8"></script>
   <script src="../../assets/ckeditor/ckeditor.js" charset="utf-8"></script>
-  <script src="../../controller/user/fetch_user_notif.js" charset="utf-8"></script>
+  <script src="../../controller/admin/fetch_admin_notif.js" charset="utf-8"></script>
 
   </html>

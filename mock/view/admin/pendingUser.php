@@ -122,5 +122,6 @@
   <script src="../../assets/materialize/js/materialize.min.js" charset="utf-8"></script>
   <script src="../../assets/listjs/list.min.js" charset="utf-8"></script>
   <script src="../../assets/listjs/list.pagination.min.js" charset="utf-8"></script>
-  <script src="../../controller/admin/pendingUser.js" charset="utf-8"></script>
+  <script src="../../controller/admin/fetch_admin_notif.js" charset="utf-8"></script>
+<script src="../../controller/admin/pendingUser.js" charset="utf-8"></script>
 </html>
