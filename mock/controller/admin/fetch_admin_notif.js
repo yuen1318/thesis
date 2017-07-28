@@ -17,6 +17,8 @@ $(document).ready(function() {
         stopPropagation: false // Stops event propagation
     });
 
+
+
     $("#notifadmin").load("../../model/tbl_user/select/fetch_admin_notif.php");
    
     //refresh every 3sec to fetch data

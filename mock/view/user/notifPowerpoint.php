@@ -45,9 +45,9 @@
 
     <div class="col s12">
       <ul class="tabs row  grey lighten-4">
-        <li class="tab col s4"><a class="active" href="#tab1">Pending Presentation</a></li>
-        <li class="tab col s4"><a href="#tab2">Rejected Presentation</a></li>
-        <li class="tab col s4"><a href="#tab3">Publish Presentation</a></li>
+        <li class="tab col s4"><a class="active" href="#tab1"><span id="notif_pending_powerpoint" class="red white-text"></span> Pending Presentation</a></li>
+        <li class="tab col s4"><a href="#tab2"><span id="notif_rejected_powerpoint" class="red white-text"></span> Rejected Presentation</a></li>
+        <li class="tab col s4"><a href="#tab3"><span id="notif_publish_powerpoint" class="red white-text"></span> Publish Presentation</a></li>
       </ul>
     </div>
 

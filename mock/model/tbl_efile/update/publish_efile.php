@@ -1,7 +1,7 @@
 <?php
   session_start();
-  require '..\..\dbConfig.php';
-  require '..\..\..\assets\qrcode\src\QrCode.php';
+  require '../../dbConfig.php';
+  require '../../../assets/qrcode/src/QrCode.php';
   use Endroid\QrCode\QrCode;
 
   $doc_id = $_POST['doc_id'];

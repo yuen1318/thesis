@@ -96,7 +96,7 @@
         <a class="collapsible-header">&emsp;<span class="fa fa-database fa-lg">&emsp;</span>Database</a>
         <div class="collapsible-body grey lighten-4">
           <ul>
-            <li><a href="backup.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Backup</a></li>
+            <li><a href="../../model/back.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Backup</a></li>
             <li><a href="restore.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Restore</a></li>
           </ul>
         </div>
@@ -164,3 +164,6 @@
 
 </ul>
 <!-- end of side-nav -->
+
+
+<!-- restore modal -->

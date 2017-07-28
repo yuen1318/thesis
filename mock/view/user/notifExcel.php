@@ -45,9 +45,9 @@
 
     <div class="col s12">
       <ul class="tabs row  grey lighten-4">
-        <li class="tab col s4"><a class="active" href="#tab1">Pending Spreadsheets</a></li>
-        <li class="tab col s4"><a href="#tab2">Rejected Spreadsheets</a></li>
-        <li class="tab col s4"><a href="#tab3">Publish Spreadsheets</a></li>
+        <li class="tab col s4"><a class="active" href="#tab1"><span id="notif_pending_excel" class="red white-text"></span> Pending Spreadsheets</a></li>
+        <li class="tab col s4"><a href="#tab2"><span id="notif_rejected_excel" class="red white-text"></span> Rejected Spreadsheets</a></li>
+        <li class="tab col s4"><a href="#tab3"><span id="notif_publish_excel" class="red white-text"></span> Publish Spreadsheets</a></li>
       </ul>
     </div>
 

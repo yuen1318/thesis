@@ -25,8 +25,7 @@
   <body class="green lighten-1">
 
     <!--Sign Up form-->
-    <div class="valign-wrapper" style="width:100%;height:100%;position: absolute;" id="div_signup">
-      <div class="valign" style="width:100%;">
+ <br>
           <div class="container">
              <div class="row">
                 <div class="col s12 m10 offset-m1">
@@ -134,8 +133,7 @@
                 </div><!--end of col s12 m10 offset-m1-->
              </div><!--end of row-->
           </div><!--end of container-->
-      </div><!--end of valign-->
-    </div><!--end of valign wrapper-->
+ 
 
 
 

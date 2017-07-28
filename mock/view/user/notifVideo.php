@@ -45,9 +45,9 @@
 
     <div class="col s12">
       <ul class="tabs row  grey lighten-4">
-        <li class="tab col s4"><a class="active" href="#tab1">Pending Videos</a></li>
-        <li class="tab col s4"><a href="#tab2">Rejected Videos</a></li>
-        <li class="tab col s4"><a href="#tab3">Publish Videos</a></li>
+        <li class="tab col s4"><a class="active" href="#tab1"><span id="notif_pending_video" class="red white-text"></span> Pending Videos</a></li>
+        <li class="tab col s4"><a href="#tab2"><span id="notif_rejected_video" class="red white-text"></span> Rejected Videos</a></li>
+        <li class="tab col s4"><a href="#tab3"><span id="notif_publish_video" class="red white-text"></span> Publish Videos</a></li>
       </ul>
     </div>
 
