@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
     <link rel="stylesheet" href="../../assets/materialize/css/myStyle.css">
     <link rel="stylesheet" href="../../assets/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/animate.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style media="screen">
       /*Black color to the text*/
@@ -108,15 +109,26 @@
             <h5 class="center">Are you sure you want to approve this efile?</h5><br>
 
             <div class="row hide">
-              <div class="col s4">
+              <div class="col s6">
                 <input type="text" name="approve_id" id="approve_id">
+              </div>
+
+              <div class="col s6">
+                <input type="text" name="approve_rpw" id="approve_rpw" value="<?php echo $_SESSION['user_pw']?>">
+              </div>
+            </div>
+
+            <div class="row ">
+              <div class="col s12">
+                <label for="approve_pw">Authenticate</label>
+                <input type="text" class="active" name="approve_pw" id="approve_pw" placeholder="Password">
               </div>
             </div>
 
           </div>
           <!--end of modal-content-->
           <div class="modal-footer">
-            <button type="button" class="btn waves-effect modal-action modal-close green darken-2" id="btn_approve_efile">Approve</button>
+            <button type="button" class="btn waves-effect green darken-2" id="btn_approve_efile">Approve</button>
           </div>
         </div>
         <!--end of modal-->
@@ -136,15 +148,22 @@
 
             <div class="row">
               <div class="col s12 l12 m12">
-                <label>Reason of rejection</label>
-                <textarea name="comment" style="height:200px; resize:none;" maxlength="100"></textarea>
+                          
+              <label>Reason:</label>
+                <select  name="comment"  class="browser-default" id="comment">
+                  <option disabled selected>Choose reason for rejection</option>
+                  <option value='Duplicate Filing :	The exact document has already been filed'>Duplicate Filing</option>
+                  <option value='Late Submission'>Late Submission</option>
+                  <option value='Document Issue: Check if the document is not dated; the document contains incomplete files; the attached image is not legible; etc'>Document Issue</option>
+                </select>
+                              
               </div>
             </div>
 
           </div>
           <!--end of modal-content-->
           <div class="modal-footer">
-            <button type="button" class="btn waves-effect modal-action modal-close green darken-2" id="btn_reject_efile">Reject</button>
+            <button type="button" class="btn waves-effect green darken-2" id="btn_reject_efile">Reject</button>
           </div>
         </div>
         <!--end of modal-->
@@ -286,6 +305,8 @@
 
   </body>
   <script src="../../assets/jquery/jquery.min.js" charset="utf-8"></script>
+  <script src="../../assets/jquery/jquery.validate.min.js" charset="utf-8"></script>
+  <script src="../../assets/jquery/jquery.additionalMethod.min.js" charset="utf-8"></script>
   <script src="../../assets/materialize/js/materialize.min.js" charset="utf-8"></script>
   <script src="../../assets/listjs/list.min.js" charset="utf-8"></script>
   <script src="../../assets/listjs/list.pagination.min.js" charset="utf-8"></script>

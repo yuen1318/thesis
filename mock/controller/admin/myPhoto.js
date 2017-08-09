@@ -9,7 +9,7 @@
             var pathdb = $(this).attr('data-photo-path');
             var path = pathdb.replace('../../', '');
             var host = window.location.host + "/";
-            final = host + path;  
+            final = "http://" + host + path;  
                swal({
               title: 'Image url',
               input: 'text',

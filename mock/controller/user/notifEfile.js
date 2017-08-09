@@ -28,9 +28,22 @@
           $('.trgr_approve_efile').trigger('click');
       }); //end of onclick
 
+
       $('#btn_approve_efile').on('click', function (event) {
-          approve_efile("../../model/tbl_efile/update/approve_efile.php", "#frm_approve_efile");
-          $("#notif_pending_efile").load("../../model/tbl_efile/select/notif_pending_efile.php");
+
+        if ($("#frm_approve_efile").valid()) { //check if all field is valid
+             approve_efile("../../model/tbl_efile/update/approve_efile.php", "#frm_approve_efile");
+             $("#notif_pending_efile").load("../../model/tbl_efile/select/notif_pending_efile.php");
+             $('#approve_efile_modal').modal('close');
+             $('#approve_pw').val("");
+        } else {
+            $('.val').addClass('animated bounceIn');
+            $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                $('.val').removeClass('animated');
+            });
+        } //end of else
+
+         
       }); //end of onclick
       /////////////////end of approve efile
 
@@ -45,8 +58,21 @@
       }); //end of onclick
 
       $('#btn_reject_efile').on('click', function (event) {
-          reject_efile("../../model/tbl_efile/update/reject_efile.php", "#frm_reject_efile");
-          $("#notif_rejected_efile").load("../../model/tbl_efile/select/notif_rejected_efile.php");
+
+        if ($("#frm_reject_efile").valid()) { //check if all field is valid
+             reject_efile("../../model/tbl_efile/update/reject_efile.php", "#frm_reject_efile");
+             $("#notif_rejected_efile").load("../../model/tbl_efile/select/notif_rejected_efile.php");
+             $('#reject_efile_modal').modal('close');
+             $('#comment').val("");
+        } else {
+            $('.val').addClass('animated bounceIn');
+            $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                $('.val').removeClass('animated');
+            });
+        } //end of else
+
+
+          
       }); //end of onclick
       /////////////////end of reject efile
 
@@ -79,6 +105,54 @@
           $("#notif_rejected_efile").load("../../model/tbl_efile/select/notif_rejected_efile.php");
       }); //end of onclick
       /////////////////end delete efile
+
+/////////////////////////Form Validation//////////////////////
+   $("#frm_approve_efile").validate({ //form validation
+        rules: {
+            approve_pw: {
+                required: true,
+                equalTo: "#approve_rpw"
+            }
+        }, //end of rules
+        messages: {
+            approve_pw: {
+                required: "<small class='right val red-text'>This field is required</small>",
+                equalTo: "<small class='right val red-text'>Wrong password!</small>"
+            }
+        }, //end of messages
+        errorElement: 'div',
+        errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            } //end of errorElement
+    }); //end of validate
+
+       $("#frm_reject_efile").validate({ //form validation
+        rules: {
+            comment: {
+                required: true
+            }
+        }, //end of rules
+        messages: {
+            comment: {
+                required: "<small class='right val red-text'>This field is required</small>"
+            }
+        }, //end of messages
+        errorElement: 'div',
+        errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            } //end of errorElement
+    }); //end of validate
+  
   }); //end of document.ready
 
 

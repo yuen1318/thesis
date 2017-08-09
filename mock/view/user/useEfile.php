@@ -56,6 +56,7 @@
 
 
     <?php require 'nav.php'; ?>
+    
 
     <form id="frm_use_efile">
 
@@ -95,13 +96,18 @@
           <div class="col s12 m12 l12"><br>
             <textarea class="ckeditor" name="content" id="id_content">
                <?php echo $content; ?>
-             </textarea>
-
+             </textarea><br>
+<a href="#helper_modal" class="modal-trigger right btn btn-floating btn-large pulse green darken-2"><span class=" fa fa-question fa-lg"></span></a>
           </div>
+
+          
+          
+           
           <!--end of col s12 m12 l12-->
 
         </div>
         <!--end of col s12 m12 l12-->
+        
       </div>
       <!--end of row-->
 
@@ -162,20 +168,53 @@
             <button type="button" class="waves-effect btn green darken-2" id="btn_step2_back">Back</button>
             <button type="button" class="waves-effect btn green darken-2 " id="btn_submit">Submit</button>
 
-
           </div>
-
-
-
-
         </div>
         <!--end of col s12-->
-
       </div>
       <!--end of row-->
-
     </form>
 
+<!-- Modal Structure -->
+        <div id="helper_modal" class="modal modal-fixed-footer">
+          <div class="modal-content">
+            <h4>Helpers</h4><br>
+
+            <h5>Header</h5>
+            <blockquote style="border-left-color:#388e3c !important;">
+              for creating a header copy the code below :<br>
+              <b>width: 100%; height: 200px; top: 0px !important; left: 0px !important ; z-index: -20 !important; position: absolute !important;</b>
+              <br>
+              and paste it in the Image Properties > Advanced > Style <br>
+              <img src="img/1.png" alt="">
+            </blockquote><br>
+
+            <h5>Page Size: Letter</h5>
+            <blockquote style="border-left-color:#388e3c !important;">
+              In embbeding photos according to letter size, unlock the scaling of image, then set the<br>
+              <b>Width : 100% <br> Height : 900</b><br>
+              <img src="img/2.png" alt="">
+            </blockquote><br>
+
+            <h5>Page Size: Legal</h5>
+            <blockquote style="border-left-color:#388e3c !important;">
+              In embbeding photos according to legal size, unlock the scaling of image, then set the<br>
+              <b>Width : 100% <br> Height : 1200</b><br>
+              <img src="img/4.png" alt="">
+            </blockquote><br>
+
+            <h5>Page Size: A4</h5>
+            <blockquote style="border-left-color:#388e3c !important;">
+              In embbeding photos according to a4 size, unlock the scaling of image, then set the<br>
+              <b>Width : 100% <br> Height : 1000</b><br>
+              <img src="img/3.png" alt="">
+            </blockquote><br>
+
+          </div><!--end of modal content-->
+          <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">OK</a>
+          </div><!--end of modal footer-->
+        </div><!--end of modal-->
 
   </body>
 

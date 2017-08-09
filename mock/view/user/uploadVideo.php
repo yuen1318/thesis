@@ -51,7 +51,7 @@
             <!--end of gender-->
 
 
-            <div class="col s12 m4 l4">
+            <div class="col s12 m3 l3">
               <div class="input-field">
                 <input type="text" name="video" id="video">
                 <label for="video">Video Url</label>
@@ -59,9 +59,15 @@
             </div>
             <!--col s12 m7 l7-->
 
+            <div class="col s12 m3 l3">
+              <div class="input-field">
+                <input type="text" name="proxy" id="proxy">
+                <label for="video">Name</label>
+              </div>
+            </div>
 
 
-            <div class="col s12 m2 l2"><br>
+            <div class="col s12 m3 l3"><br>
               <button type="button" class="waves-effect btn right green darken-2" id="btn_step1">Next</button>
             </div>
             <!--end of col s12 m2 l2-->

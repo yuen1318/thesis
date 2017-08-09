@@ -16,7 +16,7 @@
   if ($stmt) {
     #step 2 save the values in variable
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    $file_name = $row['orig_name'];
+    $file_name = $row['proxy'];
     $signatories = $row['signatories'];
     $created_by = $row['created_by'];
     $pending_signatories = explode("," , $row['pending_signatories']);

@@ -25,7 +25,7 @@
 
     <?php require 'nav.php'; ?>
 
-    <form id="frm_restore" enctype="multipart/form-data">
+    <form id="frm_restore" enctype="multipart/form-data" method="POST" action="../../model/upload_sql.php">
 
       <div class="row" id="step1"><br>
         <div class="col s12 m12 l12 step1">
@@ -111,7 +111,7 @@
 
              if (final_extension == "sql") {
 
-                alert("ok");
+                $("#frm_restore").submit();
              } //end of if
              else {
                  swal({

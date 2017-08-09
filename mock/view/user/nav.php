@@ -54,7 +54,6 @@
   <li>
     <div class="userView">
       <div class="background">
-
         <img src="../../DB/full-office-green.jpg" alt="" width="310" height="auto">
       </div>
       <!--end of background-->
@@ -63,9 +62,10 @@
         <img class="circle" src="../../DB/profile/<?php echo $_SESSION['user_photo'];?>">
       </div>
       <!--end of div-->
-
-      <a href="#"><span class="white-text name"><?php echo $_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln'];?></span></a>
-      <a href="#"><span class="white-text email"><?php echo $_SESSION['user_email'];?></span></a>
+      
+      <span class="white-text name"><?php echo $_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln'];?></span>
+      <span class="white-text email"><?php echo $_SESSION['user_email'];?></span>
+     
 
     </div>
     <!--end of userView-->
@@ -93,12 +93,7 @@
     <!--end of ul-->
   </li>
   <!--end of collapsible-->
-
-  <li>
-    <a href="manageTemplate.php"><span class="fa fa-file fa-lg">&emsp;</span>Manage Template</a>
-  </li>
-
-
+ 
   <li>
     <!--collapsible-->
     <ul class="collapsible" data-collapsible="accordion">

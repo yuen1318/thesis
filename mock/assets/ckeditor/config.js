@@ -21,7 +21,7 @@
  		{ name: 'others', groups: [ 'others' ] },
  		{ name: 'about', groups: [ 'about' ] }
  	];
-  config.height = 550; 
+  config.height = 500; 
   config.disableNativeSpellChecker = false;
  	config.removeButtons = 'Save,Templates,PasteText,PasteFromWord,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Flash,Iframe,About';
  };

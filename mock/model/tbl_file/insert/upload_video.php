@@ -15,18 +15,20 @@
   $signatories = $_POST['signatories'];
   $created_by = $_SESSION['user_email'];
   $created_on = date("Y, F j g:i a");
+  $proxy = $_POST['proxy'];
 
-    $sql = "INSERT INTO tbl_file(file_id,orig_name,file_type,file_format,signatories,pending_signatories,created_by,created_on,status) VALUES(?,?,?,?,?,?,?,?,?)";
+    $sql = "INSERT INTO tbl_file(file_id,orig_name,proxy,file_type,file_format,signatories,pending_signatories,created_by,created_on,status) VALUES(?,?,?,?,?,?,?,?,?,?)";
     $stmt = $dbConn->prepare($sql);
     $stmt->bindValue(1, $file_id);
     $stmt->bindValue(2, $video_url);
-    $stmt->bindValue(3, $file_type);
-    $stmt->bindValue(4, $file_format);
-    $stmt->bindValue(5, $signatories);
+    $stmt->bindValue(3, $proxy);
+    $stmt->bindValue(4, $file_type);
+    $stmt->bindValue(5, $file_format);
     $stmt->bindValue(6, $signatories);
-    $stmt->bindValue(7, $created_by);
-    $stmt->bindValue(8, $created_on);
-    $stmt->bindValue(9, "pending");
+    $stmt->bindValue(7, $signatories);
+    $stmt->bindValue(8, $created_by);
+    $stmt->bindValue(9, $created_on);
+    $stmt->bindValue(10, "pending");
     $stmt->execute();
 
 
@@ -35,7 +37,7 @@
       $sql2 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $dbConn->prepare($sql2);
       $stmt->bindValue(1, $file_id);
-      $stmt->bindValue(2, $video_url);
+      $stmt->bindValue(2, $proxy);
       $stmt->bindValue(3, $email);
       $stmt->bindValue(4, $date);
       $stmt->bindValue(5, $time);

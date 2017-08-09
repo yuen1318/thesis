@@ -22,43 +22,62 @@
     <link rel="stylesheet" href="assets/materialize/css/animate.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style media="screen">
-      canvas {
-        position: relative;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 4px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;
+      .bg{
+        background-image: url(Background.png) !important;
+        background-repeat: no-repeat !important;
+        background-position: center center !important;
+        background-attachment: fixed !important;
+        background-size: cover !important;
       }
+
+            /* label focus color */
+
+    .input-field input:focus + label {
+      color: white !important;
+    }
+    /* label underline focus color */
+    .row .input-field input:focus {
+      border-bottom: 1px solid white !important;
+      box-shadow: 0 1px 0 0 white !important
+    }
+
+    input{
+      border-bottom: 1px solid white !important;
+      box-shadow: 0 1px 0 0 white !important
+    }
     </style>
 
   </head>
 
-  <body class="green lighten-1">
+  <body class="bg">
 
+ 
     <!--Login Form-->
     <div class="valign-wrapper" style="width:100%;height:100%;position: absolute;" id="div_login">
       <div class="valign" style="width:100%;">
         <div class="container">
           <div class="row">
             <div class="col s12 m6 offset-m3">
-              <div class="card z-depth-4">
+              <div class="transparent">
                 <div class="card-content">
                   <form id="frm_login">
-                    <span class="card-title black-text">Sign In</span>
 
+                    <div class="center">
+                      <h5 class="white-text ">Electronic File Tracking System</h5>
+                       <img  src="apalitlogo.png" width="250" height="100">
+                    </div>
+                     
                     <div class="row">
                       <div class="input-field col s12 m12 l12">
-                        <input name="email" id="email" type="text">
-                        <label for="email">Email</label>
+                        <input class="white-text" name="email" id="email" type="text">
+                        <label class="white-text" for="email"><span class="fa fa-user-circle-o fa-lg"></span>&emsp;Email</label>
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="input-field col s12 m12 l12">
-                        <input name="password" id="password" type="password">
-                        <label for="password">Password</label>
+                        <input class="white-text" name="password" id="password" type="password">
+                        <label class="white-text" for="password"><span class="fa fa-key fa-lg"></span>&emsp;Password</label>
                       </div>
                     </div>
 
@@ -69,8 +88,8 @@
 
                 </div>
                 <div class="card-action">
-                  <a href="signup.php" class="btn waves-effect left green darken-2">Sign Up</a>
-                  <button type="button" class="btn waves-effect right green darken-2" id="btn_login">Log In</button>
+                  <a href="signup.php" class="btn waves-effect left green darken-2 z-depth-3">Sign Up</a>
+                  <button type="button" class="btn waves-effect right green darken-2 z-depth-3" id="btn_login">Log In</button>
                   <br><br>
                 </div>
                 </form>

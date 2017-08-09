@@ -22,7 +22,7 @@
           <td class='hide'>  $row[num]  </td>
           <td class='file_id'>  $row[file_id]  </td>
           <td class='file_type'>  $row[file_type]  </td>
-          <td class='name'>  $row[orig_name]  </td>
+          <td class='name'>  $row[proxy]  </td>
           <td class='signatories'>  $row[signatories]  </td>
           <td class='cb'>  $row[created_by]  </td>
           <td class='co'>  $row[created_on]  </td>

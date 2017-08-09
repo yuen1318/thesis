@@ -1,6 +1,6 @@
   $(document).ready(function() {
       //get newsfeed
-      select_newsfeed("../../model/tbl_news/select/select_newsfeed.php", "#newsfeed");
+      select_newsfeed("../../model/tbl_news/select/select_newsfeed.php", "#activitylog");
   }); //end of document.ready
 
   /////////////////////Functions///////////////////////
@@ -15,7 +15,7 @@
               }, //end of success function
               complete: function() {
                       //initialize pagination after data loaded
-                      var monkeyList = new List('list_template', {
+                      var monkeyList = new List('list_activity', {
                           valueNames: ['doc_id', 'name', 'email'],
                           page: 8,
                           plugins: [ListPagination({})]

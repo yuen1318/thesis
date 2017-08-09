@@ -36,12 +36,14 @@
         $_SESSION['user_mn'] = $stored_mn;
         $_SESSION['user_email'] = $stored_email;
         $_SESSION['user_password'] = $stored_password;
+        $_SESSION['user_pw'] = $password;
         $_SESSION['user_gender'] = $stored_gender;
         $_SESSION['user_mobile'] = $stored_mobile;
         $_SESSION['user_department'] = $stored_department;
         $_SESSION['user_title'] = $stored_title;
         $_SESSION['user_photo'] = $stored_photo;
         $_SESSION['user_status'] = $stored_status;
+        
         #not working because of ajax :
         #header("Location:../../view/user/Admin/index.php");
         #use location.href instead in the controller

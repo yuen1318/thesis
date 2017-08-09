@@ -19,7 +19,7 @@ $status = "published";
        #step 2 save the values in variable
        $row = $stmt->fetch(PDO::FETCH_ASSOC);
        $signatories = $row['signatories'];
-       $file_name = $row['orig_name'];
+       $file_name = $row['proxy'];
        $created_by = $row['created_by'];
        $pending_signatories = $row['pending_signatories'];
        $approved_signatories = $row['approved_signatories'];

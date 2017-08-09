@@ -1,64 +1,18 @@
 $(document).ready(function(){
   //load content from db
   select_department("../../model/tbl_department/select/select_department.php", "#select_department");
-  ///////////////////////////Signature Pad//////////////////////////////////
-    var wrapper = document.getElementById("signature-pad"),
-        clearButton = wrapper.querySelector("[data-action=clear]"),
-        saveButton = wrapper.querySelector("[data-action=save]"),
-        canvas = wrapper.querySelector("canvas"),
-        signaturePad;
-
-    // Adjust canvas coordinate space taking into account pixel ratio,
-    // to make it look crisp on mobile devices.
-    // This also causes canvas to be cleared.
-    function resizeCanvas() {
-        var ratio =  window.devicePixelRatio || 1;
-        canvas.width = canvas.offsetWidth * ratio;
-        canvas.height = canvas.offsetHeight * ratio;
-        canvas.getContext("2d").scale(ratio, ratio);
-    }
-
-    window.onresize = resizeCanvas;
-    resizeCanvas();
-    signaturePad = new SignaturePad(canvas);
-    clearButton.addEventListener("click", function (event) {
-        signaturePad.clear();
-        document.getElementById("siginput").value="";
-    });
-
-  var form = document.getElementById("sigform"),
-  input = document.getElementById("siginput")
-
-  saveButton.addEventListener("click", function (event) {
-      if (signaturePad.isEmpty()) {
-            swal({
-              title: 'Error',
-              text: "note: please provide a signature",
-              type: 'error',
-              confirmButtonText: 'Ok',
-              confirmButtonClass: 'btn waves-effect green darken-2',
-              buttonsStyling: false
-            })
-      }//end of if
-      else {
-        swal({
-          title: 'Signature Selected',
-          text: "note: this will not be saved unless you submit the form",
-          type: 'success',
-          confirmButtonText: 'Ok',
-          confirmButtonClass: 'btn waves-effect green darken-2',
-          buttonsStyling: false
-        })
-          input.value = signaturePad.toDataURL();
-      }//end of else
-  });//end of saveButton
-  ///////////////////////////End of Signature Pad/////////////////////////////
+  
+  $(document).on('change', '#select_department', function(){
+    //when you select your department, postion will dynamically show
+    var department_value = $(this).val();   
+    select_position("../../model/tbl_position/select/select_position.php?" + department_value, "#select_position");
+  });
 
   //////////////////////////Form Validation/////////////////////////////////
 
   $('#btn_submit').on('click', function() {//validate on btn click
    if ($("#frm_signup").valid()){//check if all field is valid
-      insert_user("../../model/tbl_user/insert/signup_admin.php","#frm_signup");
+      insert_admin("../../model/tbl_admin/insert/signup_admin.php","#frm_signup");
    }
    else{
       $('.val').addClass('animated bounceIn');
@@ -80,8 +34,7 @@ $(document).ready(function(){
       gender: {required: true},
       mobile: {required: true, number: true},
       department: {required: true},
-      title: {required: true},
-      siginput: {required: true}
+      title: {required: true}
     },//end of rules
 
     messages: {
@@ -99,8 +52,7 @@ $(document).ready(function(){
       mobile: {required: "<small class='right val red-text'>This field is required</small>",
               number: "<small class='right val red-text'>Numbers Only</small>"},
       department: {required: "<small class='right val red-text'>This field is required</small>"},
-      title: {required: "<small class='right val red-text'>This field is required</small>"},
-      siginput: {required: "<small class='right val red-text'>This field is required</small>"}
+      title: {required: "<small class='right val red-text'>This field is required</small>"}
       },//end of messages
 
     errorElement : 'div',
@@ -129,7 +81,18 @@ $(document).ready(function(){
     });
   }//end of select_department
 
-  function insert_user(model_url,form_name){
+function select_position(model_url, html_class_OR_id){
+  $.ajax({
+      url:  model_url,
+      method: "GET",
+      success:function(Result){
+      //push the result on id or class
+        $(html_class_OR_id).html(Result);
+      }
+    });
+  }//end of select_department
+
+  function insert_admin(model_url,form_name){
   $.ajax({
     url:  model_url,
     method:"POST",

@@ -16,7 +16,7 @@
 
   <body class="grey lighten-3">
     <?php require 'nav.php'; ?>
-
+ <button class="btn">sss</button>
     <div class="row">
       <form id="frm_add_template">
         <div class="col s12 m3 l3">
@@ -33,6 +33,7 @@
         <div class="col s12 m2 l2"><br>
           <button type="button" class="waves-effect btn right green darken-2" id="btn_submit">Submit</button>
         </div>
+       
 
         <div class="col s12 m12 l12 bgcolor"><br>
           <textarea class="ckeditor" name="content" id="id_content"></textarea>

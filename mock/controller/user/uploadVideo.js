@@ -23,7 +23,7 @@ $(document).ready(function() {
 
     //validate step 1
     $('#btn_step1').on('click', function() { //validate on btn click
-        if ($('#doc_type').valid() && $('#video').valid() == true) {
+        if ($('#doc_type').valid() && $('#video').valid() && $('#proxy').valid()== true) {
             $('.step2').removeClass('hide');
             $('.step1').addClass('hide');
         }
@@ -76,10 +76,12 @@ $(document).ready(function() {
         rules: {
             signatories: { required: true },
             doc_type: { required: true },
-            video: { required: true, url: true }
+            video: { required: true, url: true },
+            proxy: { required: true }
         }, //end of rules
         messages: {
             signatories: { required: "<small class='right val red-text'>This field is required</small>" },
+            proxy: { required: "<small class='right val red-text'>This field is required</small>" },
             doc_type: { required: "<small class='right val red-text'>This field is required</small>" },
             video: {
                 required: "<small class='right val red-text'>This field is required</small>",

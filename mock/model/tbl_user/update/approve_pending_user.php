@@ -14,6 +14,16 @@
   $stmt->execute();
 
   if ($stmt) {
+    $sql2 = "SELECT * FROM tbl_user WHERE id=?";
+    $stmt = $dbConn->prepare($sql2);
+    $stmt->bindValue(1, $id);
+    $stmt->execute();
+    
+    if($stmt){#if email exist extract info and store it in variable
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $email = $row['email'];
+    }
+
     require "mail/PHPMailerAutoload.php";
     $mail = new PHPMailer();
     $mail->isSMTP();
@@ -28,7 +38,7 @@
     $mail->SetFrom("apalit_system@gmail.com");
     $mail->Subject = "Account for Apalit System";
     $mail->Body = "your account has been activated";
-    $mail->AddAddress("yuen.yalung@gmail.com");
+    $mail->AddAddress($email);
 
     if ($mail->Send()) {
         echo "success";

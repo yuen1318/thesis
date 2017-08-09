@@ -28,8 +28,17 @@
      }); //end of onclick
 
      $('#btn_approve_excel').on('click', function (event) {
-         approve_excel("../../model/tbl_file/update/approve_excel.php", "#frm_approve_excel");
-         $("#notif_pending_excel").load("../../model/tbl_efile/select/notif_pending_excel.php");
+        if ($("#frm_approve_excel").valid()) { //check if all field is valid
+             approve_excel("../../model/tbl_file/update/approve_excel.php", "#frm_approve_excel");
+             $("#notif_pending_excel").load("../../model/tbl_efile/select/notif_pending_excel.php");
+             $('#approve_excel_modal').modal('close');
+             $('#approve_pw').val("");
+        } else {
+            $('.val').addClass('animated bounceIn');
+            $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                $('.val').removeClass('animated');
+            });
+        } //end of else      
      }); //end of onclick
      /////////////////end of approve excel
 
@@ -44,9 +53,20 @@
      }); //end of onclick
 
      $('#btn_reject_excel').on('click', function (event) {
-         reject_excel("../../model/tbl_file/update/reject_excel.php", "#frm_reject_excel");
-         $("#notif_rejected_excel").load("../../model/tbl_efile/select/notif_rejected_excel.php");
 
+        if ($("#frm_reject_excel").valid()) { //check if all field is valid
+             reject_excel("../../model/tbl_file/update/reject_excel.php", "#frm_reject_excel");
+             $("#notif_rejected_excel").load("../../model/tbl_efile/select/notif_rejected_excel.php");
+             $('#reject_excel_modal').modal('close');
+             $('#approve_pw').val("");
+        } else {
+            $('.val').addClass('animated bounceIn');
+            $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                $('.val').removeClass('animated');
+            });
+        } //end of else
+         
+ 
      }); //end of onclick
      /////////////////end of reject excel
 
@@ -189,6 +209,54 @@
              }
          } //end of errorElement
      }); //end of validate
+
+
+      $("#frm_approve_excel").validate({ //form validation
+        rules: {
+            approve_pw: {
+                required: true,
+                equalTo: "#approve_rpw"
+            }
+        }, //end of rules
+        messages: {
+            approve_pw: {
+                required: "<small class='right val red-text'>This field is required</small>",
+                equalTo: "<small class='right val red-text'>Wrong password!</small>"
+            }
+        }, //end of messages
+        errorElement: 'div',
+        errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            } //end of errorElement
+    }); //end of validate
+
+    $("#frm_reject_excel").validate({ //form validation
+        rules: {
+            comment: {
+                required: true
+            }
+        }, //end of rules
+        messages: {
+            comment: {
+                required: "<small class='right val red-text'>This field is required</small>"
+            }
+        }, //end of messages
+        errorElement: 'div',
+        errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            } //end of errorElement
+    }); //end of validate
+
  }); //end of document.ready
 
  //////////////////////Functions///////////////////////
@@ -259,7 +327,7 @@
              if (Result == "error") {
                  Materialize.toast("Sorry an error occured", 8000, 'red');
              } else if (Result == "success") {
-                 Materialize.toast("Efile Approved", 8000, 'green darken-2');
+                 Materialize.toast("Spreadsheet Approved", 8000, 'green darken-2');
              }
          }, //end of success function
          complete: function () {
@@ -278,7 +346,7 @@
              if (Result == "error") {
                  Materialize.toast("Sorry an error occured", 8000, 'red');
              } else if (Result == "success") {
-                 Materialize.toast("Efile Rejected", 8000, 'green darken-2');
+                 Materialize.toast("Spreadsheet Rejected", 8000, 'green darken-2');
              }
          }, //end of success function
          complete: function () {
@@ -297,7 +365,7 @@
              if (Result == "error") {
                  Materialize.toast("Sorry an error occured", 8000, 'red');
              } else if (Result == "success") {
-                 Materialize.toast("Efile Deleted", 8000, 'green darken-2');
+                 Materialize.toast("Spreadsheet Deleted", 8000, 'green darken-2');
              }
          }, //end of success function
          complete: function () {

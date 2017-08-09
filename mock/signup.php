@@ -21,11 +21,20 @@
     <link rel="stylesheet" href="assets/materialize/css/animate.css">
     <link rel="stylesheet" href="assets/sweetalert2/sweetalert2.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  </head>
-  <body class="green lighten-1">
+      <style media="screen">
+      .bg{
+        background-image: url(Background.png) !important;
+        background-repeat: no-repeat !important;
+        background-position: center center !important;
+        background-attachment: fixed !important;
+        background-size: cover !important;
+      }
+    </style>
+    </head>
+  <body class="bg">
 
     <!--Sign Up form-->
- <br>
+  <br>
           <div class="container">
              <div class="row">
                 <div class="col s12 m10 offset-m1">

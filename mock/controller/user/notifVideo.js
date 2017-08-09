@@ -29,8 +29,17 @@
      }); //end of onclick
 
      $('#btn_approve_video').on('click', function (event) {
-         approve_video("../../model/tbl_file/update/approve_video.php", "#frm_approve_video");
-         $("#notif_pending_video").load("../../model/tbl_efile/select/notif_pending_video.php");
+         if ($("#frm_approve_video").valid()) { //check if all field is valid
+             approve_video("../../model/tbl_file/update/approve_video.php", "#frm_approve_video");
+             $("#notif_pending_video").load("../../model/tbl_efile/select/notif_pending_video.php");
+             $('#approve_video_modal').modal('close');
+             $('#approve_pw').val("");
+        } else {
+            $('.val').addClass('animated bounceIn');
+            $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                $('.val').removeClass('animated');
+            });
+        } //end of else
      }); //end of onclick
      /////////////////end of approve video
 
@@ -45,8 +54,17 @@
      }); //end of onclick
 
      $('#btn_reject_video').on('click', function (event) {
-         reject_video("../../model/tbl_file/update/reject_video.php", "#frm_reject_video");
-         $("#notif_rejected_video").load("../../model/tbl_efile/select/notif_rejected_video.php");
+        if ($("#frm_reject_video").valid()) { //check if all field is valid
+             reject_video("../../model/tbl_file/update/reject_video.php", "#frm_reject_video");
+             $("#notif_rejected_video").load("../../model/tbl_efile/select/notif_rejected_video.php");
+             $('#reject_video_modal').modal('close');
+             $('#approve_pw').val("");
+        } else {
+            $('.val').addClass('animated bounceIn');
+            $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+                $('.val').removeClass('animated');
+            });
+        } //end of else
      }); //end of onclick
      /////////////////end of reject video
 
@@ -105,7 +123,7 @@
          //show modal
          $('.trgr_edit_video').trigger('click');
      }); //end of onclick
-
+ 
      $('#btn_edit_video').on('click', function (event) {
          //if file_proxy isi empty
 
@@ -156,6 +174,53 @@
              }
          } //end of errorElement
      }); //end of validate
+
+     $("#frm_approve_video").validate({ //form validation
+        rules: {
+            approve_pw: {
+                required: true,
+                equalTo: "#approve_rpw"
+            }
+        }, //end of rules
+        messages: {
+            approve_pw: {
+                required: "<small class='right val red-text'>This field is required</small>",
+                equalTo: "<small class='right val red-text'>Wrong password!</small>"
+            }
+        }, //end of messages
+        errorElement: 'div',
+        errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            } //end of errorElement
+    }); //end of validate
+
+    $("#frm_reject_video").validate({ //form validation
+        rules: {
+            comment: {
+                required: true
+            }
+        }, //end of rules
+        messages: {
+            comment: {
+                required: "<small class='right val red-text'>This field is required</small>"
+            }
+        }, //end of messages
+        errorElement: 'div',
+        errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            } //end of errorElement
+    }); //end of validate
+
  }); //end of document.ready
 
  //////////////////////Functions///////////////////////
@@ -226,7 +291,7 @@
              if (Result == "error") {
                  Materialize.toast("Sorry an error occured", 8000, 'red');
              } else if (Result == "success") {
-                 Materialize.toast("Efile Approved", 8000, 'green darken-2');
+                 Materialize.toast("Video Approved", 8000, 'green darken-2');
              }
          }, //end of success function
          complete: function () {
@@ -245,7 +310,7 @@
              if (Result == "error") {
                  Materialize.toast("Sorry an error occured", 8000, 'red');
              } else if (Result == "success") {
-                 Materialize.toast("Efile Rejected", 8000, 'green darken-2');
+                 Materialize.toast("Video Rejected", 8000, 'green darken-2');
              }
          }, //end of success function
          complete: function () {
@@ -264,7 +329,7 @@
              if (Result == "error") {
                  Materialize.toast("Sorry an error occured", 8000, 'red');
              } else if (Result == "success") {
-                 Materialize.toast("Efile Deleted", 8000, 'green darken-2');
+                 Materialize.toast("Video Deleted", 8000, 'green darken-2');
              }
          }, //end of success function
          complete: function () {
