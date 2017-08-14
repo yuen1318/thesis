@@ -34,7 +34,7 @@
                                      text: "File size to big, 2mb is the allowed size",
                                      type: 'error',
                                      confirmButtonText: 'Ok',
-                                     confirmButtonClass: 'btn waves-effect green darken-2',
+                                     confirmButtonClass: 'btn waves-effect teal lighten-1',
                                      buttonsStyling: false
                                  })
                              } //end of if
@@ -47,7 +47,7 @@
                                      text: "An error has occured",
                                      type: 'error',
                                      confirmButtonText: 'Ok',
-                                     confirmButtonClass: 'btn waves-effect green darken-2',
+                                     confirmButtonClass: 'btn waves-effect teal lighten-1',
                                      buttonsStyling: false
                                  })
                              } //end of else
@@ -60,7 +60,7 @@
                      text: "Only jpg files are allowed",
                      type: 'error',
                      confirmButtonText: 'Ok',
-                     confirmButtonClass: 'btn waves-effect green darken-2',
+                     confirmButtonClass: 'btn waves-effect teal lighten-1',
                      buttonsStyling: false
                  }) //end of swal
          } //end of else
@@ -232,7 +232,7 @@
                  text: "note: please provide a signature",
                  type: 'error',
                  confirmButtonText: 'Ok',
-                 confirmButtonClass: 'btn waves-effect green darken-2',
+                 confirmButtonClass: 'btn waves-effect teal lighten-1',
                  buttonsStyling: false
              })
          } //end of if
@@ -242,7 +242,7 @@
                  text: "note: this will not be saved unless you submit the form",
                  type: 'success',
                  confirmButtonText: 'Ok',
-                 confirmButtonClass: 'btn waves-effect green darken-2',
+                 confirmButtonClass: 'btn waves-effect teal lighten-1',
                  buttonsStyling: false
              })
              input.value = signaturePad.toDataURL();
@@ -308,7 +308,7 @@
                          alert("error");
                      } else if (Result == "success") {
                          $('#change_password_modal').modal('close');
-                         Materialize.toast("Password successfully changed", 8000, 'green darken-2');
+                         Materialize.toast("Password successfully changed", 8000, 'teal lighten-1');
                      }
                  } //end of success function
          }) //end of ajax

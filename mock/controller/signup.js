@@ -1,13 +1,19 @@
 $(document).ready(function() {
     //load content from db
     select_department("model/tbl_department/select/select_department.php", "#select_department");
+   
+    $(document).on('change', '#select_department', function(){
+        //when you select your department, postion will dynamically show
+        var department_value = $(this).val();   
+        select_position("model/tbl_position/select/select_position.php?" + department_value, "#select_position");
+      });
     ///////////////////////////Signature Pad//////////////////////////////////
     var wrapper = document.getElementById("signature-pad"),
         clearButton = wrapper.querySelector("[data-action=clear]"),
         saveButton = wrapper.querySelector("[data-action=save]"),
         canvas = wrapper.querySelector("canvas"),
         signaturePad;
-
+ 
     // Adjust canvas coordinate space taking into account pixel ratio,
     // to make it look crisp on mobile devices.
     // This also causes canvas to be cleared.
@@ -176,6 +182,17 @@ function select_department(model_url, html_class_OR_id) {
         }
     });
 } //end of select_department
+
+function select_position(model_url, html_class_OR_id){
+    $.ajax({
+        url:  model_url,
+        method: "GET",
+        success:function(Result){
+        //push the result on id or class
+          $(html_class_OR_id).html(Result);
+        }
+      });
+    }//end of select_department
 
 function insert_user(model_url, form_name) {
     $.ajax({

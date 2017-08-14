@@ -70,8 +70,8 @@
                     </div>
 
                     <div id="error_login">
-                      <small class='right val red-text hide'>Invalid Email or Password</small>
-                    </div>
+                      <small class='right val red-text hide animated bounceIn'>Invalid Email or Password</small>
+                    </div><br>
 
 
                 </div>

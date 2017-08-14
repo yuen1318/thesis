@@ -57,7 +57,7 @@
       }#end of else
 
     } catch (Exception $e) {
-      #header location error 404
+      throw new Exception($e->getMessage());
     }#end of try catch
   }#end of if
 

@@ -13,7 +13,7 @@
     $stmt ->  execute();
     $list  = $stmt;
 
-
+ 
     foreach ($list as $row) {
  
       #if doc_id is efile

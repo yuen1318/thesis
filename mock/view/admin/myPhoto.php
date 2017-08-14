@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
-    <link rel="stylesheet" href="../../assets/materialize/css/myStyle.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/admin.css">
     <link rel="stylesheet" href="../../assets/sweetalert2/sweetalert2.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
@@ -69,7 +69,7 @@
 
     <div class="row">
       <div class="fixed-action-btn vertical">
-        <a href="#upload_photo_modal" class="modal-trigger btn-floating btn-large green darken-2 btn tooltipped waves-effect fa fa-plus fa-lg"
+        <a href="#upload_photo_modal" class="modal-trigger btn-floating btn-large teal lighten-1 btn tooltipped waves-effect fa fa-plus fa-lg"
           data-position="left" data-delay="50" data-tooltip="Upload Photo"></a>
       </div>
     </div>
@@ -79,7 +79,7 @@
         <div class="modal-content">
 
           <div class="file-field input-field">
-            <div class="btn green darken-2">
+            <div class="btn teal lighten-1">
               <span class="fa fa-upload fa-lg"></span>
               <input type="file" name="uploaded_img">
             </div>
@@ -92,7 +92,7 @@
         </div>
         <!--end of modal-content-->
         <div class="modal-footer">
-          <button type="submit" class="btn waves-effect modal-action modal-close green darken-2" id="btn_upload_photo">Upload</button>
+          <button type="submit" class="btn waves-effect modal-action modal-close teal lighten-1" id="btn_upload_photo">Upload</button>
         </div>
       </div>
       <!--end of modal-->
@@ -113,7 +113,7 @@
         </div>
         <!--end of modal-content-->
         <div class="modal-footer">
-          <button type="button" class="btn waves-effect modal-action modal-close green darken-2" id="btn_delete_photo">Delete</button>
+          <button type="button" class="btn waves-effect modal-action modal-close teal lighten-1" id="btn_delete_photo">Delete</button>
         </div>
       </div>
       <!--end of modal-->

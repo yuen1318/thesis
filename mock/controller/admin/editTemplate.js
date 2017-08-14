@@ -20,7 +20,7 @@
         text: "note: Template-Name and Template-Content is required",
         type: 'error',
         confirmButtonText: 'Ok',
-        confirmButtonClass: 'btn waves-effect green darken-2',
+        confirmButtonClass: 'btn waves-effect teal lighten-1',
         buttonsStyling: false
         });//end of swal
         return false;
@@ -32,7 +32,7 @@
         text: "note: Department, Template-Name and Template-Content is required",
         type: 'error',
         confirmButtonText: 'Ok',
-        confirmButtonClass: 'btn waves-effect green darken-2',
+        confirmButtonClass: 'btn waves-effect teal lighten-1',
         buttonsStyling: false
         });//end of swal
       }//end of else if
@@ -98,7 +98,7 @@
         }
         else if(Result == "success") {
 
-          Materialize.toast("Edited Template Saved", 8000, 'green darken-2');
+          Materialize.toast("Edited Template Saved", 8000, 'teal lighten-1');
         }
       }//end of success function
 

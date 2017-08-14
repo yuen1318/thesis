@@ -100,10 +100,7 @@
              mobile: {
                  required: true,
                  number: true
-             },
-             title: {
-                 required: true
-             },
+             }
          }, //end of rules
          messages: {
              fn: {
@@ -118,9 +115,6 @@
              mobile: {
                  required: "<small class='right val red-text'>This field is required</small>",
                  number: "<small class='right val red-text'>Numbers Only</small>"
-             },
-             title: {
-                 required: "<small class='right val red-text'>This field is required</small>"
              }
          }, //end of messages
          errorElement: 'div',

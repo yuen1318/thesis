@@ -9,7 +9,7 @@
     <title></title>
     <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
-    <link rel="stylesheet" href="../../assets/materialize/css/myStyle.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/admin.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
   <body class="grey lighten-3">
@@ -22,7 +22,7 @@
           <!--Table-->
           <div class="row">
             <div class="col s12 m8 l8">
-              <h5>News Feed</h5>
+              <h5>Activity Log</h5>
             </div>
             <div class="col s12 m4 l4">
               <label>Search </label>

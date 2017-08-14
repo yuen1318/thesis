@@ -19,14 +19,14 @@
             <td class='status'>  $row[status] </td>
 
             <td>
-            <button class='btn waves-effect fa fa-trash fa-lg green darken-2 delete_deleted_user'
+            <button class='btn waves-effect fa fa-trash fa-lg teal lighten-1 delete_deleted_user'
             data-delete-deleted-id = '$row[id]'
             data-delete-deleted-status = '$row[status]'>
             </button>
             </td>
 
             <td>
-            <button class='btn waves-effect fa fa-recycle fa-lg green darken-2 restore_deleted_user'
+            <button class='btn waves-effect fa fa-recycle fa-lg teal lighten-1 restore_deleted_user'
             data-restore-deleted-id = '$row[id]'
             data-restore-deleted-status = '$row[status]'>
             </button>

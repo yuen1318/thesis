@@ -20,14 +20,14 @@
             <td class='status'>  $row[status] </td>
 
             <td>
-            <button class='btn waves-effect fa fa-trash fa-lg green darken-2 delete_pending_user'
+            <button class='btn waves-effect fa fa-trash fa-lg teal lighten-1 delete_pending_user'
             data-delete-pending-id = '$row[id]'
             data-delete-pending-status = '$row[status]'>
             </button>
             </td>
 
             <td>
-            <button class='btn waves-effect fa fa-check fa-lg green darken-2 approve_pending_user'
+            <button class='btn waves-effect fa fa-check fa-lg teal lighten-1 approve_pending_user'
             data-approve-pending-id = '$row[id]'
             data-approve-pending-status = '$row[status]'>
             </button>

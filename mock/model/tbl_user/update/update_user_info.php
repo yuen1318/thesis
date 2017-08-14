@@ -8,19 +8,17 @@
   $mn = ucwords(sanitize($_POST['mn']));
   $ln = ucwords(sanitize($_POST['ln']));
   $mobile = sanitize($_POST['mobile']);
-  $title = ucwords(sanitize($_POST['title']));
 
 
 
-  $sql = "UPDATE tbl_user SET fn=?,mn=?,ln=?,mobile=?,title=? WHERE email=?";
+  $sql = "UPDATE tbl_user SET fn=?,mn=?,ln=?,mobile=? WHERE email=?";
 
   $stmt = $dbConn->prepare($sql);
   $stmt->bindValue(1, $fn);
   $stmt->bindValue(2, $mn);
   $stmt->bindValue(3, $ln);
   $stmt->bindValue(4, $mobile);
-  $stmt->bindValue(5, $title);
-  $stmt->bindValue(6, $email);
+  $stmt->bindValue(5, $email);
   $stmt->execute();
 
   if ($stmt) {
@@ -28,7 +26,6 @@
     $_SESSION["user_mn"] = $mn;
     $_SESSION["user_ln"] = $ln;
     $_SESSION["user_mobile"] = $mobile;
-    $_SESSION["user_title"] = $title;
     echo "success";
   }
 

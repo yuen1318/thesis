@@ -81,7 +81,7 @@ $(document).ready(function(){
             Materialize.toast("Sorry an error occured", 8000, 'red');
         }
         else if(Result == "success") {
-          Materialize.toast("User permanently deleted", 8000, 'green darken-2');
+          Materialize.toast("User permanently deleted", 8000, 'teal lighten-1');
         }
       },//end of success function
 
@@ -103,7 +103,7 @@ $(document).ready(function(){
             Materialize.toast("Sorry an error occured", 8000, 'red');
         }
         else if(Result == "success") {
-          Materialize.toast("User restored successfully", 8000, 'green darken-2');
+          Materialize.toast("User restored successfully", 8000, 'teal lighten-1');
         }
       },//end of success function
 

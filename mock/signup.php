@@ -32,7 +32,7 @@
     </style>
     </head>
   <body class="bg">
-
+ 
     <!--Sign Up form-->
   <br>
           <div class="container">
@@ -108,8 +108,10 @@
                               </div>
 
                               <div class="input-field col s12 m3 l3">
-                                <input  name="title" id="title" type="text">
-                                <label for="title">Title</label>
+                                <label  class="active">Position</label>
+                                <select name="title" class="transparent browser-default" id="select_position">
+                                  <!--content from database-->
+                                </select>
                               </div>
 
                             </div><!--end of row-->

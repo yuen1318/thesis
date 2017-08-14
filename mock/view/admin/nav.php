@@ -1,5 +1,6 @@
-<nav>
-  <div class="nav-wrapper green darken-2">
+<div class="navbar-fixed">
+  <nav>
+  <div class="nav-wrapper teal lighten-1">
     <ul class="left">
       <a href="#" data-activates="show-sidenav" class="button-collapse waves-effect show-on-large">
         <span class="fa fa-bars fa-lg"></span>
@@ -7,24 +8,23 @@
     </ul>
     <!--end of ul-->&emsp;&emsp;
 
-    <a href="#" class="brand-logo hide-on-med-and-down" style="font-size:23px !important;">Document Tracking System</a>
+    <a href="#" class="brand-logo hide-on-med-and-down" style="font-size:23px !important;">Electronic File Tracking System</a>
 
 
     <ul class="right ">
       <li><a href="#" class="dropdown-button" data-beloworigin="true" data-activates='dropdown1'><span class="fa fa-user fa-lg"></span></a></li>
       <!-- Dropdown Structure -->
       <ul id='dropdown1' class='dropdown-content'>
-        <li><a href="myAccount.php"><small class="center green-text">My Account</small></a></li>
-        <li><a href="myPhoto.php"><small class="center green-text">My Photos</small></a></li>
-        <li><a href="logout.php"><small class="center green-text">Logout</small></a></li>
+        <li><a href="myAccount.php"><small class="center teal-text">My Account</small></a></li>
+        <li><a href="myPhoto.php"><small class="center teal-text">My Photos</small></a></li>
+        <li><a href="logout.php"><small class="center teal-text">Logout</small></a></li>
       </ul>
     </ul>
     <!--end of ul-->
 
     <ul class="right">
-      <li><a href='pendingUser.php' class='dropdown-button' data-beloworigin='true' data-activates='notification'><span class='fa fa-bell fa-lg'></span> <span class='red'id ="notifadmin"></span></a></li>
+      <li><a href='pendingUser.php'><span class='fa fa-bell fa-lg'></span> <span class='red'id ="notifadmin"></span></a></li>
       <!-- Dropdown Structure -->
-      
     </ul>
     <!--end of ul-->
 
@@ -36,7 +36,7 @@
   <!--end of nav-wrapper-->
 </nav>
 <!--end of nav-->
-
+</div>
 
 
 

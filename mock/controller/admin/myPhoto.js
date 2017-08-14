@@ -16,7 +16,7 @@
               inputValue: final,
               type: 'success',
               confirmButtonText: 'Ok',
-              confirmButtonClass: 'btn waves-effect green darken-2',
+              confirmButtonClass: 'btn waves-effect teal lighten-1',
               buttonsStyling: false
             })
           }); //end of onclick
@@ -59,12 +59,12 @@
                       text: "File size to big, 2mb is the allowed size",
                       type: 'error',
                       confirmButtonText: 'Ok',
-                      confirmButtonClass: 'btn waves-effect green darken-2',
+                      confirmButtonClass: 'btn waves-effect teal lighten-1',
                       buttonsStyling: false
                     })
                   } //end of if
                   else if (Result == "success") {
-                    Materialize.toast("Photo successfully uploaded", 8000, 'green darken-2');
+                    Materialize.toast("Photo successfully uploaded", 8000, 'teal lighten-1');
                   } //end of else if
                   else {
                     swal({
@@ -72,7 +72,7 @@
                       text: "An error has occured",
                       type: 'error',
                       confirmButtonText: 'Ok',
-                      confirmButtonClass: 'btn waves-effect green darken-2',
+                      confirmButtonClass: 'btn waves-effect teal lighten-1',
                       buttonsStyling: false
                     })
                   } //end of else
@@ -90,7 +90,7 @@
                 text: "Only jpg files are allowed",
                 type: 'error',
                 confirmButtonText: 'Ok',
-                confirmButtonClass: 'btn waves-effect green darken-2',
+                confirmButtonClass: 'btn waves-effect teal lighten-1',
                 buttonsStyling: false
               }) //end of swal
             } //end of else
@@ -128,7 +128,7 @@
               if (Result == "error") {
                 Materialize.toast("Sorry an error occured", 8000, 'red');
               } else if (Result == "success") {
-                Materialize.toast("Photo successfully deleted", 8000, 'green darken-2');
+                Materialize.toast("Photo successfully deleted", 8000, 'teal lighten-1');
               }
             }, //end of success function
             complete: function () {

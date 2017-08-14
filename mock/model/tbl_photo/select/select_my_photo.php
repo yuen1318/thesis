@@ -30,13 +30,13 @@
               <td class='photo_name'> $row[photo_name] </td>
               <td class='co'> $row[created_on] </td>
               <td>
-                <button class='btn waves-effect green darken-2 delete_photo' data-delete-photo-id='$row[photo_id]'>
+                <button class='btn waves-effect teal lighten-1 delete_photo' data-delete-photo-id='$row[photo_id]'>
                   Delete
                 </button>
               </td>
-
+ 
               <td>
-                <button class='btn waves-effect green darken-2 btn_copy_img' data-photo-path='$path/$row[photo_id]'>
+                <button class='btn waves-effect teal lighten-1 btn_copy_img' data-photo-path='$path/$row[photo_id]'>
                   Copy
                 </button>
               </td>

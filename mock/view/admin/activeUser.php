@@ -9,8 +9,8 @@
     <title></title>
     <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
-    <link rel="stylesheet" href="../../assets/materialize/css/myStyle.css">
-        <link rel="stylesheet" href="../../assets/materialize/css/animate.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/admin.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/animate.css">
     <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -42,7 +42,7 @@
                     <th>Gender</th>
                     <th>Mobile</th>
                     <th>Department</th>
-                    <th>Title</th>
+                    <th>Position</th>
                     <th>Status</th>
                     <th colspan="2">Action</th>
                 </tr>
@@ -78,7 +78,7 @@
 
           </div><!--end of modal-content-->
           <div class="modal-footer">
-            <button type="button" class="btn waves-effect modal-action modal-close green darken-2" id="btn_delete_active_user">Delete User</button>
+            <button type="button" class="btn waves-effect modal-action modal-close teal lighten-1" id="btn_delete_active_user">Delete User</button>
           </div>
         </div><!--end of modal-->
       </form>
@@ -104,9 +104,18 @@
                 </div>
             </div>
 
+            <div class="row">
+              <div class="input-field col s12 m12 l12">
+                  <label  class="active">Position</label>
+                    <select name="title" class="transparent browser-default" id="select_position">
+                                  <!--content from database-->
+                    </select>
+              </div>
+            </div>
+
           </div><!--end of modal-content-->
           <div class="modal-footer">
-            <button type="button" class="btn waves-effect  green darken-2" id="btn_edit_active_user">Edit User</button>
+            <button type="button" class="btn waves-effect  teal lighten-1" id="btn_edit_active_user">Edit User</button>
           </div>
         </div><!--end of modal-->
       </form>

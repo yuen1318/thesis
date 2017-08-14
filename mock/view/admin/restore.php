@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
-    <link rel="stylesheet" href="../../assets/materialize/css/myStyle.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/admin.css">
     <link rel="stylesheet" href="../../assets/sweetalert2/sweetalert2.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -46,7 +46,7 @@
 
             <div class="col s12 m6 l6">
               <div class="file-field input-field">
-                <div class="btn green darken-2">
+                <div class="btn teal lighten-1">
                   <icon class="fa fa-upload fa-lg"></icon>
                   <span> File</span>
                   <input type="file" name="restore" id="restore">
@@ -61,7 +61,7 @@
 
 
             <div class="col s12 m6 l6"><br>
-              <button type="button" class="waves-effect btn right green darken-2" id="btn_send">Next</button>
+              <button type="button" class="waves-effect btn right teal lighten-1" id="btn_send">Next</button>
             </div>
             <!--end of col s12 m2 l2-->
 
@@ -119,7 +119,7 @@
                      text: "note: Document type must not be empty and only sql extensions are allowed",
                      type: 'error',
                      confirmButtonText: 'Ok',
-                     confirmButtonClass: 'btn waves-effect green darken-2',
+                     confirmButtonClass: 'btn waves-effect teal lighten-1',
                      buttonsStyling: false
                  }); //end of swal
              } //end of else
@@ -130,7 +130,7 @@
                  text: "note: Document type must not be empty and only sql extensions are allowed",
                  type: 'error',
                  confirmButtonText: 'Ok',
-                 confirmButtonClass: 'btn waves-effect green darken-2',
+                 confirmButtonClass: 'btn waves-effect teal lighten-1',
                  buttonsStyling: false
              }); //end of swal
          } //end of else

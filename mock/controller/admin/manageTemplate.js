@@ -18,7 +18,7 @@
         delete_template("../../model/tbl_template/delete/delete_template.php", "#frm_delete_template");
       });//end of onclick
 
-
+ 
 
 
     });//end of document.ready
@@ -56,7 +56,7 @@
               Materialize.toast("Sorry an error occured", 8000, 'red');
           }
           else if(Result == "success") {
-            Materialize.toast("User successfully deleted", 8000, 'green darken-2');
+            Materialize.toast("User successfully deleted", 8000, 'teal lighten-1');
           }
         },//end of success function
 

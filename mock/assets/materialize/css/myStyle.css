@@ -27,10 +27,10 @@ background-color: #388e3c;
 }
 
 .cke_bottom {
-background: green!important;
+background: #388e3c!important;
 }
 .cke_chrome {
-  border: 1px solid green !important;
+  border: 1px solid #388e3c !important;
 }
 .cke_editable{
   line-height: 0.4 !important;

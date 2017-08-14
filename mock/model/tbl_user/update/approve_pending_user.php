@@ -41,8 +41,30 @@
     $mail->AddAddress($email);
 
     if ($mail->Send()) {
-        echo "success";
-    }
+          if ($stmt) {
+              $admin_email = $_SESSION["admin_email"];
+              $date = date("Y, F j");
+              $time = date("g:i a");
+              $msg = "has granted ". $email ." an access as user";
+
+              $sql3 = "INSERT INTO tbl_admin_news(email,msg,date,time) VALUES(?,?,?,?)";
+              $stmt = $dbConn->prepare($sql3);
+              $stmt->bindValue(1, $admin_email);
+              $stmt->bindValue(2, $msg);
+              $stmt->bindValue(3, $date);
+              $stmt->bindValue(4, $time);
+              $stmt->execute();
+
+              if($stmt){
+                echo "success";
+              }
+              else{
+                echo "error";
+              }
+            
+          }//end of if
+ 
+    }//end of if
 
     else{
         echo "failed";

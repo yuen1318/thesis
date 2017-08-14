@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
-    <link rel="stylesheet" href="../../assets/materialize/css/myStyle.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/admin.css">
     <link rel="stylesheet" href="../../assets/sweetalert2/sweetalert2.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title></title>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="col s12 m2 l2"><br>
-          <button type="button" class="waves-effect btn right green darken-2" id="btn_submit">Submit</button>
+          <button type="button" class="waves-effect btn right teal lighten-1" id="btn_submit">Submit</button>
         </div>
 
     
@@ -54,7 +54,7 @@
 
     <div class="row">
       <div class="col s12 m12 l12">
-       <a href="#helper_modal" class="modal-trigger right btn btn-floating btn-large pulse green darken-2"><span class=" fa fa-question fa-lg"></span></a>
+       <a href="#helper_modal" class="modal-trigger right btn btn-floating btn-large pulse teal lighten-1"><span class=" fa fa-question fa-lg"></span></a>
       </div>
     </div>
 
@@ -67,7 +67,7 @@
       <h4>Helpers</h4><br>
 
       <h5>Header</h5>
-      <blockquote style="border-left-color:#388e3c !important;">
+      <blockquote style="border-left-color:#26a69a !important;">
         for creating a header copy the code below :<br>
         <b>width: 100%; height: 200px; top: 0px !important; left: 0px !important ; z-index: -20 !important; position: absolute !important;</b>
         <br>
@@ -76,21 +76,21 @@
       </blockquote><br>
 
       <h5>Page Size: Letter</h5>
-      <blockquote style="border-left-color:#388e3c !important;">
+      <blockquote style="border-left-color:#26a69a !important;">
         In embbeding photos according to letter size, unlock the scaling of image, then set the<br>
         <b>Width : 100% <br> Height : 900</b><br>
         <img src="img/2.png" alt="">
        </blockquote><br>
 
       <h5>Page Size: Legal</h5>
-      <blockquote style="border-left-color:#388e3c !important;">
+      <blockquote style="border-left-color:#26a69a !important;">
         In embbeding photos according to legal size, unlock the scaling of image, then set the<br>
         <b>Width : 100% <br> Height : 1200</b><br>
         <img src="img/4.png" alt="">
        </blockquote><br>
 
       <h5>Page Size: A4</h5>
-      <blockquote style="border-left-color:#388e3c !important;">
+      <blockquote style="border-left-color:#26a69a !important;">
         In embbeding photos according to a4 size, unlock the scaling of image, then set the<br>
         <b>Width : 100% <br> Height : 1000</b><br>
         <img src="img/3.png" alt="">
@@ -98,7 +98,7 @@
 
     </div><!--end of modal content-->
     <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">OK</a>
+      <a href="#!" class="modal-action modal-close waves-effect waves-teal btn-flat ">OK</a>
     </div><!--end of modal footer-->
   </div><!--end of modal-->
   </body>

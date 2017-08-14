@@ -82,14 +82,14 @@
                     </div>
 
                     <div id="error_login">
-                      <small class='right val red-text hide'>Invalid Email or Password</small>
-                    </div>
+                      <small class='right val red-text hide animated bounceIn'>Invalid Email or Password</small>
+                    </div><br>
 
 
                 </div>
                 <div class="card-action">
-                  <a href="signup.php" class="btn waves-effect left green darken-2 z-depth-3">Sign Up</a>
-                  <button type="button" class="btn waves-effect right green darken-2 z-depth-3" id="btn_login">Log In</button>
+                  <a href="signup.php" class="btn waves-effect left green darken-2 z-depth-5">Sign Up</a>
+                  <button type="button" class="btn waves-effect right green darken-2 z-depth-5" id="btn_login">Log In</button>
                   <br><br>
                 </div>
                 </form>

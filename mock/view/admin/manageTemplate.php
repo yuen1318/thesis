@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
-    <link rel="stylesheet" href="../../assets/materialize/css/myStyle.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/admin.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title></title>
   </head>
@@ -67,7 +67,7 @@
 
         </div><!--end of modal-content-->
         <div class="modal-footer">
-          <button type="button" class="btn waves-effect modal-action modal-close green darken-2" id="btn_delete_template">Permanently Delete Template</button>
+          <button type="button" class="btn waves-effect modal-action modal-close teal lighten-1" id="btn_delete_template">Permanently Delete Template</button>
         </div>
       </div><!--end of modal-->
     </form>
@@ -75,7 +75,7 @@
 
     <div class="row">
       <div class="fixed-action-btn vertical">
-      <a href="addTemplate.php" class="btn-floating btn-large green darken-2 btn tooltipped waves-effect fa fa-plus fa-lg" data-position="left" data-delay="50" data-tooltip="Add template"></a>
+      <a href="addTemplate.php" class="btn-floating btn-large teal lighten-1 btn tooltipped waves-effect fa fa-plus fa-lg" data-position="left" data-delay="50" data-tooltip="Add template"></a>
       </div>
     </div>
 

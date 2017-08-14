@@ -10,7 +10,7 @@ require 'session.php';
     <title></title>
     <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
-    <link rel="stylesheet" href="../../assets/materialize/css/myStyle.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/admin.css">
     <link rel="stylesheet" href="../../assets/materialize/css/animate.css">
     <link rel="stylesheet" href="../../assets/sweetalert2/sweetalert2.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,10 +42,10 @@ require 'session.php';
       <div class="row">
 
         <div class="col s12 m3 l3  ">
-          <div class="card">
+          <div class="card transparent ">
             <div class="card-content">
               <img class="responsive-img" src="../../DB/profile/<?php echo $_SESSION['admin_photo']?>" alt="" width="200" height="150">
-              <a href="#upload_img_modal" class="btn-floating halfway-fab waves-effect waves-light green darken-2  modal-trigger"><i class="fa fa-camera"></i></a>
+              <a href="#upload_img_modal" class="btn-floating halfway-fab waves-effect waves-light teal lighten-1  modal-trigger"><i class="fa fa-camera"></i></a>
               <img class="responsive-img" src="../../DB/signature/<?php echo $_SESSION['admin_email']?>.png" alt="" width="150" height="80">
             </div>
           </div>
@@ -55,7 +55,7 @@ require 'session.php';
 
         <form id="frm_info">
           <div class="col s12 m9 l9  ">
-            <div class="card">
+            <div class="card transparent ">
               <div class="card-content">
 
                 <div class="row">
@@ -92,7 +92,7 @@ require 'session.php';
                 </div>
                 <!--end of div-->
 
-                <button type="button" class="btn-floating halfway-fab waves-effect waves-light green darken-2 fa fa-send fa-lg " id="btn_frm_info"></button>
+                <button type="button" class="btn-floating halfway-fab waves-effect waves-light teal lighten-1 fa fa-send fa-lg " id="btn_frm_info"></button>
               </div>
               <!--end of card-content-->
             </div>
@@ -124,8 +124,8 @@ require 'session.php';
                     <canvas></canvas>
 
                     <div class="row">
-                      <button type="button" id="btn_clear" class="btn waves-effect center fa fa-refresh fa-lg green darken-2" data-action="clear"></button>
-                      <button type="button" class="btn waves-effect center fa fa-floppy-o fa-lg green darken-2" data-action="save"></button>
+                      <button type="button" id="btn_clear" class="btn waves-effect center fa fa-refresh fa-lg teal lighten-1" data-action="clear"></button>
+                      <button type="button" class="btn waves-effect center fa fa-floppy-o fa-lg teal lighten-1" data-action="save"></button>
                     </div>
                   </div> b
                   <!--hidden input-->
@@ -133,7 +133,7 @@ require 'session.php';
                 </div>
                 <!--end of row-->
 
-                <button type="button" class="btn-floating halfway-fab waves-effect waves-light green darken-2 fa fa-send fa-lg " id="btn_frm_signature"></button>
+                <button type="button" class="btn-floating halfway-fab waves-effect waves-light teal lighten-1 fa fa-send fa-lg " id="btn_frm_signature"></button>
 
               </div>
               <!--end of card-content-->
@@ -150,7 +150,7 @@ require 'session.php';
 
       <div class="row">
         <div class="col s12 m12 l12">
-          <a href="#change_password_modal" class="modal-trigger btn waves-effect green darken-2 right">Change Password</a>
+          <a href="#change_password_modal" class=" modal-trigger btn waves-effect teal lighten-1 right">Change Password</a>
         </div>
       </div>
 
@@ -179,7 +179,7 @@ require 'session.php';
         </div>
         <!--end of modal-content-->
         <div class="modal-footer">
-          <button type="button" class="btn waves-effect   green darken-2 fa fa-send fa-lg" id="btn_frm_change_password"></button>
+          <button type="button" class="btn waves-effect   teal lighten-1 fa fa-send fa-lg" id="btn_frm_change_password"></button>
         </div>
       </div>
       <!--end of modal-->
@@ -191,7 +191,7 @@ require 'session.php';
           <h5 class="center">Change Profile Picture</h5><br>
 
           <div class="file-field input-field">
-            <div class="btn green darken-2">
+            <div class="btn teal lighten-1">
               <span class="fa fa-upload fa-lg"></span>
               <input type="file" name="uploaded_img">
             </div>
@@ -203,7 +203,7 @@ require 'session.php';
         </div>
         <!--end of modal-content-->
         <div class="modal-footer">
-          <button type="submit" class="btn waves-effect   green darken-2 fa fa-send fa-lg" id="btn_frm_update_profile_picture"></button>
+          <button type="submit" class="btn waves-effect   teal lighten-1 fa fa-send fa-lg" id="btn_frm_update_profile_picture"></button>
         </div>
       </div>
       <!--end of modal-->

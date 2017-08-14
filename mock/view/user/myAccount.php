@@ -42,7 +42,7 @@ require 'session.php';
       <div class="row">
 
         <div class="col s12 m3 l3  ">
-          <div class="card">
+          <div class="card transparent">
             <div class="card-content">
               <img class="responsive-img" src="../../DB/profile/<?php echo $_SESSION['user_photo']?>" alt="" width="200" height="150">
               <a href="#upload_img_modal" class="btn-floating halfway-fab waves-effect waves-light green darken-2  modal-trigger"><i class="fa fa-camera"></i></a>
@@ -55,39 +55,34 @@ require 'session.php';
 
         <form id="frm_info">
           <div class="col s12 m9 l9  ">
-            <div class="card">
+            <div class="card transparent">
               <div class="card-content">
 
                 <div class="row">
-                  <div class="col s12 m4 l4 input-field">
+                  <div class="col s12 m6 l6 input-field">
                     <input type="text" name="fn" value="<?php echo $_SESSION['user_fn']?>" id="fn">
                     <label class="active" for="fn">First Name</label>
                   </div>
 
-                  <div class="col s12 m4 l4 input-field">
+                  <div class="col s12 m6 l6 input-field">
                     <input type="text" name="mn" value="<?php echo $_SESSION['user_mn']?>" id="mn">
                     <label class="active" for="mn">Middle Name</label>
-                  </div>
-
-                  <div class="col s12 m4 l4 input-field">
-                    <input type="text" name="ln" value="<?php echo $_SESSION['user_ln']?>" id="ln">
-                    <label class="active" for="ln">Last Name</label>
                   </div>
 
                 </div>
                 <!--end of div-->
 
                 <div class="row">
-                  <div class="col s12 m4 l4 input-field">
-                    <input name="mobile" id="mobile" type="number" value="<?php echo $_SESSION['user_mobile']?>">
-                    <label class="active" for="mobile">Contact No.</label>
+                
+                  <div class="col s12 m6 l6 input-field">
+                    <input type="text" name="ln" value="<?php echo $_SESSION['user_ln']?>" id="ln">
+                    <label class="active" for="ln">Last Name</label>
                   </div>
 
- 
 
-                  <div class="col s12 m4 l4 input-field">
-                    <input type="text" name="title" value="<?php echo $_SESSION['user_title']?>" id="title">
-                    <label class="active" for="title">Title</label>
+                  <div class="col s12 m6 l6 input-field">
+                    <input name="mobile" id="mobile" type="number" value="<?php echo $_SESSION['user_mobile']?>">
+                    <label class="active" for="mobile">Contact No.</label>
                   </div>
 
                 </div>

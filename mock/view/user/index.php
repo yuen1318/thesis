@@ -17,8 +17,10 @@
   <body class="grey lighten-3">
 
     <?php require 'nav.php'; ?>
- 
-      <div class="row">
+  
+  <div class="container">
+    
+  <div class="row">
 
         <div class="col s12 m12 l12" id="list_activity">
           <!--Table-->
@@ -34,42 +36,11 @@
 
           <div class="row">
             <div class="col s12 m12 l12">
+              <ul class="list collection" id="activitylog"></ul>
 
-              <table class="bordered centered responsive-table striped">
-                <thead>
-                  <tr>
-                    <th class="hide">ID</th>
-                    <th colspan="2">User</th>
-                    <th>Action</th>
-                    <th>Document ID</th>
-                    <th>Name</th>  
-                    <th>List of Signatories</th>
-                    <th>Pending Signatories</th>
-                    <th colspan="2">Approved Signatories</th>
-
-
-                  </tr>
-                </thead>
-                <!--end of thead-->
-
-                <tbody class="list" id="activitylog"></tbody>
-                <!--end of tbody-->
-              </table>
-              <!--end of table-->
-
-              <tfoot>
-                <tr>
-                  <td>
-                    <ul class="pagination center"></ul>
-                  </td>
-                </tr>
-              </tfoot>
-
-
-
+              <ul class="pagination center"></ul>
             </div>
-          </div>
-
+        </div>
 
 
         </div>
@@ -77,6 +48,8 @@
 
       </div>
       <!--end of row-->
+  </div>
+
 
 
 

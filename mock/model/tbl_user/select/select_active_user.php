@@ -21,14 +21,14 @@
             <td class='status'>  $row[status] </td>
 
             <td>
-            <button class='btn waves-effect fa fa-trash fa-lg green darken-2 delete_active_user'
+            <button class='btn waves-effect fa fa-trash fa-lg teal lighten-1 delete_active_user'
             data-delete-active-id = '$row[id]'
             data-delete-active-status = '$row[status]'>
             </button>
             </td>
 
             <td>
-            <button class='btn waves-effect fa fa-pencil fa-lg green darken-2 edit_active_user'
+            <button class='btn waves-effect fa fa-pencil fa-lg teal lighten-1 edit_active_user'
             data-edit-active-id = '$row[id]'
             </button>
             </td

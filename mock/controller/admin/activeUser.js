@@ -1,6 +1,10 @@
  $(document).ready(function(){
 
-  
+    $(document).on('change', '#select_department', function(){
+      //when you select your department, postion will dynamically show
+      var department_value = $(this).val();   
+      select_position("../../model/tbl_position/select/select_position.php?" + department_value, "#select_position");
+    });
 
     select_department("../../model/tbl_department/select/select_department.php", "#select_department")
 
@@ -51,10 +55,16 @@
     rules: {
       department: {
         required: true
+      },
+      title: {
+        required: true
       }
     }, //end of rules
     messages: {
       department: {
+        required: "<small class='right val red-text'>This field is required</small>"
+      },
+      title: {
         required: "<small class='right val red-text'>This field is required</small>"
       }
     }, //end of messages
@@ -72,7 +82,7 @@
 
     }); //end of document.ready
 
-
+ 
     //////////////////////Functions///////////////////////
     function select_department(model_url, html_class_OR_id) {
       $.ajax({
@@ -84,6 +94,17 @@
         } //end of success function
       }) //end of ajax
     } //end of select_department
+
+    function select_position(model_url, html_class_OR_id){
+      $.ajax({
+          url:  model_url,
+          method: "GET",
+          success:function(Result){
+          //push the result on id or class
+            $(html_class_OR_id).html(Result);
+          }
+        });
+      }//end of select_department
 
 
     function select_active_user(model_url, html_class_OR_id) {
@@ -116,7 +137,7 @@
           if (Result == "error") {
             Materialize.toast("Sorry an error occured", 8000, 'red');
           } else if (Result == "success") {
-            Materialize.toast("User successfully deleted", 8000, 'green darken-2');
+            Materialize.toast("User successfully deleted", 8000, 'teal lighten-1');
           }
         }, //end of success function
 
@@ -138,7 +159,7 @@
           if (Result == "error") {
             Materialize.toast("Sorry an error occured", 8000, 'red');
           } else if (Result == "success") {
-            Materialize.toast("User successfully editd", 8000, 'green darken-2');
+            Materialize.toast("User successfully updated", 8000, 'teal lighten-1');
           }
         }, //end of success function
 

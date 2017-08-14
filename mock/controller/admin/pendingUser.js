@@ -82,7 +82,7 @@ function delete_pending_user(model_url,form_name){
           Materialize.toast("Sorry an error occured", 8000, 'red');
       }
       else if(Result == "success") {
-        Materialize.toast("User successfully deleted", 8000, 'green darken-2');
+        Materialize.toast("User successfully deleted", 8000, 'teal lighten-1');
       }
     },//end of success function
 
@@ -104,7 +104,7 @@ function approve_pending_user(model_url,form_name){
           Materialize.toast("Sorry an error occured", 8000, 'red');
       }
       else if(Result == "success") {
-        Materialize.toast("User access Granted", 8000, 'green darken-2');
+        Materialize.toast("User access Granted", 8000, 'teal lighten-1');
       }
     },//end of success function
 

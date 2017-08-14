@@ -9,7 +9,7 @@
     <title></title>
     <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
-    <link rel="stylesheet" href="../../assets/materialize/css/myStyle.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/admin.css">
     <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -41,7 +41,7 @@
                     <th>Gender</th>
                     <th>Mobile</th>
                     <th>Department</th>
-                    <th>Title</th>
+                    <th>Position</th>
                     <th>Access</th>
                     <th>Status</th>
                     <th colspan="2">Action</th>
@@ -82,11 +82,11 @@
 
           </div><!--end of modal-content-->
           <div class="modal-footer">
-            <button type="button" class="btn waves-effect modal-action modal-close green darken-2" id="btn_delete_deleted_user">Permanently Delete User</button>
+            <button type="button" class="btn waves-effect modal-action modal-close teal lighten-1" id="btn_delete_deleted_user">Permanently Delete User</button>
           </div>
         </div><!--end of modal-->
       </form>
-
+ 
       <a href="#restore_deleted_user_modal" class="hide btn modal-trigger trgr_restore_deleted_user ">activedel</a>
       <form id="frm_restore_deleted_user">
         <div class="modal" id="restore_deleted_user_modal">
@@ -109,7 +109,7 @@
 
           </div><!--end of modal-content-->
           <div class="modal-footer">
-            <button type="button" class="btn waves-effect modal-action modal-close green darken-2" id="btn_restore_deleted_user">Restore User Access</button>
+            <button type="button" class="btn waves-effect modal-action modal-close teal lighten-1" id="btn_restore_deleted_user">Restore User Access</button>
           </div>
         </div><!--end of modal-->
       </form>

@@ -36,7 +36,7 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
     <meta charset="utf-8">
     <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
-    <link rel="stylesheet" href="../../assets/materialize/css/myStyle.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/admin.css">
     <link rel="stylesheet" href="../../assets/sweetalert2/sweetalert2.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title></title>
@@ -70,7 +70,7 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
           </div>
 
           <div class="col s12 m2 l2"><br>
-            <button type="button" class="waves-effect btn right green darken-2" id="btn_submit">Submit</button>
+            <button type="button" class="waves-effect btn right teal lighten-1" id="btn_submit">Submit</button>
           </div>
 
           <div class="col s12 m12 l12"><br>

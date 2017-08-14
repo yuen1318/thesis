@@ -9,7 +9,7 @@ $(document).ready(function(){
   });
 
   //////////////////////////Form Validation/////////////////////////////////
-
+ 
   $('#btn_submit').on('click', function() {//validate on btn click
    if ($("#frm_signup").valid()){//check if all field is valid
       insert_admin("../../model/tbl_admin/insert/signup_admin.php","#frm_signup");
@@ -106,7 +106,7 @@ function select_position(model_url, html_class_OR_id){
         $("#error_email small").addClass("hide");
         $(form_name)[0].reset();
         $('#btn_clear').trigger('click');
-        Materialize.toast("Your Request is submitted, Frequently<br>check your email for updates", 8000, 'green darken-2');
+        Materialize.toast("Your Request is submitted, Frequently<br>check your email for updates", 8000, 'teal lighten-1');
       }
     }//end of success function
 
