@@ -64,6 +64,7 @@
              $("#notif_rejected_efile").load("../../model/tbl_efile/select/notif_rejected_efile.php");
              $('#reject_efile_modal').modal('close');
              $('#comment').val("");
+             $('#reject_pw').val("");
         } else {
             $('.val').addClass('animated bounceIn');
             $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
@@ -101,8 +102,21 @@
       }); //end of onclick
 
       $('#btn_delete_efile').on('click', function (event) {
-          delete_efile("../../model/tbl_efile/delete/delete_efile.php", "#frm_delete_efile");
-          $("#notif_rejected_efile").load("../../model/tbl_efile/select/notif_rejected_efile.php");
+
+        if ($("#frm_delete_efile").valid()) { //check if all field is valid
+            delete_efile("../../model/tbl_efile/delete/delete_efile.php", "#frm_delete_efile");
+            $("#notif_rejected_efile").load("../../model/tbl_efile/select/notif_rejected_efile.php");
+            $('#delete_efile_modal').modal('close');
+            $('#delete_pw').val("");
+       } else {
+           $('.val').addClass('animated bounceIn');
+           $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+               $('.val').removeClass('animated');
+           });
+       } //end of else
+
+
+          
       }); //end of onclick
       /////////////////end delete efile
 
@@ -133,13 +147,45 @@
 
        $("#frm_reject_efile").validate({ //form validation
         rules: {
+            reject_pw: {
+                required: true,
+                equalTo: "#reject_rpw"
+            },
             comment: {
                 required: true
             }
         }, //end of rules
         messages: {
+            reject_pw: {
+                required: "<small class='right val red-text'>This field is required</small>",
+                equalTo: "<small class='right val red-text'>Wrong password!</small>"
+            },
             comment: {
                 required: "<small class='right val red-text'>This field is required</small>"
+            }
+        }, //end of messages
+        errorElement: 'div',
+        errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            } //end of errorElement
+    }); //end of validate
+
+    $("#frm_delete_efile").validate({ //form validation
+        rules: {
+            delete_pw: {
+                required: true,
+                equalTo: "#delete_rpw"
+            }
+        }, //end of rules
+        messages: {
+            delete_pw: {
+                required: "<small class='right val red-text'>This field is required</small>",
+                equalTo: "<small class='right val red-text'>Wrong password!</small>"
             }
         }, //end of messages
         errorElement: 'div',

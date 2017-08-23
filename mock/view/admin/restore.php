@@ -109,9 +109,24 @@
              var file_extension = file_name.split('.')[1];
              var final_extension = file_extension.toLowerCase();
 
-             if (final_extension == "sql") {
+             var file_check = file_name.replace(/^.*[\\\/]/, '');
 
-                $("#frm_restore").submit();
+             if (final_extension == "sql") {
+              if( file_check  == "mock.sql"){
+               $("#frm_restore").submit();
+              }
+              else{
+
+                swal({
+                     title: 'Error',
+                     text: "File name must be mock.sql" ,
+                     type: 'error',
+                     confirmButtonText: 'Ok',
+                     confirmButtonClass: 'btn waves-effect teal lighten-1',
+                     buttonsStyling: false
+                 }); //end of swal
+              }
+                
              } //end of if
              else {
                  swal({

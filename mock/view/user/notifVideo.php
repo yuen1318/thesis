@@ -39,7 +39,7 @@
   </head>
 
   <body class="grey lighten-3">
-
+ 
     <?php require 'nav.php'; ?>
 
  
@@ -141,8 +141,11 @@
             <h5 class="center">Are you sure you want to reject this video?</h5><br>
 
             <div class="row hide">
-              <div class="col s4">
+              <div class="col s6">
                 <input type="text" name="reject_id" id="reject_id">
+              </div>
+              <div class="col s6">
+                <input type="text" name="reject_rpw" id="reject_rpw" value="<?php echo $_SESSION['user_pw']?>">
               </div>
             </div>
 
@@ -157,6 +160,14 @@
                 </select>                   
               </div>
             </div>
+
+            <div class="row ">
+              <div class="col s12">
+                <label for="reject_pw">Authenticate</label>
+                <input type="text" class="active" name="reject_pw" id="reject_pw" placeholder="Password">
+              </div>
+            </div>
+
 
           </div>
           <!--end of modal-content-->
@@ -226,16 +237,26 @@
             <h5 class="center">Are you sure you want to delete this video?</h5><br>
 
             <div class="row hide">
-              <div class="col s4">
+              <div class="col s6">
                 <input type="text" name="delete_id" id="delete_id">
+              </div>
+              
+              <div class="col s6">
+                <input type="text" name="delete_rpw" id="delete_rpw" value="<?php echo $_SESSION['user_pw']?>">
               </div>
             </div>
 
+            <div class="row ">
+              <div class="col s12">
+                <label for="delete_pw">Authenticate</label>
+                <input type="text" class="active" name="delete_pw" id="delete_pw" placeholder="Password">
+              </div>
+            </div>
 
           </div>
           <!--end of modal-content-->
           <div class="modal-footer">
-            <button type="button" class="btn waves-effect modal-action modal-close green darken-2" id="btn_delete_video">Delete</button>
+            <button type="button" class="btn waves-effect green darken-2" id="btn_delete_video">Delete</button>
           </div>
         </div>
         <!--end of modal-->
@@ -249,7 +270,7 @@
             <h5 class="center">Are you sure you want to edit this video?</h5><br>
 
             <div class="row hide">
-              <div class="col s4">
+              <div class="col s6">
                 <input type="text" name="edit_id" id="edit_id">
               </div>
             </div>
@@ -257,7 +278,8 @@
             <div class="input-field">
               <input type="text" name="video" id="video">
             </div>
-
+            
+            
 
 
           </div>

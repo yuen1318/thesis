@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+ 
     //this code lets the scrollbar go down when the page load
     $('#chat_history').animate({scrollTop:5000}, 1000);
 
@@ -10,7 +10,7 @@ $(document).ready(function() {
     } //end of if 
  
     //get list of user for chat
-    select_chat_list("../../model/tbl_user/select/select_chat_list.php", "#chat_list");
+    select_chat_list("../../model/tbl_admin/select/select_chat_list.php", "#chat_list");
     //select the person u want to chat with and get conversation history
     send_chat_pick("../../model/tbl_chat/select/select_chat_history.php", "#frm_chat_pick", "#chat_history");
 

@@ -58,7 +58,8 @@
              reject_excel("../../model/tbl_file/update/reject_excel.php", "#frm_reject_excel");
              $("#notif_rejected_excel").load("../../model/tbl_efile/select/notif_rejected_excel.php");
              $('#reject_excel_modal').modal('close');
-             $('#approve_pw').val("");
+             $('#comment').val("");
+             $('#reject_pw').val("");
         } else {
             $('.val').addClass('animated bounceIn');
             $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
@@ -69,7 +70,7 @@
  
      }); //end of onclick
      /////////////////end of reject excel
-
+ 
      /////////////////publish excel
      $(document).on('click', '.publish_excel', function () {
          //bind html5 data attributes to variables
@@ -97,8 +98,17 @@
      }); //end of onclick
 
      $('#btn_delete_excel').on('click', function (event) {
-         delete_excel("../../model/tbl_file/delete/delete_excel.php", "#frm_delete_excel");
-         $("#notif_rejected_excel").load("../../model/tbl_efile/select/notif_rejected_excel.php");
+        if ($("#frm_delete_excel").valid()) { //check if all field is valid
+            delete_excel("../../model/tbl_file/delete/delete_excel.php", "#frm_delete_excel");
+            $("#notif_rejected_excel").load("../../model/tbl_efile/select/notif_rejected_excel.php");
+            $('#delete_excel_modal').modal('close');
+            $('#delete_pw').val("");
+       } else {
+           $('.val').addClass('animated bounceIn');
+           $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+               $('.val').removeClass('animated');
+           });
+       } //end of else      
      }); //end of onclick
      /////////////////end of delete excel
 
@@ -237,11 +247,19 @@
 
     $("#frm_reject_excel").validate({ //form validation
         rules: {
+            reject_pw: {
+                required: true,
+                equalTo: "#reject_rpw"
+            },
             comment: {
                 required: true
             }
         }, //end of rules
         messages: {
+            reject_pw: {
+                required: "<small class='right val red-text'>This field is required</small>",
+                equalTo: "<small class='right val red-text'>Wrong password!</small>"
+            },
             comment: {
                 required: "<small class='right val red-text'>This field is required</small>"
             }
@@ -256,6 +274,31 @@
                 }
             } //end of errorElement
     }); //end of validate
+
+    $("#frm_delete_excel").validate({ //form validation
+        rules: {
+            delete_pw: {
+                required: true,
+                equalTo: "#delete_rpw"
+            }
+        }, //end of rules
+        messages: {
+            delete_pw: {
+                required: "<small class='right val red-text'>This field is required</small>",
+                equalTo: "<small class='right val red-text'>Wrong password!</small>"
+            }
+        }, //end of messages
+        errorElement: 'div',
+        errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            } //end of errorElement
+    }); //end of validate
+  
 
  }); //end of document.ready
 

@@ -1,11 +1,11 @@
 <?php
   session_start();
   require '../../dbConfig.php';
-  require '../../a_functions/sanitize.php';
+
 
 
     try {
-        $department = strtoupper($_POST["department"]);
+        $department = $_POST["department"];
         $position = strtoupper($_POST["position"]);
         $sql = "INSERT INTO tbl_position(department,position) VALUES(?,?)";
         $stmt = $dbConn->prepare($sql);

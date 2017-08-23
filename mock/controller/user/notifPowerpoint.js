@@ -1,5 +1,5 @@
  $(document).ready(function () {
-
+ 
      //init tabs
      $('ul.tabs').tabs();
 
@@ -63,7 +63,8 @@
              reject_powerpoint("../../model/tbl_file/update/reject_powerpoint.php", "#frm_reject_powerpoint");
              $("#notif_rejected_powerpoint").load("../../model/tbl_efile/select/notif_rejected_powerpoint.php");
              $('#reject_powerpoint_modal').modal('close');
-             $('#approve_pw').val("");
+             $('#comment').val("");
+             $('#reject_pw').val("");;
         } else {
             $('.val').addClass('animated bounceIn');
             $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
@@ -85,8 +86,8 @@
      }); //end of onclick
 
      $('#btn_publish_powerpoint').on('click', function (event) {
-         publish_powerpoint("../../model/tbl_file/update/publish_powerpoint.php", "#frm_publish_powerpoint");
-         $("#notif_publish_powerpoint").load("../../model/tbl_efile/select/notif_publish_powerpoint.php");
+        publish_powerpoint("../../model/tbl_file/update/publish_powerpoint.php", "#frm_publish_powerpoint");
+        $("#notif_publish_powerpoint").load("../../model/tbl_efile/select/notif_publish_powerpoint.php"); 
      }); //end of onclick
      /////////////////end of publish powerpoint
 
@@ -101,8 +102,18 @@
      }); //end of onclick
 
      $('#btn_delete_powerpoint').on('click', function (event) {
-         delete_powerpoint("../../model/tbl_file/delete/delete_powerpoint.php", "#frm_delete_powerpoint");
-         $("#notif_rejected_powerpoint").load("../../model/tbl_efile/select/notif_rejected_powerpoint.php");
+        if ($("#frm_delete_powerpoint").valid()) { //check if all field is valid        
+            delete_powerpoint("../../model/tbl_file/delete/delete_powerpoint.php", "#frm_delete_powerpoint");
+            $("#notif_rejected_powerpoint").load("../../model/tbl_efile/select/notif_rejected_powerpoint.php");
+            $('#delete_powerpoint_modal').modal('close');
+            $('#delete_pw').val("");
+       } else {
+           $('.val').addClass('animated bounceIn');
+           $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+               $('.val').removeClass('animated');
+           });
+       } //end of else 
+        
      }); //end of onclick
      /////////////////end of delete powerpoint
 
@@ -240,11 +251,19 @@
 
     $("#frm_reject_powerpoint").validate({ //form validation
         rules: {
+            reject_pw: {
+                required: true,
+                equalTo: "#reject_rpw"
+            },
             comment: {
                 required: true
             }
         }, //end of rules
         messages: {
+            reject_pw: {
+                required: "<small class='right val red-text'>This field is required</small>",
+                equalTo: "<small class='right val red-text'>Wrong password!</small>"
+            },
             comment: {
                 required: "<small class='right val red-text'>This field is required</small>"
             }
@@ -259,6 +278,31 @@
                 }
             } //end of errorElement
     }); //end of validate
+
+    $("#frm_delete_powerpoint").validate({ //form validation
+        rules: {
+            delete_pw: {
+                required: true,
+                equalTo: "#delete_rpw"
+            }
+        }, //end of rules
+        messages: {
+            delete_pw: {
+                required: "<small class='right val red-text'>This field is required</small>",
+                equalTo: "<small class='right val red-text'>Wrong password!</small>"
+            }
+        }, //end of messages
+        errorElement: 'div',
+        errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            } //end of errorElement
+    }); //end of validate
+  
 
  }); //end of document.ready
 

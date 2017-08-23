@@ -5,7 +5,24 @@
 
 
 
+
+  if(isset($_SESSION["user_email"])){
+    
   $email = $_SESSION["user_email"];
+  }
+  else if(isset($_SESSION["admin_email"])){
+   
+  $email = $_SESSION["admin_email"];
+  }
+  elseif(isset($_SESSION["sudo_email"])){
+   
+  $email = $_SESSION["sudo_email"];
+  }
+  else{
+    echo"error";
+  }
+
+
   $msg = sanitize($_POST["msg"]);
   $recepient =sanitize($_POST["recepient"]);
   $time= date("g:i a, Y, F j");

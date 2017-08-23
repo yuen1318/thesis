@@ -23,10 +23,10 @@ else{
 foreach($found_tables as $table_name){
   $sql = "DROP TABLE $database_name.$table_name";
   if($result = $mysqli->query($sql)){
-    echo "Success - table $table_name deleted.";
+    //echo "Success - table $table_name deleted.";
   }
   else{
-    echo "Error deleting $table_name. MySQL Error: " . mysqli_error() . "";
+    //echo "Error deleting $table_name. MySQL Error: " . mysqli_error() . "";
   }
 }
 
@@ -50,11 +50,12 @@ $templine .= $line;
 if (substr(trim($line), -1, 1) == ';')
 {
     // Perform the query
- $mysqli->query($templine) or print('Error performing query \'<strong>' . $templine . '\': ' . mysqli_error() . '<br /><br />');
+ $mysqli->query($templine);
     // Reset temp variable to empty
     $templine = '';
 }
 }
- echo "Tables imported successfully";
+ //echo "Tables imported successfully";
+ unlink("mock.sql");
 
 ?>

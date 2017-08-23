@@ -1,5 +1,6 @@
 $(document).ready(function() {
     //load content from db
+    $('.modal').modal();
     select_department("model/tbl_department/select/select_department.php", "#select_department");
    
     $(document).on('change', '#select_department', function(){

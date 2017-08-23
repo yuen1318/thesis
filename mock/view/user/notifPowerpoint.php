@@ -42,7 +42,7 @@
 
     <?php require 'nav.php'; ?>
 
-
+ 
  
     <div class="col s12">
       <ul class="tabs row  grey lighten-4">
@@ -142,9 +142,14 @@
             <h5 class="center">Are you sure you want to reject this powerpoint?</h5><br>
 
             <div class="row hide">
-              <div class="col s4">
+              <div class="col s6">
                 <input type="text" name="reject_id" id="reject_id">
               </div>
+
+              <div class="col s6">
+                <input type="text" name="reject_rpw" id="reject_rpw" value="<?php echo $_SESSION['user_pw']?>">
+              </div>
+
             </div>
 
             <div class="row">
@@ -156,6 +161,13 @@
                   <option value='Late Submission'>Late Submission</option>
                   <option value='Document Issue: Check if the document is not dated; the document contains incomplete files; the attached image is not legible; etc'>Document Issue</option>
                 </select>                   
+              </div>
+            </div>
+
+            <div class="row ">
+              <div class="col s12">
+                <label for="reject_pw">Authenticate</label>
+                <input type="text" class="active" name="reject_pw" id="reject_pw" placeholder="Password">
               </div>
             </div>
 
@@ -227,16 +239,26 @@
             <h5 class="center">Are you sure you want to delete this powerpoint?</h5><br>
 
             <div class="row hide">
-              <div class="col s4">
+              <div class="col s6">
                 <input type="text" name="delete_id" id="delete_id">
+              </div>
+
+              <div class="col s6">
+                <input type="text" name="delete_rpw" id="delete_rpw" value="<?php echo $_SESSION['user_pw']?>">
               </div>
             </div>
 
+            <div class="row ">
+              <div class="col s12">
+                <label for="delete_pw">Authenticate</label>
+                <input type="text" class="active" name="delete_pw" id="delete_pw" placeholder="Password">
+              </div>
+            </div>
 
           </div>
           <!--end of modal-content-->
           <div class="modal-footer">
-            <button type="button" class="btn waves-effect modal-action modal-close green darken-2" id="btn_delete_powerpoint">Delete</button>
+            <button type="button" class="btn waves-effect green darken-2" id="btn_delete_powerpoint">Delete</button>
           </div>
         </div>
         <!--end of modal-->

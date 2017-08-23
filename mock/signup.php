@@ -35,6 +35,10 @@
  
     <!--Sign Up form-->
   <br>
+
+            
+  
+
           <div class="container">
              <div class="row">
                 <div class="col s12 m10 offset-m1">
@@ -147,7 +151,8 @@
  
 
 
-
+ 
+    
   </body>
 
   <script src="assets/jquery/jquery.min.js" charset="utf-8"></script>

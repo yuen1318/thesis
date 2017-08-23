@@ -159,7 +159,7 @@
   <!--end of collapsible-->
 
   <li>
-    <a href="#"><span class="fa fa-comments fa-lg">&emsp;</span>Chat Room</a>
+    <a href="chatRoom.php"><span class="fa fa-comments fa-lg">&emsp;</span>Chat Room</a>
   </li>
 
 

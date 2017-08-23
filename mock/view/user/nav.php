@@ -8,7 +8,7 @@
       </ul>
       <!--end of ul-->&emsp;&emsp;
 
-      <a href="#" class="brand-logo hide-on-med-and-down" style="font-size:23px !important;">Electronic Tracking System</a>
+      <a href="#" class="brand-logo hide-on-med-and-down" style="font-size:23px !important;">Electronic File Tracking System</a>
 
 
       <ul class="right ">

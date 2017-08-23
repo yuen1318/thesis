@@ -2,10 +2,23 @@
   session_start();
   require '../../dbConfig.php';
   $path = "../../DB/profile";
-  $me = $_SESSION['user_email'];
+  
+
+  if(isset($_SESSION["user_email"])){
+    $me = $_SESSION['user_email'];
+  }
+  else if(isset($_SESSION["admin_email"])){
+    $me = $_SESSION['admin_email'];
+  }
+  elseif(isset($_SESSION["sudo_email"])){
+    $me = $_SESSION['sudo_email'];
+  }
+  else{
+    echo"error";
+  }
   $them = $_POST['chat_pick'];
 
-  $sql ="SELECT * FROM (SELECT * FROM tbl_chat ORDER BY num DESC LIMIT 6) t ORDER BY num ASC";
+  $sql ="SELECT * FROM (SELECT * FROM tbl_chat ORDER BY num DESC LIMIT 20) t ORDER BY num ASC";
   $stmt =  $dbConn->prepare($sql);
   $stmt ->  execute();
   $table  = $stmt;

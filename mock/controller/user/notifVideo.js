@@ -58,7 +58,7 @@
              reject_video("../../model/tbl_file/update/reject_video.php", "#frm_reject_video");
              $("#notif_rejected_video").load("../../model/tbl_efile/select/notif_rejected_video.php");
              $('#reject_video_modal').modal('close');
-             $('#approve_pw').val("");
+             $('#reject_pw').val("");
         } else {
             $('.val').addClass('animated bounceIn');
             $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
@@ -95,8 +95,20 @@
      }); //end of onclick
 
      $('#btn_delete_video').on('click', function (event) {
-         delete_video("../../model/tbl_file/delete/delete_video.php", "#frm_delete_video");
-         $("#notif_rejected_video").load("../../model/tbl_efile/select/notif_rejected_video.php");
+
+        if ($("#frm_delete_video").valid()) { //check if all field is valid
+            delete_video("../../model/tbl_file/delete/delete_video.php", "#frm_delete_video");
+            $("#notif_rejected_video").load("../../model/tbl_efile/select/notif_rejected_video.php");
+            $('#delete_video_modal').modal('close');
+            $('#delete_pw').val("");
+       } else {
+           $('.val').addClass('animated bounceIn');
+           $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+               $('.val').removeClass('animated');
+           });
+       } //end of else   
+
+         
      }); //end of onclick
      /////////////////end of delete video
 
@@ -113,7 +125,7 @@
          }) //end of swal
      }); //end of onclick
      /////////////////end of view rejection
-
+ 
      /////////////////edit video
      $(document).on('click', '.edit_video', function () {
          //bind html5 data attributes to variables
@@ -201,11 +213,19 @@
 
     $("#frm_reject_video").validate({ //form validation
         rules: {
+            reject_pw: {
+                required: true,
+                equalTo: "#reject_rpw"
+            },
             comment: {
                 required: true
             }
         }, //end of rules
         messages: {
+            reject_pw: {
+                required: "<small class='right val red-text'>This field is required</small>",
+                equalTo: "<small class='right val red-text'>Wrong password!</small>"
+            },
             comment: {
                 required: "<small class='right val red-text'>This field is required</small>"
             }
@@ -220,6 +240,31 @@
                 }
             } //end of errorElement
     }); //end of validate
+
+    $("#frm_delete_video").validate({ //form validation
+        rules: {
+            delete_pw: {
+                required: true,
+                equalTo: "#delete_rpw"
+            }
+        }, //end of rules
+        messages: {
+            delete_pw: {
+                required: "<small class='right val red-text'>This field is required</small>",
+                equalTo: "<small class='right val red-text'>Wrong password!</small>"
+            }
+        }, //end of messages
+        errorElement: 'div',
+        errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            } //end of errorElement
+    }); //end of validate
+
 
  }); //end of document.ready
 
