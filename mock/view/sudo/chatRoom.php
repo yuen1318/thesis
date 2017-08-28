@@ -27,13 +27,13 @@
       #chat_history {
         overflow: scroll;
         height: 60vh;
-        border: 2px solid #26a69a;
+        border: 2px solid #37474f;
       }
 
       #chat_msg {
         overflow: scroll;
         height: 15vh;
-        border: 2px solid #26a69a;
+        border: 2px solid #37474f;
       }
 
       @media only screen and (max-width: 992px) {
@@ -79,7 +79,7 @@
         <form id="frm_chat">
           <input class='hide' type="text" name="recepient" value="<?php echo $chat_pick?>">
           <textarea class="row" id="chat_msg" placeholder="message here" name="msg"></textarea><br>
-          <button type="button" class="waves-effect btn teal lighten-1 right" id="btn_frm_chat">Send</button>
+          <button type="button" class="waves-effect btn blue-grey darken-3 right" id="btn_frm_chat">Send</button>
         </form>
         <!--end of form-->
 

@@ -121,7 +121,7 @@
             <div class="row ">
               <div class="col s12">
                 <label for="approve_pw">Authenticate</label>
-                <input type="text" class="active" name="approve_pw" id="approve_pw" placeholder="Password">
+                <input type="password" class="active" name="approve_pw" id="approve_pw" placeholder="Password">
               </div>
             </div>
 
@@ -167,7 +167,7 @@
             <div class="row ">
               <div class="col s12">
                 <label for="reject_pw">Authenticate</label>
-                <input type="text" class="active" name="reject_pw" id="reject_pw" placeholder="Password">
+                <input type="password" class="active" name="reject_pw" id="reject_pw" placeholder="Password">
               </div>
             </div>
 
@@ -251,7 +251,7 @@
             <div class="row ">
               <div class="col s12">
                 <label for="delete_pw">Authenticate</label>
-                <input type="text" class="active" name="delete_pw" id="delete_pw" placeholder="Password">
+                <input type="password" class="active" name="delete_pw" id="delete_pw" placeholder="Password">
               </div>
             </div>
 

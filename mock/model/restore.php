@@ -57,5 +57,8 @@ if (substr(trim($line), -1, 1) == ';')
 }
  //echo "Tables imported successfully";
  unlink("mock.sql");
+ header("Location:../view/restore_success.php");
 
 ?>
+
+

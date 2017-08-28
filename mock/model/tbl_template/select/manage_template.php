@@ -30,13 +30,13 @@
               <td class='name'>  $row[name] </td>
 
               <td>
-                <a href='editTemplate.php?$row[tmp_id]' class='btn waves-effect green darken-2' target='_blank'>
+                <a href='editTemplate.php?$row[tmp_id]' class='btn waves-effect teal lighten-1' target='_blank'>
                   <span class='fa fa-edit fa-lg'></span>
                 </a>
               </td>
 
               <td>
-              <button class='btn waves-effect fa fa-trash fa-lg green darken-2
+              <button class='btn waves-effect fa fa-trash fa-lg teal lighten-1
               delete_template' data-delete-template-id = '$row[tmp_id]'
               </button>
               </td>

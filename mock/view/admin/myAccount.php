@@ -44,9 +44,11 @@ require 'session.php';
         <div class="col s12 m3 l3  ">
           <div class="card transparent ">
             <div class="card-content">
+              <p class="center"><?php echo $_SESSION["admin_department"]?></p><br>
               <img class="responsive-img" src="../../DB/profile/<?php echo $_SESSION['admin_photo']?>" alt="" width="200" height="150">
               <a href="#upload_img_modal" class="btn-floating halfway-fab waves-effect waves-light teal lighten-1  modal-trigger"><i class="fa fa-camera"></i></a>
               <img class="responsive-img" src="../../DB/signature/<?php echo $_SESSION['admin_email']?>.png" alt="" width="150" height="80">
+              <br><br><p class="center"><?php echo $_SESSION["admin_title"]?></p>
             </div>
           </div>
           <!--end of card-->

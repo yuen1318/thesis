@@ -8,7 +8,7 @@
     $DbName             = "mock";
     $backup_name        = "fafa";
     $tables             =  array("tbl_admin","tbl_admin_news","tbl_chat","tbl_department","tbl_efile","tbl_efile_trgr","tbl_file","tbl_file_trgr","tbl_news","tbl_photo","tbl_position","tbl_sudo","tbl_template","tbl_user");
- 
+
    //or add 5th parameter(array) of specific tables:    array("mytable1","mytable2","mytable3") for multiple tables
 
     Export_Database($mysqlHostName,$mysqlUserName,$mysqlPassword,$DbName,  $tables=false, $backup_name=false );
