@@ -95,6 +95,10 @@
     <a href="manage_position.php"><span class="fa fa-address-card fa-lg">&emsp;</span>Manage Position</a>
   </li>
 
+  <li>
+    <a href="manage_instruction.php"><span class="fa fa-cogs fa-lg">&emsp;</span>Manage Instruction</a>
+  </li>
+
 
   <li>
     <!--collapsible-->

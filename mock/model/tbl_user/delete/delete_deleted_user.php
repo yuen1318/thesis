@@ -1,4 +1,4 @@
-<?php
+<?php 
   session_start();
   require '../../dbConfig.php';
   require '../../a_functions/sanitize.php';

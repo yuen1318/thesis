@@ -1,7 +1,6 @@
  $(document).ready(function(){
 
-    select_department("../../model/tbl_department/select/select_department.php", "#select_department");
-
+   
     $('.button-collapse').sideNav({menuWidth: 255});
 
     $('.input-field').keypress(function(event) {
@@ -37,13 +36,26 @@
         confirmButtonClass: 'btn waves-effect teal lighten-1',
         buttonsStyling: false
         });//end of swal
+ 
       }//end of else if
 
       else {
-        //finalize the content
-        var ckeditor_content = CKEDITOR.instances.id_content.getData();
-        $("#id_content").val(ckeditor_content);
-        add_global_template("../../model/tbl_template/insert/add_global_template.php", "#frm_add_template");
+          //finalize the content
+          var ckeditor_content = CKEDITOR.instances.id_content.getData();
+          $("#id_content").val(ckeditor_content);
+          add_global_template("../../model/tbl_template/insert/add_global_template.php", "#frm_add_template");
+            swal({
+              title: 'Success',
+              text: "Template successfully created",
+              type: 'success',
+              confirmButtonText: 'Ok',
+              confirmButtonClass: 'btn waves-effect teal lighten-1',
+              buttonsStyling: false,
+              allowOutsideClick: false
+          }).then(function() {
+              // Redirect the user
+              window.location.href = "manageTemplate.php";
+          }); //end of swal 
       }//end of else
     });//end of btn click
 
@@ -77,16 +89,6 @@
 
 
   //////////////////////////////////Functions/////////////////////////////
-  function select_department(model_url, html_class_OR_id){
-  $.ajax({
-      url:  model_url,
-      method: "GET",
-      success:function(Result){
-      //push the result on id or class
-        $(html_class_OR_id).html(Result);
-      }
-    });
-  }//end of select_department
 
   function add_global_template(model_url,form_name){
     $.ajax({

@@ -7,6 +7,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="../../assets/materialize/css/animate.css">
     <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
     <link rel="stylesheet" href="../../assets/materialize/css/admin.css">
@@ -31,7 +32,7 @@
               </div>
             </div>
 
-
+ 
             <table class="bordered centered responsive-table striped">
               <thead>
                 <tr>
@@ -67,22 +68,25 @@
             <h5 class="center">Are you sure you want to permanently delete this user?</h5><br>
 
             <div class="row hide">
-              <div class="col s4">
+              <div class="col s6">
                 <input type="text" name="delete_id" id="delete_id">
               </div>
 
-              <div class="col s4">
-                <input type="text" name="delete_access" id="delete_access">
+              <div class="col s6">
+                <input type="text" name="delete_rpw" id="delete_rpw" value="<?php echo $_SESSION['admin_pw']?>">
               </div>
+            </div>
 
-              <div class="col s4">
-                <input type="text" name="delete_status" id="delete_status">
+            <div class="row">
+              <div class="col s12">
+                <label for="delete_pw">Authenticate</label>
+                <input type="password" class="active" name="delete_pw" id="delete_pw" placeholder="Password">
               </div>
             </div>
 
           </div><!--end of modal-content-->
           <div class="modal-footer">
-            <button type="button" class="btn waves-effect modal-action modal-close teal lighten-1" id="btn_delete_deleted_user">Permanently Delete User</button>
+            <button type="button" class="btn waves-effect teal lighten-1" id="btn_delete_deleted_user">Permanently Delete User</button>
           </div>
         </div><!--end of modal-->
       </form>
@@ -94,22 +98,26 @@
             <h5 class="center">Are you sure you want to restore this user an access?</h5><br>
 
             <div class="row hide">
-              <div class="col s4">
+              <div class="col s6">
                 <input type="text" name="restore_id" id="restore_id">
               </div>
 
-              <div class="col s4">
-                <input type="text" name="restore_access" id="restore_access">
+              <div class="col s6">
+                <input type="text" name="restore_rpw" id="restore_rpw" value="<?php echo $_SESSION['admin_pw']?>">
               </div>
 
-              <div class="col s4">
-                <input type="text" name="restore_status" id="restore_status">
+            </div>
+
+            <div class="row">
+              <div class="col s12">
+                <label for="restore_pw">Authenticate</label>
+                <input type="password" class="active" name="restore_pw" id="restore_pw" placeholder="Password">
               </div>
             </div>
 
           </div><!--end of modal-content-->
           <div class="modal-footer">
-            <button type="button" class="btn waves-effect modal-action modal-close teal lighten-1" id="btn_restore_deleted_user">Restore User Access</button>
+            <button type="button" class="btn waves-effect teal lighten-1" id="btn_restore_deleted_user">Restore User Access</button>
           </div>
         </div><!--end of modal-->
       </form>
@@ -120,6 +128,8 @@
   </body>
 
   <script src="../../assets/jquery/jquery.min.js" charset="utf-8"></script>
+  <script src="../../assets/jquery/jquery.validate.min.js" charset="utf-8"></script>
+  <script src="../../assets/jquery/jquery.additionalMethod.min.js" charset="utf-8"></script>
   <script src="../../assets/materialize/js/materialize.min.js" charset="utf-8"></script>
   <script src="../../assets/listjs/list.min.js" charset="utf-8"></script>
   <script src="../../assets/listjs/list.pagination.min.js" charset="utf-8"></script>

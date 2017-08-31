@@ -27,14 +27,20 @@
          data: $(form_name).serialize(),
          dataType: "text",
          success: function(Result) {
-             swal({
-                 title: 'Success',
-                 text: "Efile successfully published",
-                 type: 'success',
-                 confirmButtonText: 'Ok',
-                 confirmButtonClass: 'btn waves-effect green darken-2',
-                 buttonsStyling: false
-             }); //end of swal
+
+                swal({
+                    title: 'Success',
+                    text: "Efile successfully published",
+                    type: 'success',
+                    confirmButtonText: 'Ok',
+                    confirmButtonClass: 'btn waves-effect green darken-2',
+                    buttonsStyling: false,
+                    allowOutsideClick: false
+                }).then(function() {
+                    // Redirect the user
+                    window.location.href = "index.php";
+                }); //end of swal
+
          }, //end of success function
          error: function(Result) {
              alert("Error");

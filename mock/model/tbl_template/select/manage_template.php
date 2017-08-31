@@ -2,32 +2,25 @@
   session_start();
   require '../../dbConfig.php';
 
-  if (isset($_SESSION['user_email']) ) {
-    $owner = $_SESSION['user_email'];
-    $department = $_SESSION['user_department'];
-  }
-  else if ( isset($_SESSION['admin_email']) ) {
-    $owner = $_SESSION['admin_email'];
+
+ 
     $department = $_SESSION['admin_department'];
-  }
-  else {
-    $owner = $_SESSION['sudo_email'];
-    $department = $_SESSION['sudo_department'];
-  }
 
 
-  $sql ="SELECT * FROM tbl_template  ORDER BY num DESC";
+  $sql ="SELECT * FROM tbl_template WHERE department =? ORDER BY num DESC";
   if (!empty($dbConn)) {
     $stmt =  $dbConn->prepare($sql);
+    $stmt->bindValue(1, $department);
     $stmt ->  execute();
     $table  = $stmt;
 
     foreach ($table as $row) {
-      if ($row['owner'] == $owner) {
+     
         echo "<tr>
               <td class='hide'>  $row[num]  </td>
               <td class='tmp_id'>  $row[tmp_id] </td>
               <td class='name'>  $row[name] </td>
+              <td class=''>  $row[department] </td>
 
               <td>
                 <a href='editTemplate.php?$row[tmp_id]' class='btn waves-effect teal lighten-1' target='_blank'>
@@ -42,24 +35,9 @@
               </td>
 
               </tr>";
-      }
+   
 
-      if ($row['department'] == $department) {
-        echo "<tr>
-              <td class='hide'>  $row[num]  </td>
-              <td class='tmp_id'>  $row[tmp_id] </td>
-              <td class='name'>  $row[name] </td>
-
-              <td>
-                Global Template
-              </td>
-
-              <td>
-                Protected
-              </td>
-
-              </tr>";
-      }
+      
 
     }//end of foreach
 

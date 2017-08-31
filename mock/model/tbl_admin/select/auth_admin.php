@@ -39,6 +39,7 @@ if ($count == 1){ //if email exist extract info and store it in variable
 		$_SESSION['admin_mn'] = $stored_mn;
 		$_SESSION['admin_email'] = $stored_email;
 		$_SESSION['admin_password'] = $stored_password;
+		$_SESSION['admin_pw'] = $password;
 		$_SESSION['admin_gender'] = $stored_gender;
 		$_SESSION['admin_mobile'] = $stored_mobile;
 		$_SESSION['admin_department'] = $stored_department;

@@ -3,14 +3,17 @@
   require '../../dbConfig.php';
   require '../../a_functions/sanitize.php';
 
+  $update_on = date("Y, F j, g:i a");
+
   $doc_id = $_POST['approve_id'];
-  $email = $_SESSION['user_email'] ;
+  $email = $_SESSION['user_email'];
+  $user_info = $_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln'];
   $user_signature = "<br><div style='display:inline-block !important; text-align:center !important'>
                     <img src='../../DB/signature/$email.png' width='150'><br>
                     $_SESSION[user_fn] $_SESSION[user_mn] $_SESSION[user_ln] <br>
                     $_SESSION[user_title]
                     </div>";
-
+ 
   #step 1 select the efile
   $sql = "SELECT * FROM tbl_efile WHERE doc_id=?";
   $stmt = $dbConn->prepare($sql);
@@ -70,7 +73,7 @@
         $stmt = $dbConn->prepare($sql3);
         $stmt->bindValue(1, $doc_id);
         $stmt->bindValue(2, $efile_name);
-        $stmt->bindValue(3, $email);
+        $stmt->bindValue(3, $user_info."</br> (".$email.")");
         $stmt->bindValue(4, $date);
         $stmt->bindValue(5, $time);
         $stmt->bindValue(6, $signatories);
@@ -81,11 +84,30 @@
         $stmt->bindValue(11, $created_by);
         $stmt->execute();
 
-        echo "success";
-      }
+        if ($stmt) {
+          $sql4 = "INSERT INTO tbl_efile_trgr(doc_id,name,pending_signatories,approved_signatories,disapproved,comment,status,action,date_time) VALUES(?,?,?,?,?,?,?,?,?)";
+          $stmt = $dbConn->prepare($sql4);
+          $stmt->bindValue(1, $doc_id);
+          $stmt->bindValue(2, $efile_name);
+          $stmt->bindValue(3, implode("," , $updated_pending_signatories) );
+          $stmt->bindValue(4, $updated_approved_signatories);
+          $stmt->bindValue(5, "");
+          $stmt->bindValue(6, "");
+          $stmt->bindValue(7, "pending");
+          $stmt->bindValue(8, "UPDATE");
+          $stmt->bindValue(9, $update_on);
+          $stmt->execute();
+          
+          echo "success";
+        }//end of if
+        else {
+          echo "error";
+        }//end of else
+
+      }//end of if
       else {
         echo "error";
-      }
+      }//end of else
 
 
 

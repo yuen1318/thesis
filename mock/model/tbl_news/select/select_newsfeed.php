@@ -61,13 +61,19 @@
               
               <p class='sgn'>List of Signatories:<br>$row[signatories]</p><br>
               <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[pending_signatories]</p><br>
-              <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[approved_signatories]</p>
-
-              <a href='../../DB/excel/$row[doc_id]' target='_blank' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>
-            </li><br>";
+              <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[approved_signatories]</p>";
+              
+              if(file_exists("../../../DB/excel/$row[doc_id]")){
+                echo "<a href='../../DB/excel/$row[doc_id]' target='_blank' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>";
+              }
+              else{
+                echo "<a href='../404.php' target='_blank' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>";
+              }
+             
+            echo "</li><br>";
        }//end of if
      }//end of else if
-
+ 
      #if doc_id is powerpoint
      elseif (strpos($row['doc_id'], 'powerpoint') !== false) {
          if (in_array($email, $signatories) || $row['email'] == $email || $row['created_by'] == $email) {
@@ -82,10 +88,16 @@
 
             <p class='sgn'>List of Signatories:<br>$row[signatories]</p><br>
             <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[pending_signatories]</p><br>
-            <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[approved_signatories]</p>
-
-            <a href='../../DB/powerpoint/$row[doc_id]' target='_blank' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>
-          </li><br> ";
+            <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[approved_signatories]</p>";
+            
+            if(file_exists("../../../DB/powerpoint/$row[doc_id]")){
+              echo "<a href='../../DB/powerpoint/$row[doc_id]' target='_blank' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>";
+            }
+            else{
+              echo "<a href='../404.php' target='_blank' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>";
+            }
+            
+            echo "</li><br>";
       }//end of if
     }//end of else if
 
@@ -102,10 +114,10 @@
             <p>$row[msg]</p>
             <p class='doc_id'>Document ID: $row[doc_id]</p>
             <p class='name'> Name: $row[name]</p>
-            
             <p class='sgn'>List of Signatories:<br>$row[signatories]</p><br>
             <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[pending_signatories]</p><br>
             <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[approved_signatories]</p>
+            
             <a href='viewVideo.php?$row[doc_id]' target='_blank' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>
           </li><br>";
      }//end of if

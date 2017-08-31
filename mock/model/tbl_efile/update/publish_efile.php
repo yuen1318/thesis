@@ -4,6 +4,8 @@
   require '../../../assets/qrcode/src/QrCode.php';
   use Endroid\QrCode\QrCode;
 
+  $update_on = date("Y, F j, g:i a");
+
   $doc_id = $_POST['doc_id'];
   $content = $_POST['content'];
   $signatures = $_POST['signatures'];
@@ -22,7 +24,7 @@
       $created_by =  $row['created_by'];
       $signatories =  $row['signatories'];
       $created_on = $row['created_on'];
-    }
+    }//end of if 
       if ($stmt) {
 
 
@@ -67,18 +69,18 @@
           $stmt ->  execute();
 
 
-      }
-
+      }// end of if
+ 
       if ($stmt) {
 
         $date = date("Y, F j");
         $time = date("g:i a");
-
+ 
         $sql3 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $dbConn->prepare($sql3);
         $stmt->bindValue(1, $doc_id);
         $stmt->bindValue(2, $name);
-        $stmt->bindValue(3, $email);
+        $stmt->bindValue(3, $full_name."</br> (".$email.")");
         $stmt->bindValue(4, $date);
         $stmt->bindValue(5, $time);
         $stmt->bindValue(6, $signatories);
@@ -89,12 +91,31 @@
         $stmt->bindValue(11, $created_by);
         $stmt->execute();
 
-        echo "success";
-      }
+          if ($stmt) {
+            $sql4 = "INSERT INTO tbl_efile_trgr(doc_id,name,pending_signatories,approved_signatories,disapproved,comment,status,action,date_time) VALUES(?,?,?,?,?,?,?,?,?)";
+            $stmt = $dbConn->prepare($sql4);
+            $stmt->bindValue(1, $doc_id);
+            $stmt->bindValue(2, $name);
+            $stmt->bindValue(3, "" );
+            $stmt->bindValue(4, $signatories);
+            $stmt->bindValue(5, "");
+            $stmt->bindValue(6, "");
+            $stmt->bindValue(7, "published");
+            $stmt->bindValue(8, "UPDATE");
+            $stmt->bindValue(9, $update_on);
+            $stmt->execute();
+            
+            echo "success";
+          }//end of if
+          else {
+            echo "error";
+          }//end of else
+
+      }//end of if
 
       else {
         echo "error";
-      }
+      }//end of else
 
 
 

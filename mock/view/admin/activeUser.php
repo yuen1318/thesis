@@ -67,18 +67,25 @@
             <h5 class="center">Are you sure you want to delete this user?</h5><br>
 
             <div class="row hide">
-              <div class="col s4">
+              <div class="col s6">
                 <input type="text" name="delete_id" id="delete_id">
               </div>
 
-              <div class="col s4">
-                <input type="text" name="delete_status" id="delete_status">
+              <div class="col s6">
+                <input type="text" name="delete_rpw" id="delete_rpw" value="<?php echo $_SESSION['admin_pw']?>">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s12">
+                <label for="delete_pw">Authenticate</label>
+                <input type="password" class="active" name="delete_pw" id="delete_pw" placeholder="Password">
               </div>
             </div>
 
           </div><!--end of modal-content-->
           <div class="modal-footer">
-            <button type="button" class="btn waves-effect modal-action modal-close teal lighten-1" id="btn_delete_active_user">Delete User</button>
+            <button type="button" class="btn waves-effect teal lighten-1" id="btn_delete_active_user">Delete User</button>
           </div>
         </div><!--end of modal-->
       </form>
@@ -90,8 +97,12 @@
             <h5 class="center">Are you sure you want to edit this user?</h5><br>
 
             <div class="row hide">
-              <div class="col s12 m12 l12">
+              <div class="col s6">
                 <input type="text" name="edit_id" id="edit_id">
+              </div>
+
+              <div class="col s6">
+                <input type="text" name="edit_rpw" id="edit_rpw" value="<?php echo $_SESSION['admin_pw']?>">
               </div>
             </div>
 
@@ -103,13 +114,20 @@
                   </select>
                 </div>
             </div>
-
+ 
             <div class="row">
               <div class="input-field col s12 m12 l12">
                   <label  class="active">Position</label>
                     <select name="title" class="transparent browser-default" id="select_position">
                                   <!--content from database-->
                     </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s12">
+                <label for="edit_pw">Authenticate</label>
+                <input type="password" class="active" name="edit_pw" id="edit_pw" placeholder="Password">
               </div>
             </div>
 

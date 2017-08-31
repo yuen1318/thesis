@@ -35,6 +35,7 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/animate.css">
     <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
     <link rel="stylesheet" href="../../assets/materialize/css/admin.css">
     <link rel="stylesheet" href="../../assets/sweetalert2/sweetalert2.min.css">
@@ -57,7 +58,7 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
           <div class="input-field col s12 m3 l3 ">
             <label for="select_department" class="active">Department</label>
             <select  name="department"  class="browser-default grey lighten-3" id="select_department">
-              <!--content from database-->
+            <option value='<?php echo $_SESSION['admin_department'] ?>'><?php echo $_SESSION['admin_department'] ?></option>;
             </select>
           </div>
 

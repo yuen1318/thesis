@@ -88,7 +88,6 @@
   <script src="../../assets/materialize/js/materialize.min.js" charset="utf-8"></script>
 
   <script src="../../assets/sweetalert2/sweetalert2.min.js" charset="utf-8"></script>
-    <script src="../../controller/admin/fetch_admin_notif.js" charset="utf-8"></script>
   <script charset="utf-8">
    $(document).ready(function() {
 

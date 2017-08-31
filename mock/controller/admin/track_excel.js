@@ -22,6 +22,6 @@
   				plugins: [ListPagination({})]
   			});
   		} //end of complete function
-
+ 
   	})
   } //end of select_pending_user

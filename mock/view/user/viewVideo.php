@@ -26,7 +26,7 @@
     else{
       echo header("Location:../404.php");
     }
-    
+     
   }
   catch (PDOException $e) {
     echo "wala";

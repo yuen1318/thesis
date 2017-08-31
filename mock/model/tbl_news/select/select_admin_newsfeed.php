@@ -54,13 +54,16 @@
               
               <p class='sgn'>List of Signatories:<br>$row[signatories]</p><br>
               <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[pending_signatories]</p><br>
-              <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[approved_signatories]</p>
+              <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[approved_signatories]</p>";
 
-              <a href='../../DB/excel/$row[doc_id]' target='_blank' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>
-            </li><br>
-
-             ";
-
+              if(file_exists("../../../DB/excel/$row[doc_id]")){
+                echo "<a href='../../DB/excel/$row[doc_id]' target='_blank' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>";
+              }
+              else{
+                echo "<a href='../404.php' target='_blank' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>";
+              }
+             
+            echo "</li><br>";
      }//end of else if
 
      #if doc_id is powerpoint
@@ -76,12 +79,16 @@
 
              <p class='sgn'>List of Signatories:<br>$row[signatories]</p><br>
              <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[pending_signatories]</p><br>
-             <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[approved_signatories]</p>
+             <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[approved_signatories]</p>";
 
-             <a href='../../DB/powerpoint/$row[doc_id]' target='_blank' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>
-           </li><br>
-
-            ";
+            if(file_exists("../../../DB/powerpoint/$row[doc_id]")){
+              echo "<a href='../../DB/powerpoint/$row[doc_id]' target='_blank' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>";
+            }
+            else{
+              echo "<a href='../404.php' target='_blank' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>";
+            }
+            
+            echo "</li><br>";
 
     }//end of else if
 
@@ -120,3 +127,4 @@
 
   $dbConn = NULL;
  ?>
+ 

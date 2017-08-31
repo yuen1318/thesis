@@ -1,20 +1,14 @@
 $(document).ready(function(){
 
-  
+   
 
     select_deleted_user("../../model/tbl_user/select/select_deleted_user.php", "#tbl_deleted_user");
 
     $(document).on('click', '.delete_deleted_user', function() {
      //bind html5 data attributes to variables
      var delete_id = $(this).attr('data-delete-deleted-id');
-     var delete_access = $(this).attr('data-delete-deleted-access');
-     var delete_status = $(this).attr('data-delete-deleted-status');
-
       //set values to id
       $('#delete_id').val(delete_id);
-      $('#delete_access').val(delete_access);
-      $('#delete_status').val(delete_status);
-
       //show modal
       $('.trgr_delete_deleted_user').trigger('click');
      });//end of onclick
@@ -22,13 +16,8 @@ $(document).ready(function(){
      $(document).on('click', '.restore_deleted_user', function() {
       //bind html5 data attributes to variables
       var restore_id = $(this).attr('data-restore-deleted-id');
-      var restore_access = $(this).attr('data-restore-deleted-access');
-      var restore_status = $(this).attr('data-restore-deleted-status');
-
        //set values to id
        $('#restore_id').val(restore_id);
-       $('#restore_access').val(restore_access);
-       $('#restore_status').val(restore_status);
 
        //show modal
        $('.trgr_restore_deleted_user').trigger('click');
@@ -36,13 +25,87 @@ $(document).ready(function(){
 
 
      $('#btn_delete_deleted_user').on('click', function(event) {
-       delete_deleted_user("../../model/tbl_user/delete/delete_deleted_user.php", "#frm_delete_deleted_user");
+       
+       if ($("#frm_delete_deleted_user").valid()) { //check if all field is valid
+        delete_deleted_user("../../model/tbl_user/delete/delete_deleted_user.php", "#frm_delete_deleted_user");        
+        $('#delete_deleted_user_modal').modal('close');
+        $('#delete_pw').val("");
+ 
+      } else {
+        $('.val').addClass('animated bounceIn');
+        $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+          $('.val').removeClass('animated');
+        });
+      } //end of else
+
     });//end of onclick
 
     $('#btn_restore_deleted_user').on('click', function(event) {
-      restore_deleted_user("../../model/tbl_user/update/restore_deleted_user.php" , "#frm_restore_deleted_user");
+      
+      if ($("#frm_restore_deleted_user").valid()) { //check if all field is valid
+        restore_deleted_user("../../model/tbl_user/update/restore_deleted_user.php" , "#frm_restore_deleted_user");        
+        $('#restore_deleted_user_modal').modal('close');
+        $('#restore_pw').val("");
+ 
+      } else {
+        $('.val').addClass('animated bounceIn');
+        $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+          $('.val').removeClass('animated');
+        });
+      } //end of else
+
    });//end of onclick
 
+
+
+
+   $("#frm_delete_deleted_user").validate({ //form validation
+    rules: {
+      delete_pw: {
+        required: true,
+        equalTo: "#delete_rpw"
+      }
+    }, //end of rules
+    messages: {
+      delete_pw: {
+        required: "<small class='right val red-text'>This field is required</small>",
+        equalTo: "<small class='right val red-text'>Wrong password!</small>"
+      }
+    }, //end of messages
+    errorElement: 'div',
+    errorPlacement: function (error, element) {
+      var placement = $(element).data('error');
+      if (placement) {
+        $(placement).append(error)
+      } else {
+        error.insertAfter(element);
+      }
+    } //end of errorElement
+  }); //end of validate
+
+  $("#frm_restore_deleted_user").validate({ //form validation
+    rules: {
+      restore_pw: {
+        required: true,
+        equalTo: "#restore_rpw"
+      }
+    }, //end of rules
+    messages: {
+      restore_pw: {
+        required: "<small class='right val red-text'>This field is required</small>",
+        equalTo: "<small class='right val red-text'>Wrong password!</small>"
+      }
+    }, //end of messages
+    errorElement: 'div',
+    errorPlacement: function (error, element) {
+      var placement = $(element).data('error');
+      if (placement) {
+        $(placement).append(error)
+      } else {
+        error.insertAfter(element);
+      }
+    } //end of errorElement
+  }); //end of validate
 
 
 

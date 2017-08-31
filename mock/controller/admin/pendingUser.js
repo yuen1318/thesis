@@ -1,21 +1,15 @@
 $(document).ready(function(){
 
   
-
+ 
 
   select_pending_user("../../model/tbl_user/select/select_pending_user.php", "#tbl_pending_user");
 
   $(document).on('click', '.delete_pending_user', function() {
    //bind html5 data attributes to variables
    var delete_id = $(this).attr('data-delete-pending-id');
-   var delete_access = $(this).attr('data-delete-pending-access');
-   var delete_status = $(this).attr('data-delete-pending-status');
-
     //set values to id
     $('#delete_id').val(delete_id);
-    $('#delete_access').val(delete_access);
-    $('#delete_status').val(delete_status);
-
     //show modal
     $('.trgr_delete_pending_user').trigger('click');
    });//end of onclick
@@ -23,28 +17,98 @@ $(document).ready(function(){
    $(document).on('click', '.approve_pending_user', function() {
     //bind html5 data attributes to variables
     var approve_id = $(this).attr('data-approve-pending-id');
-    var approve_access = $(this).attr('data-approve-pending-access');
-    var approve_status = $(this).attr('data-approve-pending-status');
-
      //set values to id
      $('#approve_id').val(approve_id);
-     $('#approve_access').val(approve_access);
-     $('#approve_status').val(approve_status);
-
      //show modal
      $('.trgr_approve_pending_user').trigger('click');
     });//end of onclick
 
 
    $('#btn_delete_pending_user').on('click', function(event) {
-    delete_pending_user("../../model/tbl_user/update/delete_pending_user.php","#frm_delete_pending_user");
+    
+    if ($("#frm_delete_pending_user").valid()) { //check if all field is valid
+      delete_pending_user("../../model/tbl_user/update/delete_pending_user.php","#frm_delete_pending_user");
+      $('#delete_pending_user_modal').modal('close');
+      $('#delete_pw').val("");
+
+    } else {
+      $('.val').addClass('animated bounceIn');
+      $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+        $('.val').removeClass('animated');
+      });
+    } //end of else
+
   });//end of onclick
 
   $('#btn_approve_pending_user').on('click', function(event) {
-   approve_pending_user("../../model/tbl_user/update/approve_pending_user.php","#frm_approve_pending_user");
+  
+   if ($("#frm_approve_pending_user").valid()) { //check if all field is valid
+    approve_pending_user("../../model/tbl_user/update/approve_pending_user.php","#frm_approve_pending_user");    
+    $('#approve_pending_user_modal').modal('close');
+    $('#approve_pw').val("");
+
+  } else {
+    $('.val').addClass('animated bounceIn');
+    $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+    $('.val').removeClass('animated');
+    });
+  } //end of else
+
+
  });//end of onclick
 
 
+
+
+ 
+ $("#frm_delete_pending_user").validate({ //form validation
+  rules: {
+    delete_pw: {
+      required: true,
+      equalTo: "#delete_rpw"
+    }
+  }, //end of rules
+  messages: {
+    delete_pw: {
+      required: "<small class='right val red-text'>This field is required</small>",
+      equalTo: "<small class='right val red-text'>Wrong password!</small>"
+    }
+  }, //end of messages
+  errorElement: 'div',
+  errorPlacement: function (error, element) {
+    var placement = $(element).data('error');
+    if (placement) {
+      $(placement).append(error)
+    } else {
+      error.insertAfter(element);
+    }
+  } //end of errorElement
+}); //end of validate
+
+ 
+$("#frm_approve_pending_user").validate({ //form validation
+  rules: {
+    approve_pw: {
+      required: true,
+      equalTo: "#approve_rpw"
+    }
+  }, //end of rules
+  messages: {
+    approve_pw: {
+      required: "<small class='right val red-text'>This field is required</small>",
+      equalTo: "<small class='right val red-text'>Wrong password!</small>"
+    }
+  }, //end of messages
+  errorElement: 'div',
+  errorPlacement: function (error, element) {
+    var placement = $(element).data('error');
+    if (placement) {
+      $(placement).append(error)
+    } else {
+      error.insertAfter(element);
+    }
+  } //end of errorElement
+}); //end of validate
 
 
 });//end of document.ready

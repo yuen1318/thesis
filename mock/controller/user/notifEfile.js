@@ -100,7 +100,7 @@
           //show modal
           $('.trgr_delete_efile').trigger('click');
       }); //end of onclick
-
+ 
       $('#btn_delete_efile').on('click', function (event) {
 
         if ($("#frm_delete_efile").valid()) { //check if all field is valid
@@ -174,7 +174,7 @@
                 }
             } //end of errorElement
     }); //end of validate
-
+ 
     $("#frm_delete_efile").validate({ //form validation
         rules: {
             delete_pw: {

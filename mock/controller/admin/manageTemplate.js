@@ -1,8 +1,8 @@
  $(document).ready(function(){
 
   
-
-      select_template("../../model/tbl_template/select/manage_template.php", "#tbl_template");
+  select_template("../../model/tbl_template/select/manage_template.php", "#tbl_template");
+      
 
       $(document).on('click', '.delete_template', function() {
        //bind html5 data attributes to variables
@@ -15,10 +15,47 @@
 
 
        $('#btn_delete_template').on('click', function(event) {
-        delete_template("../../model/tbl_template/delete/delete_template.php", "#frm_delete_template");
+        
+
+        if ($("#frm_delete_template").valid()) { //check if all field is valid
+          delete_template("../../model/tbl_template/delete/delete_template.php", "#frm_delete_template");
+          select_template("../../model/tbl_template/select/manage_template.php", "#tbl_template");
+          $('#delete_template_modal').modal('close');
+          $('#delete_pw').val("");
+        } else {
+            $('.val').addClass('animated bounceIn');
+            $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+            $('.val').removeClass('animated');
+            });
+        } //end of else
+
+
       });//end of onclick
 
  
+      $("#frm_delete_template").validate({ //form validation
+        rules: {
+            delete_pw: {
+                required: true,
+                equalTo: "#delete_rpw"
+            }
+        }, //end of rules
+        messages: {
+            delete_pw: {
+                required: "<small class='right val red-text'>This field is required</small>",
+                equalTo: "<small class='right val red-text'>Wrong password!</small>"
+            }
+        }, //end of messages
+        errorElement: 'div',
+        errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            } //end of errorElement
+    }); //end of validate
 
 
     });//end of document.ready
@@ -56,7 +93,7 @@
               Materialize.toast("Sorry an error occured", 8000, 'red');
           }
           else if(Result == "success") {
-            Materialize.toast("User successfully deleted", 8000, 'teal lighten-1');
+            Materialize.toast("Template successfully deleted", 8000, 'teal lighten-1');
           }
         },//end of success function
 

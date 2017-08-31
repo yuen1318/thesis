@@ -143,8 +143,13 @@ function create_efile(model_url, form_name) {
                     type: 'success',
                     confirmButtonText: 'Ok',
                     confirmButtonClass: 'btn waves-effect green darken-2',
-                    buttonsStyling: false
+                    buttonsStyling: false,
+                    allowOutsideClick: false
+                }).then(function() {
+                    // Redirect the user
+                    window.location.href = "index.php";
                 }); //end of swal
+                 
             }
         }, //end of success function
     }); //end of ajax

@@ -108,7 +108,7 @@
           <div class="modal-content">
             <h5 class="center">Are you sure you want to approve this video?</h5><br>
 
-            <div class="row">
+            <div class="row hide">
               <div class="col s6">
                 <input type="text" name="approve_id" id="approve_id">
               </div>

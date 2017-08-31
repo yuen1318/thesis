@@ -27,7 +27,7 @@
         </td>
 
         <td>
-          <a class='btn waves-effect green darken-2' href='editEfile.php?$row[doc_id]' target='_blank'>
+          <a class='btn waves-effect green darken-2' href='editEfile.php?$row[doc_id]'>
             Edit
           </a>
         </td>

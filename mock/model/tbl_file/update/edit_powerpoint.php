@@ -4,8 +4,10 @@
   session_start();
   require '../../dbConfig.php';
   require '../../a_functions/sanitize.php';
+  
+  $update_on = date("Y, F j, g:i a");
 
-
+  $user_info = $_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln'];
 
   $uploaded_powerpoint = $_FILES['powerpoint'];
   $uploaded_powerpoint_name = $uploaded_powerpoint['name'];
@@ -56,7 +58,7 @@
         $stmt = $dbConn->prepare($sql3);
         $stmt->bindValue(1, $file_id);
         $stmt->bindValue(2, $file_name);
-        $stmt->bindValue(3, $email);
+        $stmt->bindValue(3, $user_info."</br> (".$email.")");
         $stmt->bindValue(4, $date);
         $stmt->bindValue(5, $time);
         $stmt->bindValue(6, $signatories);
@@ -66,10 +68,31 @@
         $stmt->bindValue(10, $email.".jpg");
         $stmt->bindValue(11, $created_by);
         $stmt->execute();
-        echo "success";
+
+          if ($stmt) {
+            $sql4 = "INSERT INTO tbl_file_trgr(file_id,orig_name,pending_signatories,approved_signatories,disapproved,comment,status,action,date_time) VALUES(?,?,?,?,?,?,?,?,?)";
+            $stmt = $dbConn->prepare($sql4);
+            $stmt->bindValue(1, $file_id);
+            $stmt->bindValue(2, $file_name);
+            $stmt->bindValue(3, $pending_signatories);
+            $stmt->bindValue(4, $approved_signatories);
+            $stmt->bindValue(5, "");
+            $stmt->bindValue(6, "");
+            $stmt->bindValue(7, "pending");
+            $stmt->bindValue(8, "UPDATE");
+            $stmt->bindValue(9, $update_on);
+            $stmt->execute();
+            
+            echo "success";
+          }//end of if
+          else {
+            echo "error";
+          }//end of else
+
+         
       }//end of if
 
-  }
+  }//end of if
 
   else {
     echo "error";

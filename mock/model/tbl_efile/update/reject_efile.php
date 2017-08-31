@@ -6,7 +6,9 @@ require '../../a_functions/sanitize.php';
 $doc_id = $_POST['reject_id'];
 $email = $_SESSION['user_email'] ;
 $comment = $_POST['comment'];
+$user_info = $_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln'];
 
+$update_on = date("Y, F j, g:i a");
 
  $sql = "UPDATE tbl_efile SET disapproved=?, comment=? WHERE doc_id=?";
  $stmt = $dbConn->prepare($sql);
@@ -41,7 +43,7 @@ $comment = $_POST['comment'];
       $stmt = $dbConn->prepare($sql2);
       $stmt->bindValue(1, $doc_id);
       $stmt->bindValue(2, $efile_name);
-      $stmt->bindValue(3, $email);
+      $stmt->bindValue(3, $user_info."</br> (".$email.")");
       $stmt->bindValue(4, $date);
       $stmt->bindValue(5, $time);
       $stmt->bindValue(6, $signatories);
@@ -51,14 +53,33 @@ $comment = $_POST['comment'];
       $stmt->bindValue(10, $email.".jpg");
       $stmt->bindValue(11, $created_by);
       $stmt->execute();
+ 
+      if ($stmt) {
+        $sql3 = "INSERT INTO tbl_efile_trgr(doc_id,name,pending_signatories,approved_signatories,disapproved,comment,status,action,date_time) VALUES(?,?,?,?,?,?,?,?,?)";
+        $stmt = $dbConn->prepare($sql3);
+        $stmt->bindValue(1, $doc_id);
+        $stmt->bindValue(2, $efile_name);
+        $stmt->bindValue(3, $pending_signatories);
+        $stmt->bindValue(4, $approved_signatories);
+        $stmt->bindValue(5, $email);
+        $stmt->bindValue(6, $comment);
+        $stmt->bindValue(7, "pending");
+        $stmt->bindValue(8, "UPDATE");
+        $stmt->bindValue(9, $update_on);
+        $stmt->execute();
+        
+        echo "success";
+      }//end of if
+      else {
+        echo "error";
+      }//end of else
 
-      echo "success";
 
-    }
+    }//end of if
 
     else {
       echo "error";
-    }
+    }//end of else
 
 
  ?>

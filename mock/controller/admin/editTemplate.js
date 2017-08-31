@@ -36,12 +36,23 @@
         buttonsStyling: false
         });//end of swal
       }//end of else if
-
+ 
       else {
         var ckeditor_content = CKEDITOR.instances.id_content.getData();
         $("#id_content").val(ckeditor_content);
-
         edit_template("../../model/tbl_template/update/edit_template.php", "#frm_edit_template");
+          swal({
+            title: 'Success',
+            text: "Template successfully created",
+            type: 'success',
+            confirmButtonText: 'Ok',
+            confirmButtonClass: 'btn waves-effect teal lighten-1',
+            buttonsStyling: false,
+            allowOutsideClick: false
+        }).then(function() {
+            // Redirect the user
+            window.location.href = "manageTemplate.php";
+        }); //end of swal 
       }//end of else
     });//end of btn click
 

@@ -7,6 +7,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="../../assets/materialize/css/animate.css">
     <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
     <link rel="stylesheet" href="../../assets/materialize/css/admin.css">
@@ -58,7 +59,7 @@
           </div><!--end of col s12-->
 
         </div><!--end of row-->
-
+ 
       <a href="#delete_pending_user_modal" class="hide btn modal-trigger trgr_delete_pending_user ">activedel</a>
       <form id="frm_delete_pending_user">
         <div class="modal" id="delete_pending_user_modal">
@@ -66,22 +67,25 @@
             <h5 class="center">Are you sure you want to delete this user?</h5><br>
 
             <div class="row hide">
-              <div class="col s4">
+              <div class="col s6">
                 <input type="text" name="delete_id" id="delete_id">
               </div>
 
-              <div class="col s4">
-                <input type="text" name="delete_access" id="delete_access">
+              <div class="col s6">
+                <input type="text" name="delete_rpw" id="delete_rpw" value="<?php echo $_SESSION['admin_pw']?>">
               </div>
+            </div>
 
-              <div class="col s4">
-                <input type="text" name="delete_status" id="delete_status">
+            <div class="row">
+              <div class="col s12">
+                <label for="delete_pw">Authenticate</label>
+                <input type="password" class="active" name="delete_pw" id="delete_pw" placeholder="Password">
               </div>
             </div>
 
           </div><!--end of modal-content-->
           <div class="modal-footer">
-            <button type="button" class="btn waves-effect modal-action modal-close teal lighten-1" id="btn_delete_pending_user">Delete User</button>
+            <button type="button" class="btn waves-effect teal lighten-1" id="btn_delete_pending_user">Delete User</button>
           </div>
         </div><!--end of modal-->
       </form>
@@ -93,22 +97,26 @@
             <h5 class="center">Are you sure you want to grant this user an access?</h5><br>
 
             <div class="row hide">
-              <div class="col s4">
+              <div class="col s6">
                 <input type="text" name="approve_id" id="approve_id">
               </div>
 
-              <div class="col s4">
-                <input type="text" name="approve_access" id="approve_access">
+              <div class="col s6">
+                <input type="text" name="approve_rpw" id="approve_rpw" value="<?php echo $_SESSION['admin_pw']?>">
               </div>
 
-              <div class="col s4">
-                <input type="text" name="approve_status" id="approve_status">
+            </div>
+
+            <div class="row">
+              <div class="col s12">
+                <label for="approve_pw">Authenticate</label>
+                <input type="password" class="active" name="approve_pw" id="approve_pw" placeholder="Password">
               </div>
             </div>
 
           </div><!--end of modal-content-->
           <div class="modal-footer">
-            <button type="button" class="btn waves-effect modal-action modal-close teal lighten-1" id="btn_approve_pending_user">Grant User Access</button>
+            <button type="button" class="btn waves-effect teal lighten-1" id="btn_approve_pending_user">Grant User Access</button>
           </div>
         </div><!--end of modal-->
       </form>
@@ -119,6 +127,8 @@
   </body>
 
   <script src="../../assets/jquery/jquery.min.js" charset="utf-8"></script>
+  <script src="../../assets/jquery/jquery.validate.min.js" charset="utf-8"></script>
+  <script src="../../assets/jquery/jquery.additionalMethod.min.js" charset="utf-8"></script>
   <script src="../../assets/materialize/js/materialize.min.js" charset="utf-8"></script>
   <script src="../../assets/listjs/list.min.js" charset="utf-8"></script>
   <script src="../../assets/listjs/list.pagination.min.js" charset="utf-8"></script>

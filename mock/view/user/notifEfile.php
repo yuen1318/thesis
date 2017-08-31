@@ -185,7 +185,7 @@
     <div id="tab2" class="col s12"><br>
       <!--Rejected Efile-->
       <div class="row">
-
+ 
         <div class="col s12 m12 l12" id="list_rejected_efile">
           <!--Table-->
           <div class="row">
@@ -198,7 +198,7 @@
             </div>
           </div>
 
-
+ 
           <table class="bordered centered responsive-table striped">
             <thead>
               <tr>

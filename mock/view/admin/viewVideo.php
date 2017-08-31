@@ -2,6 +2,8 @@
   session_start();
   require 'session.php';
   require '../../model/dbConfig.php';
+
+  try{
   #get the template id from url
   $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
   $validURL = str_replace("&","&amp;",$url);
@@ -18,7 +20,16 @@
     if($count == 1){#if email exist extract info and store it in variable
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
       $content = $row['orig_name'];
+      header("Location:".$content);
     }
 
-    header("Location:".$content)
+    else{
+      echo header("Location:../404.php");
+    }
+     
+  }
+  catch (PDOException $e) {
+    echo "wala";
+  }
+
  ?>
