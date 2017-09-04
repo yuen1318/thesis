@@ -2,12 +2,13 @@ $(document).ready(function(){
   //load content from db
   select_department("../../model/tbl_department/select/select_department.php", "#select_department");
   
-  $(document).on('change', '#select_department', function(){
+  /*$(document).on('change', '#select_department', function(){
     //when you select your department, postion will dynamically show
     var department_value = $(this).val();   
     select_position("../../model/tbl_position/select/select_position.php?" + department_value, "#select_position");
   });
-
+  */
+ 
   //////////////////////////Form Validation/////////////////////////////////
  
   $('#btn_submit').on('click', function() {//validate on btn click
@@ -81,7 +82,7 @@ $(document).ready(function(){
     });
   }//end of select_department
 
-function select_position(model_url, html_class_OR_id){
+/*function select_position(model_url, html_class_OR_id){
   $.ajax({
       url:  model_url,
       method: "GET",
@@ -91,7 +92,7 @@ function select_position(model_url, html_class_OR_id){
       }
     });
   }//end of select_department
-
+*/
   function insert_admin(model_url,form_name){
   $.ajax({
     url:  model_url,

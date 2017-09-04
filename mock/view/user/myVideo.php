@@ -73,7 +73,7 @@
 
     <div class="row">
       <div class="fixed-action-btn vertical">
-        <a href="uploadvideo.php" class="btn-floating btn-large green darken-2 btn tooltipped waves-effect fa fa-plus fa-lg" data-position="left"
+        <a href="uploadVideo.php" class="btn-floating btn-large green darken-2 btn tooltipped waves-effect fa fa-plus fa-lg" data-position="left"
           data-delay="50" data-tooltip="Upload Video"></a>
       </div>
     </div>

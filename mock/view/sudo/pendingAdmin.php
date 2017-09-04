@@ -8,9 +8,11 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/materialize/css/animate.css">
     <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
     <link rel="stylesheet" href="../../assets/materialize/css/sudo.css">
     <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/holdon/holdon.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   </head>
@@ -66,26 +68,29 @@
             <h5 class="center">Are you sure you want to delete this admin?</h5><br>
 
             <div class="row hide">
-              <div class="col s4">
+              <div class="col s6">
                 <input type="text" name="delete_id" id="delete_id">
               </div>
 
-              <div class="col s4">
-                <input type="text" name="delete_access" id="delete_access">
-              </div>
+            <div class="col s6">
+              <input type="text" name="delete_rpw" id="delete_rpw" value="<?php echo $_SESSION['sudo_pw']?>">
+            </div>
+            </div>
 
-              <div class="col s4">
-                <input type="text" name="delete_status" id="delete_status">
+            <div class="row">
+              <div class="col s12">
+                <label for="delete_pw">Authenticate</label>
+                <input type="password" class="active" name="delete_pw" id="delete_pw" placeholder="Password">
               </div>
             </div>
 
           </div><!--end of modal-content-->
           <div class="modal-footer">
-            <button type="button" class="btn waves-effect modal-action modal-close blue-grey darken-3" id="btn_delete_pending_admin">Delete admin</button>
+            <button type="button" class="btn waves-effect blue-grey darken-3" id="btn_delete_pending_admin">Delete admin</button>
           </div>
         </div><!--end of modal-->
       </form>
-
+ 
       <a href="#approve_pending_admin_modal" class="hide btn modal-trigger trgr_approve_pending_admin ">activedel</a>
       <form id="frm_approve_pending_admin">
         <div class="modal" id="approve_pending_admin_modal">
@@ -93,22 +98,25 @@
             <h5 class="center">Are you sure you want to grant this admin an access?</h5><br>
 
             <div class="row hide">
-              <div class="col s4">
+              <div class="col s6">
                 <input type="text" name="approve_id" id="approve_id">
               </div>
 
-              <div class="col s4">
-                <input type="text" name="approve_access" id="approve_access">
+              <div class="col s6">
+                <input type="text" name="approve_rpw" id="approve_rpw" value="<?php echo $_SESSION['sudo_pw']?>">
               </div>
+            </div>
 
-              <div class="col s4">
-                <input type="text" name="approve_status" id="approve_status">
+            <div class="row">
+              <div class="col s12">
+                <label for="approve_pw">Authenticate</label>
+                <input type="password" class="active" name="approve_pw" id="approve_pw" placeholder="Password">
               </div>
             </div>
 
           </div><!--end of modal-content-->
           <div class="modal-footer">
-            <button type="button" class="btn waves-effect modal-action modal-close blue-grey darken-3" id="btn_approve_pending_admin">Grant Admin Access</button>
+            <button type="button" class="btn waves-effect blue-grey darken-3" id="btn_approve_pending_admin">Grant Admin Access</button>
           </div>
         </div><!--end of modal-->
       </form>
@@ -119,9 +127,12 @@
   </body>
 
   <script src="../../assets/jquery/jquery.min.js" charset="utf-8"></script>
+  <script src="../../assets/jquery/jquery.validate.min.js" charset="utf-8"></script>
+  <script src="../../assets/jquery/jquery.additionalMethod.min.js" charset="utf-8"></script>
+  <script src="../../assets/holdon/holdon.min.js" charset="utf-8"></script>
   <script src="../../assets/materialize/js/materialize.min.js" charset="utf-8"></script>
   <script src="../../assets/listjs/list.min.js" charset="utf-8"></script>
   <script src="../../assets/listjs/list.pagination.min.js" charset="utf-8"></script>
   <script src="../../controller/sudo/fetch_sudo_notif.js" charset="utf-8"></script>
-<script src="../../controller/sudo/pendingAdmin.js" charset="utf-8"></script>
+  <script src="../../controller/sudo/pendingAdmin.js" charset="utf-8"></script>
 </html>

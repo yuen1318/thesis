@@ -3,7 +3,7 @@
   require '../../dbConfig.php';
   require '../../a_functions/sanitize.php';
 
-  $user_info = $_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln'];
+  $user_info ="<b>".$_SESSION['user_department'].":</b></br></br>".$_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln']. "</br>". $_SESSION['user_email']. "</br><i>". $_SESSION['user_title']."</i>";
   
   $email = $_SESSION['user_email'];
   $date = date("Y, F j");
@@ -26,7 +26,10 @@
   $file_ext = explode("." , $uploaded_excel_name);
   $file_ext = strtolower(end($file_ext) );
   $file_path = '../../../DB/excel/';
-  $file_id = uniqid('excel_', true). "." . $file_ext;
+  
+  $file_id = uniqid('excel_', true);
+  $file_id = str_replace(".", "", $file_id);
+  $file_id = $file_id. "." . $file_ext;
 
   $full_file = $file_path . $file_id;
 
@@ -52,7 +55,7 @@
       $stmt = $dbConn->prepare($sql2);
       $stmt->bindValue(1, $file_id);
       $stmt->bindValue(2, $uploaded_excel_name);
-      $stmt->bindValue(3, $user_info."</br> (".$email.")");
+      $stmt->bindValue(3, $user_info);
       $stmt->bindValue(4, $date);
       $stmt->bindValue(5, $time);
       $stmt->bindValue(6, $signatories);

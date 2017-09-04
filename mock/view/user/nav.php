@@ -50,76 +50,79 @@
 
 
 
-  <ul class="side-nav grey lighten-4" id="show-sidenav">
+<ul class="side-nav grey lighten-4" id="show-sidenav">
 
-    <li>
-      <div class="userView">
-        <div class="background">
-          <img src="../../DB/full-office-green.jpg" alt="" width="310" height="auto">
-        </div>
-        <!--end of background-->
-
-        <div>
-          <img class="circle" src="../../DB/profile/<?php echo $_SESSION['user_photo'];?>">
-        </div>
-        <!--end of div-->
-
-        <span class="white-text name"><?php echo $_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln'];?></span>
-        <span class="white-text email"><?php echo $_SESSION['user_email'];?></span>
-
-
+  <li>
+    <div class="userView">
+      <div class="background">
+        <img src="../../DB/full-office-green.jpg" alt="" width="310" height="auto">
       </div>
-      <!--end of userView-->
-    </li>
-    <!--end of li-->
+      <!--end of background-->
+
+      <div>
+        <img class="circle" src="../../DB/profile/<?php echo $_SESSION['user_photo'];?>">
+      </div>
+      <!--end of div-->
+
+      <span class="white-text name"><?php echo $_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln'];?></span>
+      <span class="white-text email"><?php echo $_SESSION['user_email'];?></span>
+
+
+    </div>
+    <!--end of userView-->
+  </li>
+  <!--end of li-->
 
 
 
 
-    <li>
-      <!--collapsible-->
-      <ul class="collapsible" data-collapsible="accordion">
-        <li>
-          <a class="collapsible-header">&emsp;<span class="fa fa-id-card-o fa-lg">&emsp;</span>Manage E-file</a>
-          <div class="collapsible-body grey lighten-4">
-            <ul>
-              <li><a href="createEfile.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Create E-file</a></li>
-              <li><a href="myEfile.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>My E-file</a></li>
-            </ul>
-          </div>
-          <!--end of collapsable-body-->
-        </li>
-        <!--end of li-->
-      </ul>
-      <!--end of ul-->
-    </li>
-    <!--end of collapsible-->
+  <li>
+    <!--collapsible-->
+    <ul class="collapsible" data-collapsible="accordion">
+      <li>
+        <a class="collapsible-header">&emsp;<span class="fa fa-id-card-o fa-lg">&emsp;</span>Manage E-file</a>
+        <div class="collapsible-body grey lighten-4">
+          <ul>
+            <li><a href="createEfile.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Create E-file</a></li>
+            <li><a href="myEfile.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>My E-file</a></li>
+          </ul>
+        </div>
+        <!--end of collapsable-body-->
+      </li>
+      <!--end of li-->
+    </ul>
+    <!--end of ul-->
+  </li>
+  <!--end of collapsible-->
 
-    <li>
-      <!--collapsible-->
-      <ul class="collapsible" data-collapsible="accordion">
-        <li>
-          <a class="collapsible-header">&emsp;<span class="fa fa-files-o fa-lg">&emsp;</span>Other Files</a>
-          <div class="collapsible-body grey lighten-4">
-            <ul>
-              <li><a href="myExcel.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Excel</a></li>
-              <li><a href="myPowerpoint.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Powerpoint</a></li>
-              <li><a href="myVideo.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Video</a></li>
-            </ul>
-          </div>
-          <!--end of collapsable-body-->
-        </li>
-        <!--end of li-->
-      </ul>
-      <!--end of ul-->
-    </li>
-    <!--end of collapsible-->
+  <li>
+    <!--collapsible-->
+    <ul class="collapsible" data-collapsible="accordion">
+      <li>
+        <a class="collapsible-header">&emsp;<span class="fa fa-files-o fa-lg">&emsp;</span>Other Files</a>
+        <div class="collapsible-body grey lighten-4">
+          <ul>
+            <li><a href="myExcel.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Excel</a></li>
+            <li><a href="myPowerpoint.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Powerpoint</a></li>
+            <li><a href="myVideo.php">&emsp;&emsp;<span class="fa fa-caret-right ">&emsp;</span>Video</a></li>
+          </ul>
+        </div>
+        <!--end of collapsable-body-->
+      </li>
+      <!--end of li-->
+    </ul>
+    <!--end of ul-->
+  </li>
+  <!--end of collapsible-->
 
-    <li>
-      <a href="chatRoom.php"><span class="fa fa-comments fa-lg">&emsp;</span>Chat Room</a>
-    </li>
+  <li>
+    <a href="chatRoom.php"><span class="fa fa-comments fa-lg">&emsp;</span>Chat Room</a>
+  </li>
+
+  <li>
+    <a href="instruction.php" target="_blank"><span class="fa fa-info fa-lg">&emsp;</span>Instructions</a>
+  </li>
 
 
-
-  </ul>
-  <!-- end of side-nav -->
+</ul>
+<!-- end of side-nav -->

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
     <link rel="stylesheet" href="../../assets/materialize/css/admin.css">
     <link rel="stylesheet" href="../../assets/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/holdon/holdon.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   </head>
@@ -104,7 +105,7 @@
               <div class="col s6">
                 <input type="text" name="approve_rpw" id="approve_rpw" value="<?php echo $_SESSION['admin_pw']?>">
               </div>
-
+ 
             </div>
 
             <div class="row">
@@ -125,10 +126,11 @@
 
 
   </body>
-
+ 
   <script src="../../assets/jquery/jquery.min.js" charset="utf-8"></script>
   <script src="../../assets/jquery/jquery.validate.min.js" charset="utf-8"></script>
   <script src="../../assets/jquery/jquery.additionalMethod.min.js" charset="utf-8"></script>
+  <script src="../../assets/holdon/holdon.min.js" charset="utf-8"></script>
   <script src="../../assets/materialize/js/materialize.min.js" charset="utf-8"></script>
   <script src="../../assets/listjs/list.min.js" charset="utf-8"></script>
   <script src="../../assets/listjs/list.pagination.min.js" charset="utf-8"></script>

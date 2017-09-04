@@ -2,7 +2,7 @@
 session_start();
 require '../../dbConfig.php';
 
-$user_info = $_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln'];
+$user_info ="<b>".$_SESSION['user_department'].":</b></br></br>".$_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln']. "</br>". $_SESSION['user_email']. "</br><i>". $_SESSION['user_title']."</i>";
 
  $file_id = $_POST['delete_id'];
  $email = $_SESSION['user_email'];
@@ -40,7 +40,7 @@ $user_info = $_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_l
     $stmt = $dbConn->prepare($sql3);
     $stmt->bindValue(1, $file_id);
     $stmt->bindValue(2, $file_name);
-    $stmt->bindValue(3, $user_info."</br> (".$email.")");
+    $stmt->bindValue(3, $user_info);
     $stmt->bindValue(4, $date);
     $stmt->bindValue(5, $time);
     $stmt->bindValue(6, $signatories);

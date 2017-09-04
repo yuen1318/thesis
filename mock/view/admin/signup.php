@@ -151,10 +151,11 @@
                   <div class="input-field col s12 m3 l3">
                     <label  class="active">Position</label>
                     <select name="title" class="transparent browser-default" id="select_position">
-                      <!--content from database-->
+                      <option disabled selected>Select Position</option>
+                      <option value='ADMIN'>ADMIN</option>
                     </select>
                   </div>
-
+ 
                 </div>
                 <!--end of row-->
 

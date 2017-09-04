@@ -7,7 +7,7 @@
 
   $doc_id = $_POST['approve_id'];
   $email = $_SESSION['user_email'];
-  $user_info = $_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln'];
+  $user_info ="<b>".$_SESSION['user_department'].":</b></br></br>".$_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln']. "</br>". $email. "</br><i>". $_SESSION['user_title']."</i>";
   $user_signature = "<br><div style='display:inline-block !important; text-align:center !important'>
                     <img src='../../DB/signature/$email.png' width='150'><br>
                     $_SESSION[user_fn] $_SESSION[user_mn] $_SESSION[user_ln] <br>
@@ -73,7 +73,7 @@
         $stmt = $dbConn->prepare($sql3);
         $stmt->bindValue(1, $doc_id);
         $stmt->bindValue(2, $efile_name);
-        $stmt->bindValue(3, $user_info."</br> (".$email.")");
+        $stmt->bindValue(3, $user_info);
         $stmt->bindValue(4, $date);
         $stmt->bindValue(5, $time);
         $stmt->bindValue(6, $signatories);

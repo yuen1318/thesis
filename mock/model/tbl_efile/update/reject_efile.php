@@ -6,7 +6,8 @@ require '../../a_functions/sanitize.php';
 $doc_id = $_POST['reject_id'];
 $email = $_SESSION['user_email'] ;
 $comment = $_POST['comment'];
-$user_info = $_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln'];
+
+$user_info ="<b>".$_SESSION['user_department'].":</b></br></br>".$_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln']. "</br>". $email. "</br><i>". $_SESSION['user_title']."</i>";
 
 $update_on = date("Y, F j, g:i a");
 
@@ -43,7 +44,7 @@ $update_on = date("Y, F j, g:i a");
       $stmt = $dbConn->prepare($sql2);
       $stmt->bindValue(1, $doc_id);
       $stmt->bindValue(2, $efile_name);
-      $stmt->bindValue(3, $user_info."</br> (".$email.")");
+      $stmt->bindValue(3, $user_info);
       $stmt->bindValue(4, $date);
       $stmt->bindValue(5, $time);
       $stmt->bindValue(6, $signatories);

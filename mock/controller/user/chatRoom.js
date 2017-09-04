@@ -18,6 +18,10 @@ $(document).ready(function() {
     setInterval(function() { //refresh every 3sec to fetch data
         send_chat_pick("../../model/tbl_chat/select/select_chat_history.php", "#frm_chat_pick", "#chat_history");
     }, 3000);
+ 
+    setInterval(function() {
+        select_chat_list("../../model/tbl_user/select/select_chat_list.php", "#chat_list");
+       }, 3000);
 
     $('#btn_frm_chat').on('click', function() { //validate on btn click
         if ($("#frm_chat").valid()) { //check if all field is valid

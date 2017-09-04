@@ -12,7 +12,7 @@
     foreach ($list as $row) {
        echo 
           "<li class='collection-item avatar'>
-            <img src='../../DB/profile/$row[email].jpg' class='circle materialboxed' >
+            <img src='../../DB/profile/$row[photo].jpg' class='circle materialboxed' >
             <span class='title email'>$row[email]</span><br>
             <small class='date'>$row[date] at $row[time]</small><br><br>
             <p class='msg'>$row[msg]</p>          

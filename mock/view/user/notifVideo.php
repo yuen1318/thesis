@@ -154,9 +154,9 @@
                 <label>Reason:</label>
                 <select  name="comment"  class="browser-default" id="comment">
                   <option disabled selected>Choose reason for rejection</option>
-                  <option value='Duplicate Filing :	The exact document has already been filed'>Duplicate Filing</option>
-                  <option value='Late Submission'>Late Submission</option>
-                  <option value='Document Issue: Check if the document is not dated; the document contains incomplete files; the attached image is not legible; etc'>Document Issue</option>
+                  <option value='Background Music Issue'>Background Music Issue</option>
+                  <option value='Video Quality Issue'>Video Quality Issue</option>
+                  <option value='Exceeded of lack of requirments for criteria'>Exceeded of lack of requirments for criteria</option>
                 </select>                   
               </div>
             </div>

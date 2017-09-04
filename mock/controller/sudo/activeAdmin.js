@@ -23,9 +23,22 @@ $(document).ready(function(){
           $('.trgr_delete_active_admin').trigger('click');
         }); //end of onclick
     
-    
+     
         $('#btn_delete_active_admin').on('click', function (event) {
-          delete_active_admin("../../model/tbl_admin/update/delete_active_admin.php", "#frm_delete_active_admin");
+          
+          if ($("#frm_delete_active_admin").valid()) { //check if all field is valid
+            delete_active_admin("../../model/tbl_admin/update/delete_active_admin.php", "#frm_delete_active_admin");
+            $('#delete_active_admin_modal').modal('close');
+            $('#delete_pw').val("");
+
+          } else {
+            $('.val').addClass('animated bounceIn');
+            $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+            $('.val').removeClass('animated');
+            });
+          } //end of else
+
+          
         }); //end of onclick
     
         $(document).on('click', '.edit_active_admin', function () {
@@ -41,6 +54,7 @@ $(document).ready(function(){
           if ($("#frm_edit_active_admin").valid()) { //check if all field is valid
              edit_active_admin("../../model/tbl_admin/update/edit_active_admin.php","#frm_edit_active_admin");
             $('#edit_active_admin_modal').modal('close');
+            $('#edit_pw').val("");
            
           } else {
             $('.val').addClass('animated bounceIn');
@@ -53,6 +67,10 @@ $(document).ready(function(){
     
         $("#frm_edit_active_admin").validate({ //form validation
         rules: {
+          edit_pw: {
+            required: true,
+            equalTo: "#edit_rpw"
+          },
           department: {
             required: true
           },
@@ -61,6 +79,10 @@ $(document).ready(function(){
           }
         }, //end of rules
         messages: {
+          edit_pw: {
+            required: "<small class='right val red-text'>This field is required</small>",
+            equalTo: "<small class='right val red-text'>Wrong password!</small>"
+          },
           department: {
             required: "<small class='right val red-text'>This field is required</small>"
           },
@@ -80,6 +102,31 @@ $(document).ready(function(){
         } //end of errorElement
         }); //end of validate
     
+
+        $("#frm_delete_active_admin").validate({ //form validation
+          rules: {
+            delete_pw: {
+              required: true,
+              equalTo: "#delete_rpw"
+            }
+          }, //end of rules
+          messages: {
+            delete_pw: {
+              required: "<small class='right val red-text'>This field is required</small>",
+              equalTo: "<small class='right val red-text'>Wrong password!</small>"
+            }
+          }, //end of messages
+          errorElement: 'div',
+          errorPlacement: function (error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+              $(placement).append(error)
+            } else {
+              error.insertAfter(element);
+            }
+          } //end of errorElement
+        }); //end of validate
+
     
         }); //end of document.ready
     
@@ -161,7 +208,7 @@ $(document).ready(function(){
               if (Result == "error") {
                 Materialize.toast("Sorry an error occured", 8000, 'red');
               } else if (Result == "success") {
-                Materialize.toast("Admin successfully editd", 8000, 'blue-grey darken-3');
+                Materialize.toast("Admin successfully edited", 8000, 'blue-grey darken-3');
               }
             }, //end of success function
     

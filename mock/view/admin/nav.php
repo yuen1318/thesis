@@ -9,8 +9,7 @@
     <!--end of ul-->&emsp;&emsp;
 
     <a href="#" class="brand-logo hide-on-med-and-down" style="font-size:23px !important;">Electronic File Tracking System</a>
-
-
+   
     <ul class="right ">
       <li><a href="#" class="dropdown-button" data-beloworigin="true" data-activates='dropdown1'><span class="fa fa-user fa-lg"></span></a></li>
       <!-- Dropdown Structure -->
@@ -31,6 +30,10 @@
     <ul class="right ">
       <li><a href="index.php"><span class="fa fa-home fa-lg"></span></a></li>
     </ul>
+
+   
+
+ 
 
   </div>
   <!--end of nav-wrapper-->
@@ -160,6 +163,10 @@
 
   <li>
     <a href="chatRoom.php"><span class="fa fa-comments fa-lg">&emsp;</span>Chat Room</a>
+  </li>
+
+  <li>
+    <a href="instruction.php" target="_blank"><span class="fa fa-info fa-lg">&emsp;</span>Instructions</a>
   </li>
 
 

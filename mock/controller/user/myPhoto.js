@@ -43,7 +43,15 @@
          var file_extension = file_name.split('.')[1];
 
          if (file_extension.toLowerCase() == 'jpg' || file_extension.toLowerCase() == 'jpeg' || file_extension.toLowerCase() == 'png') {
-             $.ajax({
+            var options = {
+                theme:"sk-bounce",
+                message:"Uploading image, this will take a while...",
+                backgroundColor:"#212121",
+                textColor:"white"
+            };   
+           HoldOn.open(options);
+
+           $.ajax({
                      url: "../../model/tbl_photo/insert/upload_photo.php",
                      method: "POST",
                      data: new FormData(this),
@@ -62,6 +70,7 @@
                          } //end of if
                          else if (Result == "success") {
                              Materialize.toast("Photo successfully uploaded", 8000, 'green darken-2');
+                             HoldOn.close();
                          } //end of else if
                          else {
                              swal({

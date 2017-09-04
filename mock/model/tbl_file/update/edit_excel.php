@@ -7,7 +7,7 @@
 
   $update_on = date("Y, F j, g:i a");
 
-  $user_info = $_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln'];
+  $user_info ="<b>".$_SESSION['user_department'].":</b></br></br>".$_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln']. "</br>". $_SESSION['user_email']. "</br><i>". $_SESSION['user_title']."</i>";
   
   $uploaded_excel = $_FILES['excel'];
   $uploaded_excel_name = $uploaded_excel['name'];
@@ -58,7 +58,7 @@
         $stmt = $dbConn->prepare($sql3);
         $stmt->bindValue(1, $file_id);
         $stmt->bindValue(2, $file_name);
-        $stmt->bindValue(3, $user_info."</br> (".$email.")");
+        $stmt->bindValue(3, $user_info);
         $stmt->bindValue(4, $date);
         $stmt->bindValue(5, $time);
         $stmt->bindValue(6, $signatories);

@@ -14,7 +14,7 @@ $stmt = $dbConn->prepare($sql);
 $stmt->bindValue(1, $email);
 $stmt->execute();
 $count = $stmt->rowCount();
-
+ 
 if ($count == 1){ //if email exist extract info and store it in variable
 	$row = $stmt->fetch(PDO::FETCH_ASSOC);
 	$stored_id = $row['id'];
@@ -49,7 +49,13 @@ if ($count == 1){ //if email exist extract info and store it in variable
 		// not working because of ajax :
 		// header("Location:../../view/user/Admin/index.php");
 		// use location.href instead in the controller
-
+ 
+		$sql2 = "UPDATE tbl_admin SET flag=? WHERE email=?";
+        $stmt = $dbConn->prepare($sql2);
+        $stmt->bindValue(1, "1");
+        $stmt->bindValue(2, $email);
+		$stmt->execute();
+		
 		echo "admin";
 		} //end of if
 	  else

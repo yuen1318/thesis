@@ -28,12 +28,15 @@
         $time = date("g:i a");
         $msg = "has temporary removed ". $email ." an access as user";
 
-        $sql3 = "INSERT INTO tbl_admin_news(email,msg,date,time) VALUES(?,?,?,?)";
+        $admin_info ="<b>".$_SESSION['admin_department'].":</b></br></br>".$_SESSION['admin_fn']." ".$_SESSION['admin_mn']." ".$_SESSION['admin_ln']. "</br>". $_SESSION["admin_email"]. "</br><i>". $_SESSION['admin_title']."</i>";
+
+        $sql3 = "INSERT INTO tbl_admin_news(email,photo,msg,date,time) VALUES(?,?,?,?,?)";
         $stmt = $dbConn->prepare($sql3);
-        $stmt->bindValue(1, $admin_email);
-        $stmt->bindValue(2, $msg);
-        $stmt->bindValue(3, $date);
-        $stmt->bindValue(4, $time);
+        $stmt->bindValue(1, $admin_info);
+        $stmt->bindValue(2, $admin_email);
+        $stmt->bindValue(3, $msg);
+        $stmt->bindValue(4, $date);
+        $stmt->bindValue(5, $time);
         $stmt->execute();
 
         if($stmt){

@@ -16,7 +16,7 @@ require 'session.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style media="screen">
       @media only screen and (max-device-width: 480px) {
-        img {
+        .admin_pp {
           width: 100% !important;
         }
       }
@@ -45,7 +45,7 @@ require 'session.php';
           <div class="card transparent ">
             <div class="card-content">
               <p class="center"><?php echo $_SESSION["admin_department"]?></p><br>
-              <img class="responsive-img" src="../../DB/profile/<?php echo $_SESSION['admin_photo']?>" alt="" width="200" height="150">
+              <img class="admin_pp responsive-img" src="../../DB/profile/<?php echo $_SESSION['admin_photo']?>" alt="" width="200" height="150">
               <a href="#upload_img_modal" class="btn-floating halfway-fab waves-effect waves-light teal lighten-1  modal-trigger"><i class="fa fa-camera"></i></a>
               <img class="responsive-img" src="../../DB/signature/<?php echo $_SESSION['admin_email']?>.png" alt="" width="150" height="80">
               <br><br><p class="center"><?php echo $_SESSION["admin_title"]?></p>
@@ -61,35 +61,35 @@ require 'session.php';
               <div class="card-content">
 
                 <div class="row">
-                  <div class="col s12 m4 l4 input-field">
+                  <div class="col s12 m6 l6 input-field">
                     <input type="text" name="fn" value="<?php echo $_SESSION['admin_fn']?>" id="fn">
                     <label class="active" for="fn">First Name</label>
                   </div>
 
-                  <div class="col s12 m4 l4 input-field">
+                  <div class="col s12 m6 l6 input-field">
                     <input type="text" name="mn" value="<?php echo $_SESSION['admin_mn']?>" id="mn">
                     <label class="active" for="mn">Middle Name</label>
                   </div>
 
-                  <div class="col s12 m4 l4 input-field">
-                    <input type="text" name="ln" value="<?php echo $_SESSION['admin_ln']?>" id="ln">
-                    <label class="active" for="ln">Last Name</label>
-                  </div>
+                  
 
                 </div>
                 <!--end of div-->
 
                 <div class="row">
-                  <div class="col s12 m4 l4 input-field">
+
+                <div class="col s12 m6 l6 input-field">
+                    <input type="text" name="ln" value="<?php echo $_SESSION['admin_ln']?>" id="ln">
+                    <label class="active" for="ln">Last Name</label>
+                  </div>
+
+                  <div class="col s12 m6 l6 input-field">
                     <input name="mobile" id="mobile" type="number" value="<?php echo $_SESSION['admin_mobile']?>">
                     <label class="active" for="mobile">Contact No.</label>
                   </div>
 
 
-                  <div class="col s12 m4 l4 input-field">
-                    <input type="text" name="title" value="<?php echo $_SESSION['admin_title']?>" id="title">
-                    <label class="active" for="title">Title</label>
-                  </div>
+            
 
                 </div>
                 <!--end of div-->

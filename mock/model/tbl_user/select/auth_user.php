@@ -47,6 +47,14 @@
         #not working because of ajax :
         #header("Location:../../view/user/Admin/index.php");
         #use location.href instead in the controller
+
+        
+        $sql2 = "UPDATE tbl_user SET flag=? WHERE email=?";
+        $stmt = $dbConn->prepare($sql2);
+        $stmt->bindValue(1, "1");
+        $stmt->bindValue(2, $email);
+        $stmt->execute();
+
         echo "user";
     }#end of if
 

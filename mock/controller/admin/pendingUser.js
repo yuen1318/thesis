@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   
- 
+  
 
   select_pending_user("../../model/tbl_user/select/select_pending_user.php", "#tbl_pending_user");
 
@@ -158,6 +158,15 @@ function delete_pending_user(model_url,form_name){
 }//end of delete_pending_user
 
 function approve_pending_user(model_url,form_name){
+  var options = {
+    theme:"sk-bounce",
+    message:"Processing request....",
+    backgroundColor:"#212121",
+    textColor:"white"
+};   
+
+HoldOn.open(options);
+
   $.ajax({
     url:  model_url,
     method:"POST",
@@ -166,9 +175,11 @@ function approve_pending_user(model_url,form_name){
     success:function(Result){
       if(Result == "error"){
           Materialize.toast("Sorry an error occured", 8000, 'red');
+           
       }
       else if(Result == "success") {
         Materialize.toast("User access Granted", 8000, 'teal lighten-1');
+        HoldOn.close();
       }
     },//end of success function
 

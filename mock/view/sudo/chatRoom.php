@@ -94,6 +94,6 @@
   <script src="../../assets/jquery/jquery.additionalMethod.min.js" charset="utf-8"></script>
   <script src="../../assets/materialize/js/materialize.min.js" charset="utf-8"></script>
   <script src="../../assets/sweetalert2/sweetalert2.min.js" charset="utf-8"></script>
-  <script src="../../controller/admin/fetch_admin_notif.js" charset="utf-8"></script>
-  <script src="../../controller/admin/chatRoom.js" charset="utf-8"></script>
+  <script src="../../controller/sudo/fetch_sudo_notif.js" charset="utf-8"></script>
+  <script src="../../controller/sudo/chatRoom.js" charset="utf-8"></script>
   </html>

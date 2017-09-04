@@ -101,10 +101,23 @@
         <h4>Delete Position</h4><br>
             <p>Are you sure you want to delete this position?</p>
 
-            <div class="input-field hide ">
-                <label for="delete_id">ID</label>
-                <input type="text" name="delete_id" id="delete_id">
+            <div class="row hide">
+                <div class="col s6">
+                    <input type="text" name="delete_id" id="delete_id">
+                </div>
+
+                <div class="col s6">
+                    <input type="text" name="delete_rpw" id="delete_rpw" value="<?php echo $_SESSION['sudo_pw']?>">
+                </div>
             </div>
+
+            <div class="row">
+              <div class="col s12">
+                <label for="delete_pw">Authenticate</label>
+                <input type="password" class="active" name="delete_pw" id="delete_pw" placeholder="Password">
+              </div>
+            </div>
+            
         </div><!--end of modal content-->
 
         <div class="modal-footer">
@@ -141,7 +154,7 @@
     });
     manage_position("../../model/tbl_position/select/manage_position.php", "#tbl_position");
     select_department("../../model/tbl_department/select/select_department.php", "#select_department");
-       
+        
 
        $(document).on('click', '.delete_position', function () {
            //bind html5 data attributes to variables
@@ -154,10 +167,22 @@
 
 
        $('#btn_delete_position').on('click', function (event) {
+            if ($("#frm_delete_position").valid()) { //check if all field is valid
             delete_position("../../model/tbl_position/delete/delete_position.php", "#frm_delete_position");
+            $('#delete_position_modal').modal('close');
+            $('#delete_pw').val("");
+
+          } else {
+            $('.val').addClass('animated bounceIn');
+            $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+            $('.val').removeClass('animated');
+            });
+          } //end of else
+
+
        }); //end of onclick
 
- 
+  
 
 
        $('#btn_add_position').on('click', function () { //validate on btn click
@@ -198,6 +223,31 @@
                }
            } //end of errorElement
        }); //end of validate
+
+
+       $("#frm_delete_position").validate({ //form validation
+          rules: {
+            delete_pw: {
+              required: true,
+              equalTo: "#delete_rpw"
+            }
+          }, //end of rules
+          messages: {
+            delete_pw: {
+              required: "<small class='right val red-text'>This field is required</small>",
+              equalTo: "<small class='right val red-text'>Wrong password!</small>"
+            }
+          }, //end of messages
+          errorElement: 'div',
+          errorPlacement: function (error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+              $(placement).append(error)
+            } else {
+              error.insertAfter(element);
+            }
+          } //end of errorElement
+        }); //end of validate
 
    }); //end of document.ready
 

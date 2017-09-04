@@ -26,9 +26,16 @@ if ($count == 1){ //if email exist extract info and store it in variable
 		session_start();
 		$_SESSION['sudo_email'] = $stored_email;
 		$_SESSION['sudo_password'] = $stored_password;
+		$_SESSION['sudo_pw'] = $password;
 		// not working because of ajax :
 		// header("Location:../../view/user/Admin/index.php");
 		// use location.href instead in the controller
+
+		$sql2 = "UPDATE tbl_sudo SET flag=? WHERE email=?";
+        $stmt = $dbConn->prepare($sql2);
+        $stmt->bindValue(1, "1");
+        $stmt->bindValue(2, $email);
+		$stmt->execute();
 
 		echo "sudo";
 		} //end of if

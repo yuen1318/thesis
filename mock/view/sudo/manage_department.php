@@ -58,7 +58,7 @@
 <!-- Modal Trigger -->
     <div class="row">
       <div class="fixed-action-btn vertical">
-      <a href="#add_department_modal" class="btn-floating btn-large blue-grey darken-3 btn tooltipped waves-effect fa fa-plus fa-lg" data-position="left" data-delay="50" data-tooltip="Add department"></a>
+        <a href="#add_department_modal" class="btn-floating btn-large blue-grey darken-3 btn tooltipped waves-effect fa fa-plus fa-lg" data-position="left" data-delay="50" data-tooltip="Add department"></a>
       </div>
     </div>
 
@@ -88,10 +88,23 @@
         <h4>Delete Department</h4><br>
             <p>Are you sure you want to delete this department?</p>
 
-            <div class="input-field hide">
-                <label for="delete_id">ID</label>
-                <input type="text" name="delete_id" id="delete_id">
+            <div class="row hide">
+                <div class="col s6">
+                    <input type="text" name="delete_id" id="delete_id">
+                </div>
+
+                <div class="col s6">
+                    <input type="text" name="delete_rpw" id="delete_rpw" value="<?php echo $_SESSION['sudo_pw']?>">
+                </div>
             </div>
+
+            <div class="row">
+              <div class="col s12">
+                <label for="delete_pw">Authenticate</label>
+                <input type="password" class="active" name="delete_pw" id="delete_pw" placeholder="Password">
+              </div>
+            </div>
+
         </div><!--end of modal content-->
 
         <div class="modal-footer">
@@ -106,14 +119,26 @@
         <div class="modal-content">
         <h4>Edit Department</h4><br>
 
-            <div class="input-field col s12 m12 l12 hide">
-                <label for"edit_id">ID</label>
-                <input class="active" type="text" name="edit_id" id="edit_id">
+            <div class="row  hide">
+                <div class="col s6">
+                    <input class="active" type="text" name="edit_id" id="edit_id">
+                </div>
+
+                <div class="col s6">
+                    <input type="text" name="edit_rpw" id="edit_rpw" value="<?php echo $_SESSION['sudo_pw']?>">
+                </div>         
             </div>
 
             <div class="input-field col s12 m12 l12">
                 <label for="edit_department">Department</label>
                 <input type="text" name="department" id="edit_department">
+            </div>
+
+            <div class="row">
+              <div class="col s12">
+                <label for="edit_pw">Authenticate</label>
+                <input type="password" class="active" name="edit_pw" id="edit_pw" placeholder="Password">
+              </div>
             </div>
         </div><!--end of modal content-->
 
@@ -161,8 +186,19 @@
        }); //end of onclick
 
 
-       $('#btn_delete_department').on('click', function (event) {
+       $('#btn_delete_department').on('click', function (event) {         
+            if ($("#frm_delete_department").valid()) { //check if all field is valid
             delete_department("../../model/tbl_department/delete/delete_department.php", "#frm_delete_department");
+            $('#delete_department_modal').modal('close');
+            $('#delete_pw').val("");
+
+          } else {
+            $('.val').addClass('animated bounceIn');
+            $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+            $('.val').removeClass('animated');
+            });
+          } //end of else
+
        }); //end of onclick
 
        $(document).on('click', '.edit_department', function () {
@@ -176,7 +212,19 @@
 
 
        $('#btn_edit_department').on('click', function (event) {
+
+        if ($("#frm_edit_department").valid()) { //check if all field is valid
             edit_department("../../model/tbl_department/update/edit_department.php", "#frm_edit_department");
+            $('#edit_department_modal').modal('close');
+            $('#edit_pw').val("");
+
+          } else {
+            $('.val').addClass('animated bounceIn');
+            $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+            $('.val').removeClass('animated');
+            });
+          } //end of else
+            
        }); 
 
 
@@ -213,6 +261,61 @@
                }
            } //end of errorElement
        }); //end of validate
+
+       $("#frm_delete_department").validate({ //form validation
+          rules: {
+            delete_pw: {
+              required: true,
+              equalTo: "#delete_rpw"
+            }
+          }, //end of rules
+          messages: {
+            delete_pw: {
+              required: "<small class='right val red-text'>This field is required</small>",
+              equalTo: "<small class='right val red-text'>Wrong password!</small>"
+            }
+          }, //end of messages
+          errorElement: 'div',
+          errorPlacement: function (error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+              $(placement).append(error)
+            } else {
+              error.insertAfter(element);
+            }
+          } //end of errorElement
+        }); //end of validate
+
+        $("#frm_edit_department").validate({ //form validation
+          rules: {
+            department:{
+                required: true
+            },
+            edit_pw: {
+              required: true,
+              equalTo: "#edit_rpw"
+            }
+          }, //end of rules
+          messages: {
+            department: {
+              required: "<small class='right val red-text'>This field is required</small>"
+            },
+            edit_pw: {
+              required: "<small class='right val red-text'>This field is required</small>",
+              equalTo: "<small class='right val red-text'>Wrong password!</small>"
+            }
+          }, //end of messages
+          errorElement: 'div',
+          errorPlacement: function (error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+              $(placement).append(error)
+            } else {
+              error.insertAfter(element);
+            }
+          } //end of errorElement
+        }); //end of validate
+
 
    }); //end of document.ready
 

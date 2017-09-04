@@ -17,7 +17,7 @@
   $status = "pending";
 
   $sql1 = "SELECT * FROM tbl_admin WHERE email=?";
-  $sql2 = "INSERT INTO tbl_admin(fn,ln,mn,email,pw,gender,mobile,department,title,photo,status) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+  $sql2 = "INSERT INTO tbl_admin(fn,ln,mn,email,pw,gender,mobile,department,title,photo,status,flag) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 
 
   if(isset($email)
@@ -45,6 +45,7 @@
         $stmt->bindValue(9, $title);
         $stmt->bindValue(10, $photo);
         $stmt->bindValue(11, $status);
+        $stmt->bindValue(12, "0");
         $stmt->execute();
           if ($stmt) {
             echo "success";

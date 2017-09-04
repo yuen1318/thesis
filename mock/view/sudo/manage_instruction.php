@@ -39,7 +39,7 @@
                 <th class="hide">ID</th>
                 <th>Name</th>
                 <th>Access</th>
-                <th colspan="2">Action</th>
+                <th colspan="3">Action</th>
 
             </tr>
           </thead><!--end of thead-->
@@ -109,21 +109,90 @@
   </form>
 
 
-<a href="#delete_position_modal" class="hide trgr_delete_position blue-grey darken-3 btn waves-effect fa fa-trash fa-lg"></a>
-    <form id="frm_delete_position">
-    <div id="delete_position_modal" class="modal">
+<a href="#delete_instruction_modal" class="hide trgr_delete_instruction blue-grey darken-3 btn waves-effect fa fa-trash fa-lg"></a>
+    <form id="frm_delete_instruction">
+    <div id="delete_instruction_modal" class="modal">
         <div class="modal-content">
-        <h4>Delete Position</h4><br>
-            <p>Are you sure you want to delete this position?</p>
+        <h4>Delete Instruction</h4><br>
+            <p>Are you sure you want to delete this instruction?</p>
 
-            <div class="input-field hide ">
-                <label for="delete_id">ID</label>
-                <input type="text" name="delete_id" id="delete_id">
+            <div class="row hide">
+                <div class="col s6">
+                    <input type="text" name="delete_id" id="delete_id">
+                </div>    
+
+                <div class="col s6">
+                    <input type="text" name="delete_rpw" id="delete_rpw" value="<?php echo $_SESSION['sudo_pw']?>">
+                </div> 
             </div>
+
+            <div class="row">
+              <div class="col s12">
+                <label for="delete_pw">Authenticate</label>
+                <input type="password" class="active" name="delete_pw" id="delete_pw" placeholder="Password">
+              </div>
+            </div>
+
         </div><!--end of modal content-->
 
         <div class="modal-footer">
-            <button type="button" class="waves-effect blue-grey darken-3 btn-flat white-text" id="btn_delete_position">Delete</button>
+            <button type="button" class="waves-effect blue-grey darken-3 btn-flat white-text" id="btn_delete_instruction">Delete</button>
+        </div>
+    </div>
+  </form>
+
+  <a href="#edit_instruction_modal" class="hide trgr_edit_instruction blue-grey darken-3 btn waves-effect fa fa-trash fa-lg"></a>
+    <form id="frm_edit_instruction">
+    <div id="edit_instruction_modal" class="modal">
+        <div class="modal-content">
+        <h4>Edit Instruction</h4><br>
+            <p>Are you sure you want to edit this instruction?</p>
+
+            <div class="row hide">
+                <div class="col s6">
+                    <input type="text" name="edit_id" id="edit_id">
+                </div>   
+
+                <div class="col s6">
+                    <input type="text" name="edit_rpw" id="edit_rpw" value="<?php echo $_SESSION['sudo_pw']?>">
+                </div>  
+            </div>
+
+            <div class="row">
+                <div class=" col s12 m12 l12">
+                    <label  for="edit_name">Instruction Name</label>
+                    <input  type="text" name="edit_name" id="edit_name">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class=" col s6 m6 l6">
+                    <label  for="edit_url">Video Url</label>
+                    <input type="text" name="edit_url" id="edit_url">
+                </div>
+
+                <div class="input-field col s6 m6 l6">
+                    <label class="active">Access</label>
+                        <select  name="edit_access"  class="browser-default">
+                            <option disabled selected>Select Access</option>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                    </select>
+                </div><!--end of access-->
+
+            </div>
+
+            <div class="row">
+              <div class="col s12">
+                <label for="edit_pw">Authenticate</label>
+                <input type="password" class="active" name="edit_pw" id="edit_pw" placeholder="Password">
+              </div>
+            </div>
+            
+        </div><!--end of modal content-->
+
+        <div class="modal-footer">
+            <button type="button" class="waves-effect blue-grey darken-3 btn-flat white-text" id="btn_edit_instruction">Edit</button>
         </div>
     </div>
   </form>
@@ -159,20 +228,65 @@
     
        
 
-       $(document).on('click', '.delete_position', function () {
+       $(document).on('click', '.delete_instruction', function () {
            //bind html5 data attributes to variables
-           var delete_id = $(this).attr('data-delete-position-id');
+           var delete_id = $(this).attr('data-delete-instruction-id');
            //set values to id
            $('#delete_id').val(delete_id);
            //show modal
-           $('.trgr_delete_position').trigger('click');
+           $('.trgr_delete_instruction').trigger('click');
        }); //end of onclick
 
 
-       $('#btn_delete_position').on('click', function (event) {
-            delete_position("../../model/tbl_position/delete/delete_position.php", "#frm_delete_position");
+       $('#btn_delete_instruction').on('click', function (event) {
+
+        if ($("#frm_delete_instruction").valid()) { //check if all field is valid
+            delete_instruction("../../model/tbl_instruction/delete/delete_instruction.php", "#frm_delete_instruction");
+            $('#delete_instruction_modal').modal('close');
+            $('#delete_pw').val("");
+
+          } else {
+            $('.val').addClass('animated bounceIn');
+            $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+            $('.val').removeClass('animated');
+            });
+          } //end of else
+        
        }); //end of onclick
 
+
+       $(document).on('click', '.edit_instruction', function () {
+           //bind html5 data attributes to variables
+           var edit_id = $(this).attr('data-edit-instruction-id');
+           var edit_name = $(this).attr('data-edit-instruction-name');
+           
+           var edit_url = $(this).attr('data-edit-instruction-url');
+           //set values to id
+           $('#edit_id').val(edit_id);
+           $('#edit_name').val(edit_name);
+           
+           $('#edit_url').val(edit_url);
+           //show modal
+           $('.trgr_edit_instruction').trigger('click');
+       }); //end of onclick
+
+
+       $('#btn_edit_instruction').on('click', function (event) {
+        if ($("#frm_edit_instruction").valid()) { //check if all field is valid
+            edit_instruction("../../model/tbl_instruction/update/edit_instruction.php", "#frm_edit_instruction");
+            $('#edit_instruction_modal').modal('close');
+            $('#edit_pw').val("");
+            $('#edit_url').val("");
+            $('#edit_name').val("");
+
+          } else {
+            $('.val').addClass('animated bounceIn');
+            $('.val').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+            $('.val').removeClass('animated');
+            });
+          } //end of else
+            
+       }); //end of onclick
  
 
 
@@ -223,6 +337,79 @@
            } //end of errorElement
        }); //end of validate
 
+
+       $("#frm_delete_instruction").validate({ //form validation
+          rules: {
+            delete_pw: {
+              required: true,
+              equalTo: "#delete_rpw"
+            }
+          }, //end of rules
+          messages: {
+            delete_pw: {
+              required: "<small class='right val red-text'>This field is required</small>",
+              equalTo: "<small class='right val red-text'>Wrong password!</small>"
+            }
+          }, //end of messages
+          errorElement: 'div',
+          errorPlacement: function (error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+              $(placement).append(error)
+            } else {
+              error.insertAfter(element);
+            }
+          } //end of errorElement
+        }); //end of validate
+
+
+        $("#frm_edit_instruction").validate({ //form validation
+           rules: {
+            edit_pw: {
+              required: true,
+              equalTo: "#edit_rpw"
+            },
+               edit_name: {
+                   required: true
+               },
+               edit_url:{
+                required: true,
+                url : true
+               },
+               edit_access: {
+                   required: true
+               }
+           }, //end of rules
+
+           messages: {
+            edit_pw: {
+              required: "<small class='right val red-text'>This field is required</small>",
+              equalTo: "<small class='right val red-text'>Wrong password!</small>"
+            },
+            edit_name: {
+                   required: "<small class='animated bounceIn right val red-text'>This field is required</small>"
+               },
+               edit_url: {
+                   required: "<small class='animated bounceIn right val red-text'>This field is required</small>",
+                   url: "<small class='animated bounceIn right val red-text'>Must be a valid url</small>"
+               },
+               edit_access: {
+                   required: "<small class='animated bounceIn right val red-text'>This field is required</small>"
+               }
+           }, //end of messages
+
+           errorElement: 'div',
+           errorPlacement: function (error, element) {
+               var placement = $(element).data('error');
+               if (placement) {
+                   $(placement).append(error)
+               } else {
+                   error.insertAfter(element);
+               }
+           } //end of errorElement
+       }); //end of validate
+
+        
 
    }); //end of document.ready
 
@@ -279,7 +466,7 @@
 
    
 
-   function delete_position(model_url, form_name) {
+   function delete_instruction(model_url, form_name) {
        $.ajax({
            url: model_url,
            method: "POST",
@@ -289,19 +476,42 @@
                if (Result == "error") {
                    Materialize.toast("Sorry an error occured", 8000, 'red');
                } else if (Result == "success") {
-                   Materialize.toast("Position successfully deleted", 8000, 'blue-grey darken-3');
+                   Materialize.toast("Instruction successfully deleted", 8000, 'blue-grey darken-3');
                }
            }, //end of success function
 
            complete: function () {
             $(form_name)[0].reset();
-              $('#delete_position_modal').modal('close');
-              manage_position("../../model/tbl_position/select/manage_position.php", "#tbl_position");
+              $('#delete_instruction_modal').modal('close');
+              manage_instruction("../../model/tbl_instruction/select/manage_instruction.php", "#tbl_instruction");
             } //end of complete function
 
        }) //end of ajax
    } //end of delete_department
 
+
+   function edit_instruction(model_url, form_name) {
+       $.ajax({
+           url: model_url,
+           method: "POST",
+           data: $(form_name).serialize(),
+           dataType: "text",
+           success: function (Result) {
+               if (Result == "error") {
+                   Materialize.toast("Sorry an error occured", 8000, 'red');
+               } else if (Result == "success") {
+                   Materialize.toast("Instruction successfully edited", 8000, 'blue-grey darken-3');
+               }
+           }, //end of success function
+
+           complete: function () {
+            $(form_name)[0].reset();
+              $('#edit_instruction_modal').modal('close');
+              manage_instruction("../../model/tbl_instruction/select/manage_instruction.php", "#tbl_instruction");
+            } //end of complete function
+
+       }) //end of ajax
+   } //end of delete_department
    
 
   </script>
