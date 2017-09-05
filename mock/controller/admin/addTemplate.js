@@ -89,8 +89,17 @@
 
 
   //////////////////////////////////Functions/////////////////////////////
-
+ 
   function add_global_template(model_url,form_name){
+      var options = {
+        theme:"sk-bounce",
+        message:"Creating template....",
+        backgroundColor:"#212121",
+        textColor:"white"
+    };   
+    
+    HoldOn.open(options);
+    
     $.ajax({
       url:  model_url,
       method:"POST",
@@ -101,6 +110,7 @@
           Materialize.toast("Sorry an error occured", 8000, 'red');
         }
         else if(Result == "success") {
+          HoldOn.close();
           $(form_name)[0].reset();
 
           Materialize.toast("Template saved", 8000, 'teal lighten-1');

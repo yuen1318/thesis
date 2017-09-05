@@ -39,6 +39,7 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
     <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
     <link rel="stylesheet" href="../../assets/materialize/css/admin.css">
     <link rel="stylesheet" href="../../assets/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="../../assets/holdon/holdon.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title></title>
   </head>
@@ -94,7 +95,7 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
     </div>
 
 
-  
+   
 
   <!-- Modal Structure -->
   <div id="helper_modal" class="modal modal-fixed-footer">
@@ -143,6 +144,7 @@ $sql ="SELECT * FROM tbl_template WHERE tmp_id=?";
   <script src="../../assets/jquery/jquery.validate.min.js" charset="utf-8"></script>
   <script src="../../assets/jquery/jquery.additionalMethod.min.js" charset="utf-8"></script>
   <script src="../../assets/materialize/js/materialize.min.js" charset="utf-8"></script>
+  <script src="../../assets/holdon/holdon.min.js" charset="utf-8"></script>
   <script src="../../assets/ckeditor/ckeditor.js" charset="utf-8"></script>
   <script src="../../assets/sweetalert2/sweetalert2.min.js" charset="utf-8"></script>
   <script src="../../controller/user/fetch_user_notif.js" charset="utf-8"></script>

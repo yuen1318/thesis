@@ -2,7 +2,8 @@
   session_start();
   require '../../dbConfig.php';
   require '../../a_functions/sanitize.php';
-
+  
+  date_default_timezone_set('Asia/Manila');
 
 
 

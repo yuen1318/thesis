@@ -8,7 +8,9 @@
       </ul>
       <!--end of ul-->&emsp;&emsp;
 
-      <a href="#" class="brand-logo hide-on-med-and-down" style="font-size:23px !important;">Electronic File Tracking System</a>
+
+      <a class="brand-logo hide-on-small-and-down"><img src="../../apalitlogo.png" width="190" height="63"></a>
+      <a class="brand-logo hide-on-med-and-down" style="font-size:23px !important; padding-left:200px!important;">EFTS</a>
 
 
       <ul class="right ">

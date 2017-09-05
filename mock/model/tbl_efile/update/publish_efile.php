@@ -1,5 +1,6 @@
 <?php
   session_start();
+  date_default_timezone_set('Asia/Manila');
   require '../../dbConfig.php';
   require '../../../assets/qrcode/src/QrCode.php';
   use Endroid\QrCode\QrCode;

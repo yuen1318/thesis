@@ -7,7 +7,7 @@
             event.preventDefault();
         }
     });
-
+ 
     $('#btn_submit').on('click', function() {//validate on btn click
 
       var ckeditor_content = CKEDITOR.instances.id_content.getData();
@@ -98,6 +98,15 @@
   }//end of select_department
 
   function edit_template(model_url,form_name){
+    var options = {
+      theme:"sk-bounce",
+      message:"Editing template....",
+      backgroundColor:"#212121",
+      textColor:"white"
+  };   
+  
+  HoldOn.open(options);
+
     $.ajax({
       url:  model_url,
       method:"POST",
@@ -108,7 +117,7 @@
           Materialize.toast("Sorry an error occured", 8000, 'red');
         }
         else if(Result == "success") {
-
+          HoldOn.close();
           Materialize.toast("Edited Template Saved", 8000, 'teal lighten-1');
         }
       }//end of success function

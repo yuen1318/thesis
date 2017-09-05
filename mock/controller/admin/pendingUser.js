@@ -164,7 +164,7 @@ function approve_pending_user(model_url,form_name){
     backgroundColor:"#212121",
     textColor:"white"
 };   
-
+ 
 HoldOn.open(options);
 
   $.ajax({

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../assets/materialize/css/materialize.min.css">
     <link rel="stylesheet" href="../../assets/materialize/css/admin.css">
     <link rel="stylesheet" href="../../assets/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="../../assets/holdon/holdon.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title></title>
   </head>
@@ -19,7 +20,7 @@
     <?php require 'nav.php'; ?>
 
     <div class="row">
-
+ 
       <form id="frm_add_template">
 
         <div class="col s12 m3 l3">
@@ -36,7 +37,7 @@
 
         <div class="col s12 m4 l4">
           <div class="input-field">
-            <label for="">Template Name</label>
+            <label for="name">Template Name</label>
             <input type="text" name="name" id="name">
           </div>
         </div>
@@ -108,7 +109,7 @@
   <script src="../../assets/jquery/jquery.validate.min.js" charset="utf-8"></script>
   <script src="../../assets/jquery/jquery.additionalMethod.min.js" charset="utf-8"></script>
   <script src="../../assets/materialize/js/materialize.min.js" charset="utf-8"></script>
-
+  <script src="../../assets/holdon/holdon.min.js" charset="utf-8"></script>
   <script src="../../assets/ckeditor/ckeditor.js" charset="utf-8"></script>
   <script src="../../assets/sweetalert2/sweetalert2.min.js" charset="utf-8"></script>
   <script src="../../controller/user/fetch_user_notif.js" charset="utf-8"></script>

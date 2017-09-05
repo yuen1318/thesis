@@ -1,6 +1,7 @@
 <?php
 session_start();
 require '../../dbConfig.php';
+date_default_timezone_set('Asia/Manila');
 
 $user_info ="<b>".$_SESSION['user_department'].":</b></br></br>".$_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln']. "</br>". $_SESSION['user_email']. "</br><i>". $_SESSION['user_title']."</i>";
 

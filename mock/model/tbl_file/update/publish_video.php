@@ -2,7 +2,7 @@
 session_start();
 require '../../dbConfig.php';
 require '../../a_functions/sanitize.php';
-
+date_default_timezone_set('Asia/Manila');
 $update_on = date("Y, F j, g:i a");
 
 

@@ -1,7 +1,7 @@
 
 <?php
   require '../../dbConfig.php';
-  $sql ="SELECT * FROM tbl_position";
+  $sql ="SELECT * FROM tbl_position ORDER BY id DESC";
 
   if (!empty($dbConn)) {
     $stmt =  $dbConn->prepare($sql);

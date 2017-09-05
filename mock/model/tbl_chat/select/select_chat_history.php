@@ -14,7 +14,7 @@
     $me = $_SESSION['sudo_email'];
   }
   else{
-    echo"error";
+    echo"session expired";
   }
   $them = $_POST['chat_pick'];
 

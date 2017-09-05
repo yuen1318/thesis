@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Manila');
     $host = 'localhost';
     $dbname= 'mock';
     $un = 'root';
