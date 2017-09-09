@@ -53,6 +53,7 @@
     move_uploaded_file($uploaded_powerpoint_tmp , $full_file);
 
     if ($stmt) {
+       
       $sql2 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $dbConn->prepare($sql2);
       $stmt->bindValue(1, $file_id);
@@ -63,7 +64,7 @@
       $stmt->bindValue(6, $signatories);
       $stmt->bindValue(7, $signatories);
       $stmt->bindValue(8, "");
-      $stmt->bindValue(9, "has uploaded a presentation");
+      $stmt->bindValue(9, "<strong>Has uploaded a Presentation</strong>");
       $stmt->bindValue(10, $email.".jpg");
       $stmt->bindValue(11, $email);
       $stmt->execute();

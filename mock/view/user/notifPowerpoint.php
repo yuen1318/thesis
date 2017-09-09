@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../../assets/materialize/css/myStyle.css">
     <link rel="stylesheet" href="../../assets/materialize/css/animate.css">
     <link rel="stylesheet" href="../../assets/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="../../assets/holdon/holdon.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style media="screen">
       /*Black color to the text*/
@@ -386,6 +387,7 @@
   <script src="../../assets/jquery/jquery.min.js" charset="utf-8"></script>
   <script src="../../assets/jquery/jquery.validate.min.js" charset="utf-8"></script>
   <script src="../../assets/jquery/jquery.additionalMethod.min.js" charset="utf-8"></script>
+  <script src="../../assets/holdon/holdon.min.js" charset="utf-8"></script>
   <script src="../../assets/materialize/js/materialize.min.js" charset="utf-8"></script>
   <script src="../../assets/listjs/list.min.js" charset="utf-8"></script>
   <script src="../../assets/listjs/list.pagination.min.js" charset="utf-8"></script>

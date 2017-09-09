@@ -104,7 +104,8 @@ $(document).ready(function() {
             },
             mobile: {
                 required: true,
-                number: true
+                number: true,
+                maxlength: 11
             },
             department: {
                 required: true
@@ -145,7 +146,8 @@ $(document).ready(function() {
             },
             mobile: {
                 required: "<small class='right val red-text'>This field is required</small>",
-                number: "<small class='right val red-text'>Numbers Only</small>"
+                number: "<small class='right val red-text'>Numbers Only</small>",
+                maxlength: "<small class='right val red-text'>Maximum length is 11</small>"
             },
             department: {
                 required: "<small class='right val red-text'>This field is required</small>"
@@ -208,7 +210,21 @@ function insert_user(model_url, form_name) {
                         $("#error_email small").addClass("hide");
                         $(form_name)[0].reset();
                         $('#btn_clear').trigger('click');
-                        Materialize.toast("Your Request is submitted, Frequently<br>check your email for updates", 8000, 'green darken-2');
+
+                        swal({
+                            title: 'Success',
+                            text: "Your request has been sent, frequently check your email for updates",
+                            type: 'success',
+                            confirmButtonText: 'Ok',
+                            confirmButtonClass: 'btn waves-effect green darken-2',
+                            buttonsStyling: false,
+                            allowOutsideClick: false
+                        }).then(function() {
+                            // Redirect the user
+                            window.location.href = "index.php";
+                        }); //end of swal
+
+
                     }
                 } //end of success function
 

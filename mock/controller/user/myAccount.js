@@ -42,7 +42,7 @@
                              else {
                                  swal({
                                      title: 'Error',
-                                     text: "An error has occured",
+                                     text: "An error has occured, File size to big, 2mb is the allowed size",
                                      type: 'error',
                                      confirmButtonText: 'Ok',
                                      confirmButtonClass: 'btn waves-effect green darken-2',

@@ -52,7 +52,7 @@ $status = "published";
         $stmt->bindValue(6, $signatories);
         $stmt->bindValue(7, $pending_signatories);
         $stmt->bindValue(8, $approved_signatories );
-        $stmt->bindValue(9, "has published a video");
+        $stmt->bindValue(9, "<strong>Has published a Video</strong>");
         $stmt->bindValue(10, $email.".jpg");
         $stmt->bindValue(11, $created_by);
         $stmt->execute();

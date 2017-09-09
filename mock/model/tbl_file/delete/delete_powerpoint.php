@@ -48,7 +48,7 @@ $user_info ="<b>".$_SESSION['user_department'].":</b></br></br>".$_SESSION['user
     $stmt->bindValue(6, $signatories);
     $stmt->bindValue(7, $pending_signatories);
     $stmt->bindValue(8, $approved_signatories);
-    $stmt->bindValue(9, "has deleted a Presentation");
+    $stmt->bindValue(9, "<b class='green-text'>Has deleted a Presentation</b>");
     $stmt->bindValue(10, $email.".jpg");
     $stmt->bindValue(11, $email);
     $stmt->execute();

@@ -47,7 +47,7 @@ if (isset($_POST['content'])) {
     $stmt->bindValue(6, $signatories);
     $stmt->bindValue(7, $signatories);
     $stmt->bindValue(8, "");
-    $stmt->bindValue(9, "has created an efile");
+    $stmt->bindValue(9, "<strong>Has created a Efile</strong>");
     $stmt->bindValue(10, $email.".jpg");
     $stmt->bindValue(11, $email);
     $stmt->execute();

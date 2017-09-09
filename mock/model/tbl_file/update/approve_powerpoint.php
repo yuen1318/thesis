@@ -76,7 +76,7 @@
         $stmt->bindValue(6, $signatories);
         $stmt->bindValue(7, implode("," , $updated_pending_signatories));
         $stmt->bindValue(8, $updated_approved_signatories );
-        $stmt->bindValue(9, "has approved a presentation");
+        $stmt->bindValue(9, "<strong>Has approved a Presentation</strong>");
         $stmt->bindValue(10, $email.".jpg");
         $stmt->bindValue(11, $created_by);
         $stmt->execute();

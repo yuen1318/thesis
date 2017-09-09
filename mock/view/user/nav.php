@@ -9,8 +9,8 @@
       <!--end of ul-->&emsp;&emsp;
 
 
-      <a class="brand-logo hide-on-small-and-down"><img src="../../apalitlogo.png" width="190" height="63"></a>
-      <a class="brand-logo hide-on-med-and-down" style="font-size:23px !important; padding-left:200px!important;">EFTS</a>
+      <a class="brand-logo hide-on-small-and-down"><img src="../../apalitlogo2.png" width="65" height="63"></a>
+      <a class="brand-logo hide-on-med-and-down" style="font-size:23px !important; padding-left:70px!important;">EFTS</a>
 
 
       <ul class="right ">

@@ -25,7 +25,10 @@
   $file_ext = explode("." , $uploaded_img_name);
   $file_ext = strtolower(end($file_ext) );
   $file_path = '../../../DB/myPhoto/';
-  $file_id = uniqid('img_', true). "." . $file_ext;
+  $file_id = uniqid('img_', true);
+
+  $file_id = str_replace(".", "", $file_id);
+  $file_id = $file_id. "." . $file_ext;
 
   $full_file = $file_path . $file_id;
 

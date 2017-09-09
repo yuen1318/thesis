@@ -1,10 +1,30 @@
 <?php
   session_start();
   require 'session.php';
+  require "../../model/dbConfig.php";
 
   $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
   $validURL = str_replace("&","&amp;",$url);
   $chat_pick = parse_url($validURL, PHP_URL_QUERY);
+
+  if($chat_pick != ""){
+
+    $sql = "SELECT * FROM tbl_user WHERE email=?";
+    $stmt = $dbConn->prepare($sql);
+    $stmt->bindValue(1, $chat_pick);
+    $stmt->execute();
+    $count = $stmt->rowCount();
+  
+    if($count == 1){#if email exist extract info and store it in variable
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+      $chat_name = $row['fn']." ".$row['mn']." ".$row['ln'];
+    }
+  }
+
+  else{
+    $chat_name="";
+  }
+ 
 
  ?>
   <!DOCTYPE html>
@@ -74,8 +94,9 @@
       <!--end of chat list-->
 
       <div class="col s12 m8 l8"><br>
+      <h5><?php echo $chat_name?></h5>
         <div class="row" id="chat_history"></div>
-
+        
         <form id="frm_chat">
           <input class='hide' type="text" name="recepient" value="<?php echo $chat_pick?>">
           <textarea class="row" id="chat_msg" placeholder="message here" name="msg"></textarea><br>

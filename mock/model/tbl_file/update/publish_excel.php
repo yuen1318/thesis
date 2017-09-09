@@ -51,7 +51,7 @@ $status = "published";
         $stmt->bindValue(6, $signatories);
         $stmt->bindValue(7, $pending_signatories);
         $stmt->bindValue(8, $approved_signatories );
-        $stmt->bindValue(9, "has published a spreadsheet");
+        $stmt->bindValue(9, "<strong>Has published a Spreadsheet</strong>");
         $stmt->bindValue(10, $email.".jpg");
         $stmt->bindValue(11, $created_by);
         $stmt->execute();

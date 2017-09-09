@@ -62,7 +62,7 @@
       $stmt->bindValue(6, $signatories);
       $stmt->bindValue(7, $signatories);
       $stmt->bindValue(8, "");
-      $stmt->bindValue(9, "has uploaded a Spreadsheet");
+      $stmt->bindValue(9, "<strong>Has uploaded a Spreadsheet</strong>");
       $stmt->bindValue(10, $email.".jpg");
       $stmt->bindValue(11, $email);
       $stmt->execute();

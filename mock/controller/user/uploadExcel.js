@@ -34,7 +34,8 @@
                  final_extension == "xlsm" ||
                  final_extension == "xlsx" ||
                  final_extension == "xltx" ||
-                 final_extension == "xltm") {
+                 final_extension == "xltm" ||
+                 final_extension == "xls") {
 
                  $('.step2').removeClass('hide');
                  $('.step1').addClass('hide');
@@ -68,6 +69,16 @@
      }); //end of onclick
 
      $(document).on('click', '#btn_submit', function() {
+        HoldOn.open( { 
+            theme:"sk-bounce",
+            message:"Uploading image, this will take a while...",
+            backgroundColor:"#212121",
+            textColor:"white" 
+        });
+ 
+       
+        
+
          if (!$.trim($("#target").val())) { //check if textarea is empty or containes whitespaces
              swal({
                  title: 'Error',
@@ -77,34 +88,10 @@
                  confirmButtonClass: 'btn waves-effect green darken-2',
                  buttonsStyling: false
              }); //end of swal
-         } else {
-
-             var formData = new FormData($("#frm_excel")[0]);
-
-             $.ajax({
-                 url: '../../model/tbl_file/insert/upload_excel.php',
-                 type: 'POST',
-                 data: formData,
-                 async: false,
-                 success: function(data) {
-                     swal({
-                         title: 'Success',
-                         text: "Spreadsheet uploaded successfully",
-                         type: 'success',
-                         confirmButtonText: 'Ok',
-                         confirmButtonClass: 'btn waves-effect green darken-2',
-                         buttonsStyling: false,
-                         allowOutsideClick: false
-                     }).then(function() {
-                        // Redirect the user
-                        window.location.href = "index.php";
-                    }); //end of swal
-                 },
-                 cache: false,
-                 contentType: false,
-                 processData: false
-             }); //end of ajax
-             return false;
+             HoldOn.close();
+         } else {    
+            
+            upload();
          } //end of else
      }); //end of onclick
 
@@ -172,3 +159,51 @@
          menuWidth: 255
      });
  } //end of load_init
+
+ function upload(){
+    
+
+    var formData = new FormData($("#frm_excel")[0]);
+    $.ajax({
+        url: '../../model/tbl_file/insert/upload_excel.php',
+        type: 'POST',
+        data: formData,
+        async: true,
+        success: function(data) {
+
+        if(data == "success"){
+            swal({
+                title: 'Success',
+                text: "Spreadsheet uploaded successfully",
+                type: 'success',
+                confirmButtonText: 'Ok',
+                confirmButtonClass: 'btn waves-effect green darken-2',
+                buttonsStyling: false,
+                allowOutsideClick: false
+            }).then(function() {
+                // Redirect the user
+                window.location.href = "index.php";
+            }); //end of swal
+            HoldOn.close();
+        }//end of if
+
+        else{
+            swal({
+                title: 'Error',
+                text: "An error occured, the file size is to big or doesnt support this format",
+                type: 'error',
+                confirmButtonText: 'Ok',
+                confirmButtonClass: 'btn waves-effect green darken-2',
+                buttonsStyling: false,
+                allowOutsideClick: false
+                }); //end of swal //end of swal
+            HoldOn.close();
+        }//end of else
+            
+        },//end of success
+        cache: false,
+        contentType: false,
+        processData: false
+    }); //end of ajax
+     return false;
+ }

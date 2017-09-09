@@ -35,3 +35,8 @@ background: #388e3c!important;
 .cke_editable{
   line-height: 0.4 !important;
 }
+
+strong{
+  color:green;
+  font-size:17px;
+}

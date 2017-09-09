@@ -67,6 +67,7 @@
                                  confirmButtonClass: 'btn waves-effect green darken-2',
                                  buttonsStyling: false
                              })
+                             HoldOn.close();
                          } //end of if
                          else if (Result == "success") {
                              Materialize.toast("Photo successfully uploaded", 8000, 'green darken-2');
@@ -75,12 +76,13 @@
                          else {
                              swal({
                                  title: 'Error',
-                                 text: "An error has occured",
+                                 text: "An error has occured, the file size may be to big or it doesnt support its format",
                                  type: 'error',
                                  confirmButtonText: 'Ok',
                                  confirmButtonClass: 'btn waves-effect green darken-2',
                                  buttonsStyling: false
                              })
+                             HoldOn.close();
                          } //end of else
                      }, //end of success function
 
@@ -99,6 +101,7 @@
                      confirmButtonClass: 'btn waves-effect green darken-2',
                      buttonsStyling: false
                  }) //end of swal
+                 HoldOn.close();
          } //end of else
      }); //end of btn click
  }); //end of document.ready

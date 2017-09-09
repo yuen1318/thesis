@@ -137,7 +137,7 @@
                   <!--end of gender-->
 
                   <div class="input-field col s12 m3 l3">
-                    <input name="mobile" id="mobile" type="number">
+                    <input name="mobile" id="mobile" type="number" maxlength="11">
                     <label for="mobile">Contact Number</label>
                   </div>
 

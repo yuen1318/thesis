@@ -71,6 +71,7 @@
                       confirmButtonClass: 'btn waves-effect teal lighten-1',
                       buttonsStyling: false
                     })
+                    HoldOn.close();
                   } //end of if
                   else if (Result == "success") {
                     Materialize.toast("Photo successfully uploaded", 8000, 'teal lighten-1');
@@ -79,12 +80,13 @@
                   else {
                     swal({
                       title: 'Error',
-                      text: "An error has occured",
+                      text: "An error has occured, the file size may be to big or it doesnt support its format",
                       type: 'error',
                       confirmButtonText: 'Ok',
                       confirmButtonClass: 'btn waves-effect teal lighten-1',
                       buttonsStyling: false
                     })
+                    HoldOn.close();
                   } //end of else
                 }, //end of success function
 
@@ -97,12 +99,13 @@
             else {
               swal({
                 title: 'Error',
-                text: "Only jpg files are allowed",
+                text: "Only jpg and png files are allowed",
                 type: 'error',
                 confirmButtonText: 'Ok',
                 confirmButtonClass: 'btn waves-effect teal lighten-1',
                 buttonsStyling: false
               }) //end of swal
+              HoldOn.close();
             } //end of else
           }); //end of btn click
         }); //end of document.ready

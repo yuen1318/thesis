@@ -88,7 +88,7 @@
         $stmt->bindValue(6, $signatories);
         $stmt->bindValue(7, "");
         $stmt->bindValue(8, $signatories );
-        $stmt->bindValue(9, "has published an efile");
+        $stmt->bindValue(9, "<strong>Has published a Efile</strong>");
         $stmt->bindValue(10, $email.".jpg");
         $stmt->bindValue(11, $created_by);
         $stmt->execute();

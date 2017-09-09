@@ -149,18 +149,29 @@
                  final_extension == "xlsx" ||
                  final_extension == "xltx" ||
                  final_extension == "xltm") {
+                    
+                    var options = {
+                        theme:"sk-bounce",
+                        message:"Uploading image, this will take a while...",
+                        backgroundColor:"#212121",
+                        textColor:"white"
+                    };   
+                   HoldOn.open(options);
+
                  var formData = new FormData($("#frm_edit_excel")[0]);
 
                  $.ajax({
                      url: '../../model/tbl_file/update/edit_excel.php',
                      type: 'POST',
                      data: formData,
-                     async: false,
+                     async: true,
                      success: function (Result) {
                          if (Result == "error") {
                              Materialize.toast("Sorry an error occured", 8000, 'red');
+                             HoldOn.close();
                          } else if (Result == "success") {
                              Materialize.toast("Spreadsheet resend", 8000, 'green darken-2');
+                             HoldOn.close();
                          }
                      },
                      complete: function (Result) {

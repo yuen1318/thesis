@@ -2,12 +2,7 @@ $(document).ready(function(){
   //load content from db
   select_department("../../model/tbl_department/select/select_department.php", "#select_department");
   
-  /*$(document).on('change', '#select_department', function(){
-    //when you select your department, postion will dynamically show
-    var department_value = $(this).val();   
-    select_position("../../model/tbl_position/select/select_position.php?" + department_value, "#select_position");
-  });
-  */
+ 
  
   //////////////////////////Form Validation/////////////////////////////////
  
@@ -33,7 +28,7 @@ $(document).ready(function(){
       password: {required: true, nowhitespace:  true},
       rpassword: {required: true, nowhitespace:  true, equalTo: "#password"},
       gender: {required: true},
-      mobile: {required: true, number: true},
+      mobile: {required: true, number: true, maxlength: 11},
       department: {required: true},
       title: {required: true}
     },//end of rules
@@ -51,7 +46,8 @@ $(document).ready(function(){
                   equalTo:  "<small class='right val red-text'>Password didn't match</small>"},
       gender: {required: "<small class='right val red-text'>This field is required</small>"},
       mobile: {required: "<small class='right val red-text'>This field is required</small>",
-              number: "<small class='right val red-text'>Numbers Only</small>"},
+              number: "<small class='right val red-text'>Numbers Only</small>",
+              maxlength: "<small class='right val red-text'>Maximum length is 11</small>"},
       department: {required: "<small class='right val red-text'>This field is required</small>"},
       title: {required: "<small class='right val red-text'>This field is required</small>"}
       },//end of messages

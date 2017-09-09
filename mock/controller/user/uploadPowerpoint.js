@@ -79,25 +79,51 @@ $(document).ready(function() {
 
             var formData = new FormData($("#frm_powerpoint")[0]);
 
+            var options = {
+                theme:"sk-bounce",
+                message:"Uploading image, this will take a while...",
+                backgroundColor:"#212121",
+                textColor:"white"
+            };   
+           HoldOn.open(options);
+
             $.ajax({
                 url: '../../model/tbl_file/insert/upload_powerpoint.php',
                 type: 'POST',
                 data: formData,
-                async: false,
+                async: true,
                 success: function(data) {
-                    swal({
-                        title: 'Success',
-                        text: "Presentation uploaded successfully",
-                        type: 'success',
-                        confirmButtonText: 'Ok',
-                        confirmButtonClass: 'btn waves-effect green darken-2',
-                        buttonsStyling: false,
-                        allowOutsideClick: false
-                    }).then(function() {
-                        // Redirect the user
-                        window.location.href = "index.php";
-                    }); //end of swal
-                },
+
+                    if(data === "success"){
+                        swal({
+                            title: 'Success',
+                            text: "Presentation uploaded successfully",
+                            type: 'success',
+                            confirmButtonText: 'Ok',
+                            confirmButtonClass: 'btn waves-effect green darken-2',
+                            buttonsStyling: false,
+                            allowOutsideClick: false
+                        }).then(function() {
+                            // Redirect the user
+                            window.location.href = "index.php";
+                        }); //end of swal  
+                        HoldOn.close();
+                    }//end of if
+
+                    else{
+                        swal({
+                            title: 'Error',
+                            text: "An error occured, the file size is to big or doesnt support this format",
+                            type: 'error',
+                            confirmButtonText: 'Ok',
+                            confirmButtonClass: 'btn waves-effect green darken-2',
+                            buttonsStyling: false,
+                            allowOutsideClick: false
+                          }); //end of swal //end of swal
+                        HoldOn.close();
+                    }//end of else
+                    
+                },//end of success
                 cache: false,
                 contentType: false,
                 processData: false
