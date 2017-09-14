@@ -85,7 +85,7 @@
               <input type="file" name="uploaded_img">
             </div>
             <div class="file-path-wrapper">
-              <input class="file-path" type="text" readonly placeholder=".jpg only">
+              <input class="file-path" type="text" readonly placeholder=".jpg or png only">
             </div>
           </div>
 

@@ -92,7 +92,8 @@ $(document).ready(function() {
             },
             password: {
                 required: true,
-                nowhitespace: true
+                nowhitespace: true,
+                minlength: 6
             },
             rpassword: {
                 required: true,
@@ -134,7 +135,8 @@ $(document).ready(function() {
             },
             password: {
                 required: "<small class='right val red-text'>This field is required</small>",
-                nowhitespace: "<small class='right val red-text'>White spaces are invalid</small>"
+                nowhitespace: "<small class='right val red-text'>White spaces are invalid</small>",
+                minlength: "<small class='right val red-text'>Minimum password character is 6</small>"
             },
             rpassword: {
                 required: "<small class='right val red-text'>This field is required</small>",

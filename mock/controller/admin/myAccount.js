@@ -101,7 +101,8 @@
              },
              mobile: {
                  required: true,
-                 number: true
+                 number: true,
+                 maxlength: 11
              }
          }, //end of rules
          messages: {
@@ -116,7 +117,8 @@
              },
              mobile: {
                  required: "<small class='right val red-text'>This field is required</small>",
-                 number: "<small class='right val red-text'>Numbers Only</small>"
+                 number: "<small class='right val red-text'>Numbers Only</small>",
+                 maxlength: "<small class='right val red-text'>Maximum length is 11</small>"
              }
          }, //end of messages
          errorElement: 'div',
@@ -160,7 +162,8 @@
              },
              password: {
                  required: true,
-                 nowhitespace: true
+                 nowhitespace: true,
+                 minlength: 6
              },
              rpassword: {
                  required: true,
@@ -172,7 +175,8 @@
          messages: {
              password: {
                  required: "<small class='right val red-text'>This field is required</small>",
-                 nowhitespace: "<small class='right val red-text'>White spaces are invalid</small>"
+                 nowhitespace: "<small class='right val red-text'>White spaces are invalid</small>",
+                 minlength: "<small class='right val red-text'>Minimum password character is 6</small>"
              },
              rpassword: {
                  required: "<small class='right val red-text'>This field is required</small>",
