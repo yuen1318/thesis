@@ -23,7 +23,7 @@
   $file_id = $_POST['edit_id'];
   $file_path = '../../../DB/excel/';
   $full_file = $file_path . $file_id;
-
+ 
   $sql = "SELECT * FROM tbl_file WHERE file_id=?";
   $stmt = $dbConn->prepare($sql);
   $stmt->bindValue(1, $file_id);
@@ -37,7 +37,13 @@
     $created_by = $row['created_by'];
     $pending_signatories = $row['pending_signatories'];
     $approved_signatories = $row['approved_signatories'];
-      }//end of if
+
+    $proxy_signatories = $row['proxy_signatories'];
+    $proxy_approved = $row['proxy_approved'];
+    $proxy_pending = $row['proxy_pending'];
+    $proxy_created = $row['proxy_created'];
+    
+    }//end of if
 
 
   if ($uploaded_excel_size <= 2000000 && $uploaded_excel_error === 0)  {
@@ -55,7 +61,7 @@
         $date = date("Y, F j");
         $time = date("g:i a");
 
-        $sql3 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        $sql3 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by,proxy_signatories,proxy_approved,proxy_pending) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $dbConn->prepare($sql3);
         $stmt->bindValue(1, $file_id);
         $stmt->bindValue(2, $file_name);
@@ -68,16 +74,21 @@
         $stmt->bindValue(9, "<strong>Has edited a Spreadsheet</strong>");
         $stmt->bindValue(10, $email.".jpg");
         $stmt->bindValue(11, $created_by);
+
+        $stmt->bindValue(12, $proxy_signatories);
+        $stmt->bindValue(13, $proxy_approved);
+        $stmt->bindValue(14, $proxy_pending);
+ 
         $stmt->execute();
          
-
+ 
             if ($stmt) {
               $sql4 = "INSERT INTO tbl_file_trgr(file_id,orig_name,pending_signatories,approved_signatories,disapproved,comment,status,action,date_time) VALUES(?,?,?,?,?,?,?,?,?)";
               $stmt = $dbConn->prepare($sql4);
               $stmt->bindValue(1, $file_id);
               $stmt->bindValue(2, $file_name);
-              $stmt->bindValue(3, $pending_signatories);
-              $stmt->bindValue(4, $approved_signatories);
+              $stmt->bindValue(3, $proxy_pending);
+              $stmt->bindValue(4, $proxy_approved);
               $stmt->bindValue(5, "");
               $stmt->bindValue(6, "");
               $stmt->bindValue(7, "pending");

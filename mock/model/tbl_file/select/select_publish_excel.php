@@ -21,7 +21,7 @@ $email = $_SESSION['user_email'];
           <td class='hide'>  $row[num]  </td>
           <td class='doc_id'>  $row[file_id]  </td>
           <td class='name'>  $row[orig_name]  </td>
-          <td class='name'>  $row[approved_signatories]  </td>
+          <td class='name'>  $row[proxy_approved]  </td>
 
           <td>
             <button class='btn waves-effect green darken-2 publish_excel' data-publish-id='$row[file_id]'>

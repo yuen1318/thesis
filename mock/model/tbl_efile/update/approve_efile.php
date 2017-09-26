@@ -30,11 +30,34 @@
     $pending_signatories = explode("," , $row['pending_signatories']);
     $approved_signatories = $row['approved_signatories'];
     $signatures = $row['signatures'];
+    
+    $proxy_pending =  $row['proxy_pending'];
+    $proxy_approved =  $row['proxy_approved'];
+    $proxy_signatories =  $row['proxy_signatories'];
+
+    
   }
 
     if ($stmt) {
+      //remove your name on the proxy_pending
+      $proxy_pending = explode("," , $row['proxy_pending']);
+      array_shift($proxy_pending);
+      $proxy_pending = implode("," , $proxy_pending );
+       
+      //add your name on the proxy_approved
+      if($proxy_approved == NULL){
+        $proxy_approved = array();
+      }
+      else{
+        $proxy_approved = explode("," , $proxy_approved);
+      }
+ 
+      array_push($proxy_approved , $_SESSION["user_fn"] . " " . $_SESSION["user_ln"]);
+      $proxy_approved = implode("," , $proxy_approved );
+
+
       #step 3 update the values
-      $sql2 = "UPDATE tbl_efile SET pending_signatories=?, approved_signatories=?, signatures=? WHERE doc_id=?";
+      $sql2 = "UPDATE tbl_efile SET pending_signatories=?, approved_signatories=?, signatures=? , proxy_pending=? ,proxy_approved=? WHERE doc_id=?";
       //remove your email on pending_signatories
       $updated_pending_signatories = array_diff($pending_signatories, explode("," , $_SESSION['user_email']) );
       //convert string to array
@@ -60,7 +83,9 @@
       $stmt->bindValue(1, implode("," , $updated_pending_signatories) );
       $stmt->bindValue(2, $updated_approved_signatories );
       $stmt->bindValue(3, $updated_signatures);
-      $stmt->bindValue(4, $doc_id);
+      $stmt->bindValue(4, $proxy_pending);
+      $stmt->bindValue(5, $proxy_approved);
+      $stmt->bindValue(6, $doc_id);
       $stmt->execute();
 
     }//end of if
@@ -70,7 +95,7 @@
         $date = date("Y, F j");
         $time = date("g:i a");
 
-        $sql3 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        $sql3 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by,proxy_pending,proxy_approved,proxy_signatories) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $dbConn->prepare($sql3);
         $stmt->bindValue(1, $doc_id);
         $stmt->bindValue(2, $efile_name);
@@ -83,15 +108,18 @@
         $stmt->bindValue(9, "<strong>Has approved a Efile</strong>");
         $stmt->bindValue(10, $email.".jpg");
         $stmt->bindValue(11, $created_by);
+        $stmt->bindValue(12, $proxy_pending);
+        $stmt->bindValue(13, $proxy_approved);
+        $stmt->bindValue(14, $proxy_signatories);
         $stmt->execute();
-
+  
         if ($stmt) {
           $sql4 = "INSERT INTO tbl_efile_trgr(doc_id,name,pending_signatories,approved_signatories,disapproved,comment,status,action,date_time) VALUES(?,?,?,?,?,?,?,?,?)";
           $stmt = $dbConn->prepare($sql4);
           $stmt->bindValue(1, $doc_id);
           $stmt->bindValue(2, $efile_name);
-          $stmt->bindValue(3, implode("," , $updated_pending_signatories) );
-          $stmt->bindValue(4, $updated_approved_signatories);
+          $stmt->bindValue(3, $proxy_pending );
+          $stmt->bindValue(4, $proxy_approved);
           $stmt->bindValue(5, "");
           $stmt->bindValue(6, "");
           $stmt->bindValue(7, "pending");

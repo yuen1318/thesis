@@ -20,8 +20,8 @@
         <td class='doc_id'>  $row[doc_id]  </td>
         <td class='name'>  $row[name]  </td>
         <td class='doc_type'>  $row[doc_type]  </td>
-        <td class='signatories'>  $row[signatories]  </td>
-        <td class='cb'>  $row[created_by]  </td>
+        <td class='signatories'>  $row[proxy_signatories]  </td>
+        <td class='cb'>  $row[proxy_created]  </td>
         <td class='co'>  $row[created_on]  </td>
         <td class='po'>  $row[published_on]  </td>
 

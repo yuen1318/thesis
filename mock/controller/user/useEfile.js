@@ -4,16 +4,21 @@ $(document).ready(function() {
     select_user("../../model/tbl_user/select/select_user_choice.php", "#tbl_user");
 
     //choose user from checkbox
-    var arr = [];
+    var arr1 = [];
+    var arr2 = [];
     $(document).on('change', 'input[type=checkbox]', function() {
         if (this.checked) {
-            arr.push(this.value)
+            arr1.push(this.value);
+            arr2.push($(this).attr('data-name'));
+            
         } else {
-            arr.splice(arr.indexOf(this.value), 1);
+            arr1.splice(arr1.indexOf(this.value), 1);
+            arr2.splice(arr2.indexOf($(this).attr('data-name')), 1);
         }
-        $('#target').val(arr + '');
+        $('#target1').val(arr1 + '');
+        $('#target2').val(arr2 + '');
     });
-
+ 
     //disable enter key
     $('.input-field').keypress(function(event) {
         if (event.keyCode == 13) {
@@ -61,7 +66,7 @@ $(document).ready(function() {
     }); //end of onclick
 
     $(document).on('click', '#btn_submit', function() {
-        if (!$.trim($("#target").val())) { //check if textarea is empty or containes whitespaces
+        if (!$.trim($("#target1").val())) { //check if textarea is empty or containes whitespaces
             swal({
                 title: 'Error',
                 text: "note: cannot create e-file without recepients",

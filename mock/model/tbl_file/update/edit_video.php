@@ -10,7 +10,7 @@
   $user_info ="<b>".$_SESSION['user_department'].":</b></br></br>".$_SESSION['user_fn']." ".$_SESSION['user_mn']." ".$_SESSION['user_ln']. "</br>". $_SESSION['user_email']. "</br><i>". $_SESSION['user_title']."</i>";
   $uploaded_video = $_POST['video'];
 
-
+ 
 
   $disapproved = "";
   $comment = "";
@@ -30,7 +30,12 @@
     $created_by = $row['created_by'];
     $pending_signatories = $row['pending_signatories'];
     $approved_signatories = $row['approved_signatories'];
-      }//end of if
+
+    $proxy_signatories = $row['proxy_signatories'];
+    $proxy_approved = $row['proxy_approved'];
+    $proxy_pending = $row['proxy_pending'];
+    $proxy_created = $row['proxy_created'];
+    }//end of if
 
 
 
@@ -48,7 +53,7 @@
         $date = date("Y, F j");
         $time = date("g:i a");
 
-        $sql3 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        $sql3 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by,proxy_signatories,proxy_approved,proxy_pending) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $dbConn->prepare($sql3);
         $stmt->bindValue(1, $file_id);
         $stmt->bindValue(2, $file_name);
@@ -61,6 +66,11 @@
         $stmt->bindValue(9, "<strong>Has edited a Video</strong>");
         $stmt->bindValue(10, $email.".jpg");
         $stmt->bindValue(11, $created_by);
+
+        $stmt->bindValue(12, $proxy_signatories);
+        $stmt->bindValue(13, $proxy_approved);
+        $stmt->bindValue(14, $proxy_pending);
+ 
         $stmt->execute();
          
 
@@ -69,8 +79,8 @@
             $stmt = $dbConn->prepare($sql4);
             $stmt->bindValue(1, $file_id);
             $stmt->bindValue(2, $file_name);
-            $stmt->bindValue(3, $pending_signatories);
-            $stmt->bindValue(4, $approved_signatories);
+            $stmt->bindValue(3, $proxy_pending);
+            $stmt->bindValue(4, $proxy_approved);
             $stmt->bindValue(5, "");
             $stmt->bindValue(6, "");
             $stmt->bindValue(7, "pending");

@@ -20,7 +20,7 @@ $email = $_SESSION['user_email'];
         <td class='hide'>  $row[num]  </td>
         <td class='doc_id'>  $row[doc_id]  </td>
         <td class='name'>  $row[name]  </td>
-        <td class='name'>  $row[approved_signatories]  </td>
+        <td class='name'>  $row[proxy_approved]  </td>
 
         <td>
           <a class='btn waves-effect green darken-2' href='publishEfile.php?$row[doc_id]' target='_blank'>

@@ -23,7 +23,7 @@
   <body class="grey lighten-3">
 
 
-
+ 
     <?php require 'nav.php'; ?>
 
     <form id="frm_excel" enctype="multipart/form-data">
@@ -133,8 +133,12 @@
           <div class="col s12 m9 l9">
             <label>List of Recepients</label>
 
-            <textarea name="signatories" style="height:60px !important; resize:none;" id="target" readonly>
-                 </textarea>
+            <textarea name="signatories" style="height:60px !important; resize:none;" id="target1" readonly>
+            </textarea>
+
+            <textarea name="proxy_signatories" style="height:60px !important; resize:none;" id="target2" readonly>
+            </textarea>
+
           </div>
 
           <div class="col s12 m3 l3 right-align"><br><br>

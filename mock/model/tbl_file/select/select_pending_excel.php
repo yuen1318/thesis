@@ -24,8 +24,8 @@
 
                 <td class='excel'>  $row[file_id]  </td>
                 <td class='name'>  $row[orig_name]  </td>
-                <td class='sender'>  $row[created_by] </td>
-                <td class='signatories'>  $row[signatories] </td>
+                <td class='sender'>  $row[proxy_created] </td>
+                <td class='signatories'>  $row[proxy_signatories] </td>
 
                 <td><a href ='../../DB/excel/$row[file_id]' target='_blank' class='btn waves-effect green darken-2'> View </a></td>
 

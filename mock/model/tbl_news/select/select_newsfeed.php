@@ -8,7 +8,7 @@
 
  
   $email = $_SESSION['user_email'];
-
+  echo $email;
   $sql ="SELECT * FROM tbl_news ORDER BY num DESC";
   if (!empty($dbConn)) {
     $stmt =  $dbConn->prepare($sql);
@@ -26,14 +26,14 @@
               <li class='collection-item avatar'>
                 <img src='../../DB/profile/$row[photo]' class='circle materialboxed' >
                 <span class='title email'>$row[email]</span><br>
-                <small>$row[date] at $row[time]</small><br><br>
+                <small class='date'>$row[date] at $row[time]</small><br><br>
                 <p>$row[msg]</p>
                 <p class='doc_id'>Document ID: $row[doc_id]</p>
                 <p class='name'> Name: $row[name]</p>
     
-                <p class='sgn'>List of Signatories:<br>$row[signatories]</p><br>
-                <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[pending_signatories]</p><br>
-                <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[approved_signatories]</p>
+                <p class='sgn'>List of Signatories:<br>$row[proxy_signatories]</p><br>
+                <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[proxy_pending]</p><br>
+                <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[proxy_approved]</p>
     
                 <a href='viewEfile.php?$row[doc_id]' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>
               </li><br>
@@ -54,14 +54,14 @@
             <li class='collection-item avatar'>
               <img src='../../DB/profile/$row[photo]' class='circle materialboxed' >
               <span class='title email'>$row[email]</span><br>
-              <small>$row[date] at $row[time]</small><br><br>
+              <small class='date'>$row[date] at $row[time]</small><br><br>
               <p>$row[msg]</p>
               <p class='doc_id'>Document ID: $row[doc_id]</p>
               <p class='name'> Name: $row[name]</p>
               
-              <p class='sgn'>List of Signatories:<br>$row[signatories]</p><br>
-              <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[pending_signatories]</p><br>
-              <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[approved_signatories]</p>";
+              <p class='sgn'>List of Signatories:<br>$row[proxy_signatories]</p><br>
+              <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[proxy_pending]</p><br>
+              <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[proxy_approved]</p>";
               
               if(file_exists("../../../DB/excel/$row[doc_id]")){
                 echo "<a href='../../DB/excel/$row[doc_id]' target='_blank' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>";
@@ -81,14 +81,14 @@
           <li class='collection-item avatar'>
             <img src='../../DB/profile/$row[photo]' class='circle materialboxed' >
             <span class='title email'>$row[email]</span><br>
-            <small>$row[date] at $row[time]</small><br><br>
+            <small class='date'>$row[date] at $row[time]</small><br><br>
             <p>$row[msg]</p>
             <p class='doc_id'>Document ID: $row[doc_id]</p>
             <p class='name'> Name: $row[name]</p>  
 
-            <p class='sgn'>List of Signatories:<br>$row[signatories]</p><br>
-            <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[pending_signatories]</p><br>
-            <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[approved_signatories]</p>";
+            <p class='sgn'>List of Signatories:<br>$row[proxy_signatories]</p><br>
+            <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[proxy_pending]</p><br>
+            <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[proxy_approved]</p>";
             
             if(file_exists("../../../DB/powerpoint/$row[doc_id]")){
               echo "<a href='../../DB/powerpoint/$row[doc_id]' target='_blank' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>";
@@ -110,13 +110,13 @@
           <li class='collection-item avatar'>
             <img src='../../DB/profile/$row[photo]' class='circle materialboxed' >
             <span class='title email'>$row[email]</span><br>
-            <small>$row[date] at $row[time]</small><br><br>
+            <small class='date'>$row[date] at $row[time]</small><br><br>
             <p>$row[msg]</p>
             <p class='doc_id'>Document ID: $row[doc_id]</p>
             <p class='name'> Name: $row[name]</p>
-            <p class='sgn'>List of Signatories:<br>$row[signatories]</p><br>
-            <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[pending_signatories]</p><br>
-            <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[approved_signatories]</p>
+            <p class='sgn'>List of Signatories:<br>$row[proxy_signatories]</p><br>
+            <p class='p_sgn red-text'>List of Pending Signatories:<br>$row[proxy_pending]</p><br>
+            <p class='a_sgn blue-text'>List of Approved Signatories:<br>$row[proxy_approved]</p>
             
             <a href='viewVideo.php?$row[doc_id]' target='_blank' class='secondary-content'><i class='fa fa-angle-right  fa-2x'></i></a>
           </li><br>";

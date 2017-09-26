@@ -18,7 +18,7 @@
         <td class='hide'>  $row[num]  </td>
         <td class='doc_id'>  $row[doc_id]  </td>
         <td class='name'>  $row[name]  </td>
-        <td class='disapproved'>  $row[disapproved]  </td>
+        <td class='disapproved'>  $row[proxy_disapproved]  </td>
 
         <td>
           <button class='btn waves-effect green darken-2 btn_reason' data-comment='$row[comment]'>

@@ -12,11 +12,12 @@ $user_info ="<b>".$_SESSION['user_department'].":</b></br></br>".$_SESSION['user
 
 $update_on = date("Y, F j, g:i a");
 
- $sql = "UPDATE tbl_efile SET disapproved=?, comment=? WHERE doc_id=?";
+ $sql = "UPDATE tbl_efile SET disapproved=?, comment=?, proxy_disapproved=? WHERE doc_id=?";
  $stmt = $dbConn->prepare($sql);
  $stmt->bindValue(1, $email);
  $stmt->bindValue(2, $comment);
- $stmt->bindValue(3, $doc_id);
+ $stmt->bindValue(3, $_SESSION["user_fn"]. " " . $_SESSION["user_ln"]);
+ $stmt->bindValue(4, $doc_id);
  $stmt->execute();
 
  $sql2 = "SELECT * FROM tbl_efile WHERE doc_id=?";
@@ -32,6 +33,11 @@ $update_on = date("Y, F j, g:i a");
    $created_by = $row['created_by'];
    $pending_signatories = $row['pending_signatories'];
    $approved_signatories = $row['approved_signatories'];
+
+   $proxy_signatories = $row['proxy_signatories'];
+   $proxy_approved = $row['proxy_approved'];
+   $proxy_pending = $row['proxy_pending'];
+   $proxy_created = $row['proxy_created'];
  }
  else{
    echo "gago";
@@ -41,7 +47,7 @@ $update_on = date("Y, F j, g:i a");
       $date = date("Y, F j");
       $time = date("g:i a");
 
-      $sql2 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+      $sql2 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by,proxy_signatories,proxy_approved,proxy_pending) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
       $stmt = $dbConn->prepare($sql2);
       $stmt->bindValue(1, $doc_id);
       $stmt->bindValue(2, $efile_name);
@@ -54,6 +60,10 @@ $update_on = date("Y, F j, g:i a");
       $stmt->bindValue(9, "<strong>Has rejected a Efile</strong>");
       $stmt->bindValue(10, $email.".jpg");
       $stmt->bindValue(11, $created_by);
+
+      $stmt->bindValue(12, $proxy_signatories);
+      $stmt->bindValue(13, $proxy_approved);
+      $stmt->bindValue(14, $proxy_pending);
       $stmt->execute();
  
       if ($stmt) {
@@ -61,15 +71,15 @@ $update_on = date("Y, F j, g:i a");
         $stmt = $dbConn->prepare($sql3);
         $stmt->bindValue(1, $doc_id);
         $stmt->bindValue(2, $efile_name);
-        $stmt->bindValue(3, $pending_signatories);
-        $stmt->bindValue(4, $approved_signatories);
-        $stmt->bindValue(5, $email);
+        $stmt->bindValue(3, $proxy_pending);
+        $stmt->bindValue(4, $proxy_approved);
+        $stmt->bindValue(5, $_SESSION["user_fn"]. " " . $_SESSION["user_ln"]);
         $stmt->bindValue(6, $comment);
         $stmt->bindValue(7, "pending");
         $stmt->bindValue(8, "UPDATE");
         $stmt->bindValue(9, $update_on);
         $stmt->execute();
-        
+         
         echo "success";
       }//end of if
       else {

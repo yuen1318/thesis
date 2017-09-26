@@ -16,7 +16,7 @@
               complete: function() {
                       //initialize pagination after data loaded
                       var monkeyList = new List('list_newsfeed', {
-                          valueNames: ['doc_id', 'name', 'email'],
+                          valueNames: ['doc_id', 'name', 'email','date'],
                           page: 6,
                           plugins: [ListPagination({})]
                       });

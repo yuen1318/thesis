@@ -17,7 +17,7 @@ $user_info ="<b>".$_SESSION['user_department'].":</b></br></br>".$_SESSION['user
  $stmt = $dbConn->prepare($sql);
  $stmt->bindValue(1, $file_id);
  $stmt->execute();
-
+ 
  if ($stmt) {
    #step 2 save the values in variable
    $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -28,6 +28,10 @@ $user_info ="<b>".$_SESSION['user_department'].":</b></br></br>".$_SESSION['user
    $pending_signatories = $row['pending_signatories'];
    $approved_signatories = $row['approved_signatories'];
 
+   $proxy_pending =  $row['proxy_pending'];
+   $proxy_approved =  $row['proxy_approved'];
+   $proxy_signatories =  $row['proxy_signatories'];
+   $proxy_disapproved =  $row['proxy_disapproved'];
  }
 
    $sql2 = "DELETE FROM tbl_file WHERE file_id=?";
@@ -38,7 +42,7 @@ $user_info ="<b>".$_SESSION['user_department'].":</b></br></br>".$_SESSION['user
   if ($stmt) {
     unlink("../../../DB/powerpoint/". $file_id);
 
-    $sql3 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+    $sql3 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by,proxy_pending,proxy_approved,proxy_signatories) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     $stmt = $dbConn->prepare($sql3);
     $stmt->bindValue(1, $file_id);
     $stmt->bindValue(2, $file_name);
@@ -51,6 +55,10 @@ $user_info ="<b>".$_SESSION['user_department'].":</b></br></br>".$_SESSION['user
     $stmt->bindValue(9, "<b class='green-text'>Has deleted a Presentation</b>");
     $stmt->bindValue(10, $email.".jpg");
     $stmt->bindValue(11, $email);
+
+    $stmt->bindValue(12, $proxy_pending);
+    $stmt->bindValue(13, $proxy_approved);
+    $stmt->bindValue(14, $proxy_signatories);
     $stmt->execute();
 
 
@@ -59,9 +67,9 @@ $user_info ="<b>".$_SESSION['user_department'].":</b></br></br>".$_SESSION['user
         $stmt = $dbConn->prepare($sql4);
         $stmt->bindValue(1, $file_id);
         $stmt->bindValue(2, $file_name);
-        $stmt->bindValue(3, $pending_signatories);
-        $stmt->bindValue(4, $approved_signatories);
-        $stmt->bindValue(5, $disapproved );
+        $stmt->bindValue(3, $proxy_pending);
+        $stmt->bindValue(4, $proxy_approved);
+        $stmt->bindValue(5, $proxy_disapproved);
         $stmt->bindValue(6, $comment);
         $stmt->bindValue(7, "pending");
         $stmt->bindValue(8, "DELETE");

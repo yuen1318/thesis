@@ -18,7 +18,7 @@
         complete:function(){
           //initialize pagination after data loaded
           var monkeyList = new List('list_video_tracks', {
-            valueNames: ['file_id','name'],
+            valueNames: ['file_id','name','date'],
             page: 8,
             plugins: [ ListPagination({}) ]
           });

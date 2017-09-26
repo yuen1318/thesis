@@ -27,11 +27,31 @@
     $pending_signatories = explode("," , $row['pending_signatories']);
     $approved_signatories = $row['approved_signatories'];
 
-  }
+    $proxy_pending =  $row['proxy_pending'];
+    $proxy_approved =  $row['proxy_approved'];
+    $proxy_signatories =  $row['proxy_signatories'];
 
+  }
+ 
     if ($stmt) {
+      //remove your name on the proxy_pending
+      $proxy_pending = explode("," , $row['proxy_pending']);
+      array_shift($proxy_pending);
+      $proxy_pending = implode("," , $proxy_pending );
+       
+      //add your name on the proxy_approved
+      if($proxy_approved == NULL){
+        $proxy_approved = array();
+      }
+      else{
+        $proxy_approved = explode("," , $proxy_approved);
+      }
+ 
+      array_push($proxy_approved , $_SESSION["user_fn"] . " " . $_SESSION["user_ln"]);
+      $proxy_approved = implode("," , $proxy_approved );
+
       #step 3 update the values
-      $sql2 = "UPDATE tbl_file SET pending_signatories=?, approved_signatories=? WHERE file_id=?";
+      $sql2 = "UPDATE tbl_file SET pending_signatories=?, approved_signatories=?, proxy_pending=? ,proxy_approved=? WHERE file_id=?";
       //remove your email on pending_signatories
       $updated_pending_signatories = array_diff($pending_signatories, explode("," , $_SESSION['user_email']) );
       //convert string to array
@@ -56,6 +76,8 @@
       $stmt->bindValue(1, implode("," , $updated_pending_signatories) );
       $stmt->bindValue(2, $updated_approved_signatories );
       $stmt->bindValue(3, $file_id);
+      $stmt->bindValue(4, $proxy_approved);
+      $stmt->bindValue(5, $file_id);
       $stmt->execute();
    ;
 
@@ -66,7 +88,7 @@
         $date = date("Y, F j");
         $time = date("g:i a");
 
-        $sql3 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        $sql3 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by,proxy_pending,proxy_approved,proxy_signatories) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $dbConn->prepare($sql3);
         $stmt->bindValue(1, $file_id);
         $stmt->bindValue(2, $file_name);
@@ -79,6 +101,9 @@
         $stmt->bindValue(9, "<strong>Has approved a Presentation</strong>");
         $stmt->bindValue(10, $email.".jpg");
         $stmt->bindValue(11, $created_by);
+        $stmt->bindValue(12, $proxy_pending);
+        $stmt->bindValue(13, $proxy_approved);
+        $stmt->bindValue(14, $proxy_signatories);
         $stmt->execute();
 
             if ($stmt) {
@@ -86,8 +111,8 @@
               $stmt = $dbConn->prepare($sql4);
               $stmt->bindValue(1, $file_id);
               $stmt->bindValue(2, $file_name);
-              $stmt->bindValue(3, implode("," , $updated_pending_signatories) );
-              $stmt->bindValue(4, $updated_approved_signatories);
+              $stmt->bindValue(3, $proxy_pending);
+              $stmt->bindValue(4, $proxy_approved);
               $stmt->bindValue(5, "");
               $stmt->bindValue(6, "");
               $stmt->bindValue(7, "pending");
@@ -109,7 +134,7 @@
 
 
 
-
+ 
 
 
  ?>

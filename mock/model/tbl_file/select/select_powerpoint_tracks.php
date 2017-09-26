@@ -21,7 +21,7 @@
               <td class=''> $row[comment] </td>
               <td class=''> $row[status] </td>
               <td class=''> $row[action] </td>
-              <td class=''> $row[date_time] </td>
+              <td class='date'> $row[date_time] </td>
               </tr>";
         }
 

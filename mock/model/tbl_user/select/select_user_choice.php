@@ -18,7 +18,7 @@
             <td class='id hide'>  $row[id] </td>
 
             <td>
-            <input type='checkbox' class='filled-in checkbox-green' id='$row[email]' value='$row[email]'/>
+            <input type='checkbox' class='filled-in checkbox-green' id='$row[email]' value='$row[email]' data-name='$row[fn] $row[ln]'/>
             <label for='$row[email]'></label>
             </td>
 

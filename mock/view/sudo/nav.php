@@ -10,6 +10,8 @@
 
       <a class="brand-logo hide-on-small-and-down"><img src="../../apalitlogo2.png" width="65" height="63"></a>
       <a class="brand-logo hide-on-med-and-down" style="font-size:23px !important; padding-left:70px!important;">EFTS</a>
+      <a class="brand-logo hide-on-med-and-down center" >Super Admin</a>
+
 
       <ul class="right ">
         <li><a href="#" class="dropdown-button" data-beloworigin="true" data-activates='dropdown1'><span class="fa fa-user fa-lg"></span></a></li>

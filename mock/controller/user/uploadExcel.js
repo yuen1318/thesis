@@ -4,14 +4,18 @@
      select_user("../../model/tbl_user/select/select_user_choice.php", "#tbl_user");
 
      //choose user from checkbox
-     var arr = [];
+     var arr1 = [];
+     var arr2 = [];
      $(document).on('change', 'input[type=checkbox]', function() {
          if (this.checked) {
-             arr.push(this.value)
+             arr1.push(this.value);
+             arr2.push($(this).attr('data-name'));
          } else {
-             arr.splice(arr.indexOf(this.value), 1);
+             arr1.splice(arr1.indexOf(this.value), 1);
+             arr2.splice(arr2.indexOf($(this).attr('data-name')), 1);
          }
-         $('#target').val(arr + '');
+         $('#target1').val(arr1 + '');
+         $('#target2').val(arr2 + '');
      });
 
      //disable enter key
@@ -67,11 +71,11 @@
          $('.step1').removeClass('hide');
          $('.step2').addClass('hide');
      }); //end of onclick
-
+ 
      $(document).on('click', '#btn_submit', function() {
         HoldOn.open( { 
             theme:"sk-bounce",
-            message:"Uploading image, this will take a while...",
+            message:"Uploading spreadsheet, this will take a while...",
             backgroundColor:"#212121",
             textColor:"white" 
         });
@@ -79,7 +83,7 @@
        
         
 
-         if (!$.trim($("#target").val())) { //check if textarea is empty or containes whitespaces
+         if (!$.trim($("#target1").val())) { //check if textarea is empty or containes whitespaces
              swal({
                  title: 'Error',
                  text: "note: cannot create e-file without recepients",
@@ -94,7 +98,7 @@
             upload();
          } //end of else
      }); //end of onclick
-
+ 
 
      $("#frm_excel").validate({ //form validation
          rules: {

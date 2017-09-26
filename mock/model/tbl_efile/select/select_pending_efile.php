@@ -19,8 +19,8 @@
 
               <td class='efile'>  $row[doc_id]  </td>
               <td class='name'>  $row[name]  </td>
-              <td class='sender'>  $row[created_by] </td>
-              <td class='signatories'>  $row[signatories] </td>
+              <td class='sender'>  $row[proxy_created] </td>
+              <td class='signatories'>  $row[proxy_signatories] </td>
 
               <td><a href ='viewEfile.php?$row[doc_id]' target='_blank' class='btn waves-effect green darken-2'> View </a></td>
 

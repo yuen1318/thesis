@@ -22,7 +22,7 @@
           <li class='collection-item avatar'>
             <img src='../../DB/profile/$row[photo]' class='circle materialboxed' >
             <span class='title email'>$row[email]</span><br>
-            <small>$row[date] at $row[time]</small><br><br>
+            <small class='date'>$row[date] at $row[time]</small><br><br>
             <p>$row[msg]</p>
             <p class='doc_id'>Document ID: $row[doc_id]</p>
             <p class='name'> Name: $row[name]</p>
@@ -47,7 +47,7 @@
             <li class='collection-item avatar'>
               <img src='../../DB/profile/$row[photo]' class='circle materialboxed' >
               <span class='title email'>$row[email]</span><br>
-              <small>$row[date] at $row[time]</small><br><br>
+              <small class='date'>$row[date] at $row[time]</small><br><br>
               <p>$row[msg]</p>
               <p class='doc_id'>Document ID: $row[doc_id]</p>
               <p class='name'> Name: $row[name]</p>
@@ -72,7 +72,7 @@
            <li class='collection-item avatar'>
              <img src='../../DB/profile/$row[photo]' class='circle materialboxed' >
              <span class='title email'>$row[email]</span><br>
-             <small>$row[date] at $row[time]</small><br><br>
+             <small class='date'>$row[date] at $row[time]</small><br><br>
              <p>$row[msg]</p>
              <p class='doc_id'>Document ID: $row[doc_id]</p>
              <p class='name'> Name: $row[name]</p>  
@@ -99,7 +99,7 @@
           <li class='collection-item avatar'>
             <img src='../../DB/profile/$row[photo]' class='circle materialboxed' >
             <span class='title email'>$row[email]</span><br>
-            <small>$row[date] at $row[time]</small><br><br>
+            <small class='date'>$row[date] at $row[time]</small><br><br>
             <p>$row[msg]</p>
             <p class='doc_id'>Document ID: $row[doc_id]</p>
             <p class='name'> Name: $row[name]</p>

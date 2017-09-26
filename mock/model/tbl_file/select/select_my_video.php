@@ -23,8 +23,8 @@
           <td class='file_id'>  $row[file_id]  </td>
           <td class='file_type'>  $row[file_type]  </td>
           <td class='name'>  $row[proxy]  </td>
-          <td class='signatories'>  $row[signatories]  </td>
-          <td class='cb'>  $row[created_by]  </td>
+          <td class='signatories'>  $row[proxy_signatories]  </td>
+          <td class='cb'>  $row[proxy_created]  </td>
           <td class='co'>  $row[created_on]  </td>
           <td class='po'>  $row[published_on]  </td>
 

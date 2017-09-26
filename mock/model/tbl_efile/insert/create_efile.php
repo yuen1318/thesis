@@ -17,13 +17,14 @@
   $doc_type =  $_POST['doc_type'];
   $content = $_POST['content'];
   $signatories = $_POST['signatories'];
+  $proxy_signatories = $_POST['proxy_signatories'];
   $created_by = $_SESSION['user_email'];
   $created_on = date("Y, F j, g:i a");
 
 
 
 if (isset($_POST['content'])) {
-  $sql = "INSERT INTO tbl_efile(doc_id,doc_type,name,content,signatories, pending_signatories,created_by,created_on,status) VALUES(?,?,?,?,?,?,?,?,?)";
+  $sql = "INSERT INTO tbl_efile(doc_id,doc_type,name,content,signatories, pending_signatories,created_by,created_on,status,proxy_signatories,proxy_pending,proxy_created) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
   $stmt = $dbConn->prepare($sql);
   $stmt->bindValue(1, $doc_id);
   $stmt->bindValue(2, $doc_type);
@@ -34,10 +35,13 @@ if (isset($_POST['content'])) {
   $stmt->bindValue(7, $created_by);
   $stmt->bindValue(8, $created_on);
   $stmt->bindValue(9, "pending");
+  $stmt->bindValue(10, $proxy_signatories);
+  $stmt->bindValue(11, $proxy_signatories);
+  $stmt->bindValue(12, $_SESSION["user_fn"]. " " .$_SESSION["user_ln"]);
   $stmt->execute();
-
+ 
   if ($stmt) {
-    $sql2 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+    $sql2 = "INSERT INTO tbl_news(doc_id,name,email,date,time,signatories,pending_signatories,approved_signatories,msg,photo,created_by,proxy_signatories,proxy_pending,proxy_approved) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     $stmt = $dbConn->prepare($sql2);
     $stmt->bindValue(1, $doc_id);
     $stmt->bindValue(2, $name);
@@ -50,6 +54,10 @@ if (isset($_POST['content'])) {
     $stmt->bindValue(9, "<strong>Has created a Efile</strong>");
     $stmt->bindValue(10, $email.".jpg");
     $stmt->bindValue(11, $email);
+
+    $stmt->bindValue(12, $proxy_signatories);
+    $stmt->bindValue(13, $proxy_signatories);
+    $stmt->bindValue(14, "");
     $stmt->execute();
     
  
@@ -58,7 +66,7 @@ if (isset($_POST['content'])) {
         $stmt = $dbConn->prepare($sql3);
         $stmt->bindValue(1, $doc_id);
         $stmt->bindValue(2, $name);
-        $stmt->bindValue(3, $signatories);
+        $stmt->bindValue(3, $proxy_signatories);
         $stmt->bindValue(4, "");
         $stmt->bindValue(5, "");
         $stmt->bindValue(6, "");

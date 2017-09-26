@@ -17,7 +17,7 @@
  		complete: function () {
  			//initialize pagination after data loaded
  			var monkeyList = new List('list_efile_tracks', {
- 				valueNames: ['doc_id', 'name'],
+ 				valueNames: ['doc_id', 'name','date'],
  				page: 8,
  				plugins: [ListPagination({})]
  			});
